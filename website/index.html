@@ -1,0 +1,1203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
+
+    <title>Demo — Better Tech, Smarter Choices</title>
+    <meta name="description" content="Discover better laptops, smarter accessories, and the best tech deals.">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+
+    <header class="demo-header" id="demoHeader">
+
+        <div class="demo-header__main">
+
+            <!-- Logo -->
+            <a href="/" class="demo-header__logo" aria-label="Demo home">
+                demo
+            </a>
+
+
+            <!-- Desktop navigation -->
+            <nav class="demo-header__navigation" aria-label="Main navigation">
+
+                <a href="#hero">Home</a>
+                <a href="#brands">shop by brand</a>
+                <a href="#featured-products">Featured products</a>
+                <a href="#about">about</a>
+                <a href="#contact">contact</a>
+
+            </nav>
+
+
+            <!-- Header actions -->
+            <div class="demo-header__actions">
+
+                <!-- Search -->
+                <div class="demo-header__search">
+
+                    <form class="demo-header__search-form" id="demoSearchForm">
+
+                        <input class="demo-header__search-input" id="demoSearchInput" type="search"
+                            placeholder="Search products..." autocomplete="off" aria-label="Search products">
+
+                        <button class="demo-header__search-button" type="submit">
+                            Search
+                        </button>
+
+                    </form>
+
+
+                    <!-- Mobile search icon -->
+                    <button class="demo-header__search-icon" id="demoSearchToggle" type="button"
+                        aria-label="Open search" aria-expanded="false">
+
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="6"></circle>
+                            <line x1="16" y1="16" x2="21" y2="21"></line>
+                        </svg>
+
+                    </button>
+
+
+                    <!-- Desktop search results -->
+                    <div class="demo-header__search-results" id="demoSearchResults">
+
+                        <!-- 1 -->
+                        <a href="/single/">
+                            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=120&q=80"
+                                alt="Lenovo ThinkPad X1">
+
+                            <div>
+                                <strong>Lenovo ThinkPad X1</strong>
+                                <span>Laptop</span>
+                            </div>
+                        </a>
+
+
+                        <!-- 2 -->
+                        <a href="/single/">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=120&q=80"
+                                alt="MacBook Air M3">
+
+                            <div>
+                                <strong>MacBook Air M3</strong>
+                                <span>Laptop</span>
+                            </div>
+                        </a>
+
+
+                        <!-- 3 -->
+                        <a href="/single/">
+                            <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=120&q=80"
+                                alt="ASUS ROG Strix">
+
+                            <div>
+                                <strong>ASUS ROG Strix</strong>
+                                <span>Gaming Laptop</span>
+                            </div>
+                        </a>
+
+
+                        <!-- 4 -->
+                        <a href="/single/">
+                            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=120&q=80"
+                                alt="HP Pavilion 15">
+
+                            <div>
+                                <strong>HP Pavilion 15</strong>
+                                <span>Laptop</span>
+                            </div>
+                        </a>
+
+
+                        <!-- 5 -->
+                        <a href="/single/">
+                            <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=120&q=80"
+                                alt="Dell XPS 13">
+
+                            <div>
+                                <strong>Dell XPS 13</strong>
+                                <span>Laptop</span>
+                            </div>
+                        </a>
+
+
+                        <!-- See all results -->
+                        <a href="/products-listing-page/" class="demo-header__search-see-all">
+                            See all results
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Theme switch -->
+                <button class="demo-header__theme" id="demoThemeToggle" type="button" aria-label="Toggle dark mode">
+
+                    <svg class="demo-header__sun" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"></circle>
+
+                        <line x1="12" y1="2" x2="12" y2="5"></line>
+                        <line x1="12" y1="19" x2="12" y2="22"></line>
+
+                        <line x1="2" y1="12" x2="5" y2="12"></line>
+                        <line x1="19" y1="12" x2="22" y2="12"></line>
+
+                        <line x1="4.9" y1="4.9" x2="7" y2="7"></line>
+                        <line x1="17" y1="17" x2="19.1" y2="19.1"></line>
+
+                        <line x1="17" y1="7" x2="19.1" y2="4.9"></line>
+                        <line x1="4.9" y1="19.1" x2="7" y2="17"></line>
+                    </svg>
+
+
+                    <svg class="demo-header__moon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3A6.7 6.7 0 0 0 21 12.8Z"></path>
+                    </svg>
+
+                </button>
+
+
+                <!-- Language -->
+                <div class="demo-header__language">
+
+                    <button class="demo-header__language-toggle" id="demoLanguageToggle" type="button"
+                        aria-expanded="false">
+
+                        <span id="demoCurrentLanguage">EN</span>
+
+                        <svg class="demo-header__language-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+
+                    </button>
+
+
+                    <div class="demo-header__language-menu" id="demoLanguageMenu">
+
+                        <button type="button" data-language="EN">
+                            English
+                        </button>
+
+                        <button type="button" data-language="FR">
+                            Français
+                        </button>
+
+                        <button type="button" data-language="AR">
+                            العربية
+                        </button>
+
+                        <button type="button" data-language="ES">
+                            Español
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Mobile menu -->
+                <button class="demo-header__menu-toggle" id="demoMenuToggle" type="button" aria-label="Open navigation"
+                    aria-expanded="false">
+
+                    <span class="demo-header__hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                    <span class="demo-header__close">
+                        ×
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Mobile navigation -->
+        <div class="demo-header__mobile-menu" id="demoMobileMenu">
+
+            <nav aria-label="Mobile navigation">
+
+                <a href="#hero">Home</a>
+                <a href="#brands">shop by brand</a>
+                <a href="#featured-products">Featured products</a>
+                <a href="#about">about</a>
+                <a href="#contact">contact</a>
+
+            </nav>
+
+        </div>
+
+
+        <!-- Mobile search -->
+        <div class="demo-header__mobile-search" id="demoMobileSearch">
+
+            <form id="demoMobileSearchForm">
+
+                <input id="demoMobileSearchInput" type="search" placeholder="Search products..."
+                    aria-label="Search products" autocomplete="off">
+
+                <button type="submit">
+                    Search
+                </button>
+
+            </form>
+
+
+            <!-- Mobile search results -->
+            <div class="demo-header__mobile-search-results" id="demoMobileSearchResults">
+
+                <!-- 1 -->
+                <a href="/single/">
+                    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=120&q=80"
+                        alt="Lenovo ThinkPad X1">
+
+                    <div>
+                        <strong>Lenovo ThinkPad X1</strong>
+                        <span>Laptop</span>
+                    </div>
+                </a>
+
+
+                <!-- 2 -->
+                <a href="/single/">
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=120&q=80"
+                        alt="MacBook Air M3">
+
+                    <div>
+                        <strong>MacBook Air M3</strong>
+                        <span>Laptop</span>
+                    </div>
+                </a>
+
+
+                <!-- 3 -->
+                <a href="/single/">
+                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=120&q=80"
+                        alt="ASUS ROG Strix">
+
+                    <div>
+                        <strong>ASUS ROG Strix</strong>
+                        <span>Gaming Laptop</span>
+                    </div>
+                </a>
+
+
+                <!-- 4 -->
+                <a href="/single/">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=120&q=80"
+                        alt="HP Pavilion 15">
+
+                    <div>
+                        <strong>HP Pavilion 15</strong>
+                        <span>Laptop</span>
+                    </div>
+                </a>
+
+
+                <!-- 5 -->
+                <a href="/single/">
+                    <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=120&q=80"
+                        alt="Dell XPS 13">
+
+                    <div>
+                        <strong>Dell XPS 13</strong>
+                        <span>Laptop</span>
+                    </div>
+                </a>
+
+
+                <!-- See all results -->
+                <a href="/products-listing-page/" class="demo-header__mobile-search-see-all">
+                    See all results
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <section class="demo-hero" id="hero" aria-labelledby="demoHeroTitle">
+            <div class="demo-hero__overlay"></div>
+
+            <div class="demo-hero__content">
+
+                <div class="demo-hero__logo" aria-label="Demo">
+                    demo
+                </div>
+
+                <h1 class="demo-hero__title" id="demoHeroTitle">
+                    Find the laptop that's right for you.
+                </h1>
+
+                <p class="demo-hero__description">
+                    Discover a curated selection of laptops built for work,
+                    creativity, gaming, and everything in between.
+                </p>
+
+                <div class="demo-hero__actions">
+
+                    <a href="/products-listing-page/" class="demo-hero__button demo-hero__button--primary">
+                        See all products
+                    </a>
+
+                    <a href="#brands" class="demo-hero__button demo-hero__button--secondary">
+                        See brands
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="demo-brands" id="brands">
+            <div class="animate-section">
+                <section class="page-subtitle container">
+                    <span class="page-subtitle__eyebrow">
+                        BRANDS
+                    </span>
+                    <h2 class="page-subtitle__title">
+                        Explore our featured brands.
+                    </h2>
+                    <p class="page-subtitle__description">
+                        Discover trusted brands and explore their products and collections.
+                    </p>
+                </section>
+                <section class="container pro-grid">
+                    <!-- Samsung -->
+                    <a href="/products-listing-page/" class="brand-card">
+                        <div class="brand-card__image">
+                            <img src="https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?auto=format&fit=crop&w=1200&q=80"
+                                alt="Samsung smartphone">
+                        </div>
+                        <div class="brand-card__overlay"></div>
+                        <h3 class="brand-name">Samsung</h3>
+                    </a>
+                    <!-- Dell -->
+                    <a href="/products-listing-page/" class="brand-card">
+                        <div class="brand-card__image">
+                            <img src="https://images.unsplash.com/photo-1593642702749-b7d2a804fbcf?auto=format&fit=crop&w=1200&q=80"
+                                alt="Dell laptop">
+                        </div>
+                        <div class="brand-card__overlay"></div>
+                        <h3 class="brand-name">Dell</h3>
+                    </a>
+                    <!-- Apple -->
+                    <a href="/products-listing-page/" class="brand-card">
+                        <div class="brand-card__image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80"
+                                alt="Apple MacBook">
+                        </div>
+                        <div class="brand-card__overlay"></div>
+                        <h3 class="brand-name">Apple</h3>
+                    </a>
+                </section>
+            </div>
+
+        </section>
+
+
+        <section class="demo-featured-products" id="featured-products" aria-labelledby="demoAboutTitle">
+            <div class="animate-section">
+                <section class="page-subtitle container">
+                    <span class="page-subtitle__eyebrow">
+                        FEATURED PRODUCTS
+                    </span>
+                    <h2 class="page-subtitle__title">
+                        Discover our featured products.
+                    </h2>
+                    <p class="page-subtitle__description">
+                        Explore our handpicked selection of products, chosen for quality, style, and performance.
+                    </p>
+                </section>
+                <section class="container pro-grid">
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="product-card">
+                        <a href="/single/" class="product-image">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&q=80&auto=format"
+                                alt="MacBook Pro">
+                        </a>
+                        <div class="product-content">
+                            <a href="/products-listing-page/" class="brand">
+                                APPLE
+                            </a>
+                            <a href="/single/" class="product-title">
+                                <h3>MacBook Pro for working and enjoying life</h3>
+                            </a>
+                            <a href="/single/" class="product-description">
+                                Powerful laptop designed for professional workflows.
+                            </a>
+                            <div class="divider"></div>
+                            <a href="/single/" class="price">
+                                1,899 MAD
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                <!-- =========================================================
+                     SEE ALL PRODUCTS CTA
+                ========================================================= -->
+                <section class="products-cta" aria-label="View all products">
+                    <a href="/products-listing-page/" class="products-cta__button">
+                        <span>See All Products</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </section>
+            </div>
+
+
+        </section>
+
+        <section class="demo-about" id="about" aria-labelledby="demoAboutTitle">
+            <div class="animate-section">
+                <div class="demo-about__container">
+                    <!-- Intro -->
+                    <div class="demo-about__intro">
+                        <span class="demo-about__eyebrow">
+                            About Demo
+                        </span>
+                        <h2 class="demo-about__headline" id="demoAboutTitle">
+                            The right laptop for the way you work, create, and play.
+                        </h2>
+                        <p class="demo-about__description">
+                            Demo makes finding your next laptop simple. We bring together
+                            carefully selected laptops from trusted brands, giving you
+                            reliable options for work, gaming, creativity, study, and
+                            everyday life.
+                        </p>
+                    </div>
+                    <!-- Content Grid -->
+                    <div class="demo-about__content">
+                        <!-- What we offer -->
+                        <article class="demo-about__card demo-about__card--featured">
+                            <span class="demo-about__card-number">
+                                01
+                            </span>
+                            <div class="demo-about__card-content">
+                                <h3 class="demo-about__card-title">
+                                    What we offer
+                                </h3>
+                                <p class="demo-about__card-text">
+                                    From lightweight everyday laptops to powerful gaming
+                                    and professional machines, Demo offers a curated
+                                    selection designed to fit different needs and budgets.
+                                </p>
+                                <ul class="demo-about__list">
+                                    <li>
+                                        <span class="demo-about__check">✓</span>
+                                        Laptops from trusted brands
+                                    </li>
+                                    <li>
+                                        <span class="demo-about__check">✓</span>
+                                        Options for work and study
+                                    </li>
+                                    <li>
+                                        <span class="demo-about__check">✓</span>
+                                        Gaming and high-performance laptops
+                                    </li>
+                                    <li>
+                                        <span class="demo-about__check">✓</span>
+                                        Devices for creativity and everyday use
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                        <!-- Why choose us -->
+                        <article class="demo-about__card">
+                            <span class="demo-about__card-number">
+                                02
+                            </span>
+                            <div class="demo-about__card-content">
+                                <h3 class="demo-about__card-title">
+                                    Why choose Demo?
+                                </h3>
+                                <p class="demo-about__card-text">
+                                    We believe shopping for technology should feel clear,
+                                    straightforward, and confident. That's why we focus
+                                    on quality products and a simple shopping experience.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                    <!-- Values -->
+                    <div class="demo-about__values">
+                        <div class="demo-about__value">
+                            <span class="demo-about__value-icon">
+                                01
+                            </span>
+                            <div>
+                                <h3>Curated selection</h3>
+                                <p>
+                                    Products selected with different users and needs in mind.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="demo-about__value">
+                            <span class="demo-about__value-icon">
+                                02
+                            </span>
+                            <div>
+                                <h3>Trusted brands</h3>
+                                <p>
+                                    Shop laptops from brands known for quality and performance.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="demo-about__value">
+                            <span class="demo-about__value-icon">
+                                03
+                            </span>
+                            <div>
+                                <h3>Simple experience</h3>
+                                <p>
+                                    Find, compare, and choose your next laptop without the clutter.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Closing statement -->
+                    <div class="demo-about__closing">
+                        <span class="demo-about__closing-line"></span>
+                        <p>
+                            Find your next laptop with Demo.
+                        </p>
+                        <span class="demo-about__closing-line"></span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="demo-contact" id="contact" aria-labelledby="demoContactTitle">
+            <div class="animate-section">
+                <div class="demo-contact__container">
+                    <!-- Section intro -->
+                    <div class="demo-contact__intro">
+                        <span class="demo-contact__eyebrow">
+                            Contact Demo
+                        </span>
+                        <h2 class="demo-contact__title" id="demoContactTitle">
+                            Let’s talk tech.
+                        </h2>
+                        <p class="demo-contact__description">
+                            Have a question about a laptop, an order, or our store?
+                            Get in touch with the Demo team. We’re here to help you
+                            find the right device.
+                        </p>
+                    </div>
+                    <!-- Contact layout -->
+                    <div class="demo-contact__grid">
+                        <!-- Google Maps -->
+                        <div class="demo-contact__map">
+                            <div class="demo-contact__map-frame">
+                                <!-- Replace with your actual Google Maps embed URL -->
+                                <iframe src="https://www.google.com/maps?q=Casablanca,Morocco&output=embed"
+                                    title="Demo store location on Google Maps" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <!-- Contact information -->
+                        <div class="demo-contact__info">
+                            <span class="demo-contact__info-label">
+                                Get in touch
+                            </span>
+                            <!-- Phone -->
+                            <div class="demo-contact__item">
+                                <span class="demo-contact__item-icon">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+                                19.79 19.79 0 0 1-8.63-3.07
+                                19.5 19.5 0 0 1-6-6
+                                19.79 19.79 0 0 1-3.07-8.67
+                                A2 2 0 0 1 4.11 2h3
+                                a2 2 0 0 1 2 1.72
+                                12.84 12.84 0 0 1 .7 2.81
+                                2 2 0 0 1-.45 2.11L8.09 9.91
+                                a16 16 0 0 0 6 6l1.27-1.27
+                                a2 2 0 0 1 2.11-.45
+                                12.84 12.84 0 0 1 2.81.7
+                                A2 2 0 0 1 22 16.92z">
+                                        </path>
+                                    </svg>
+                                </span>
+                                <a href="tel:+212600000000" class="demo-contact__item-content">
+                                    <span class="demo-contact__item-label">
+                                        Phone
+                                    </span>
+                                    <span class="demo-contact__item-value">
+                                        +212 600 000 000
+                                    </span>
+                                </a>
+                                <button type="button" class="demo-contact__copy" data-copy="+212 600 000 000"
+                                    aria-label="Copy phone number">
+                                    <svg class="demo-contact__copy-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                        <rect x="9" y="9" width="11" height="11" rx="2">
+                                        </rect>
+                                        <path d="M15 9V6a2 2 0 0 0-2-2H6
+                                a2 2 0 0 0-2 2v7
+                                a2 2 0 0 0 2 2h3">
+                                        </path>
+                                    </svg>
+                                    <span class="demo-contact__copy-text">
+                                        Copy
+                                    </span>
+                                </button>
+                            </div>
+                            <!-- Email -->
+                            <div class="demo-contact__item">
+                                <span class="demo-contact__item-icon">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <rect x="3" y="5" width="18" height="14" rx="2">
+                                        </rect>
+                                        <polyline points="3,7 12,13 21,7">
+                                        </polyline>
+                                    </svg>
+                                </span>
+                                <a href="mailto:hello@demo.com" class="demo-contact__item-content">
+                                    <span class="demo-contact__item-label">
+                                        Email
+                                    </span>
+                                    <span class="demo-contact__item-value">
+                                        hello@demo.com
+                                    </span>
+                                </a>
+                                <button type="button" class="demo-contact__copy" data-copy="hello@demo.com"
+                                    aria-label="Copy email address">
+                                    <svg class="demo-contact__copy-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                        <rect x="9" y="9" width="11" height="11" rx="2">
+                                        </rect>
+                                        <path d="M15 9V6a2 2 0 0 0-2-2H6
+                                a2 2 0 0 0-2 2v7
+                                a2 2 0 0 0 2 2h3">
+                                        </path>
+                                    </svg>
+                                    <span class="demo-contact__copy-text">
+                                        Copy
+                                    </span>
+                                </button>
+                            </div>
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/212600000000" class="demo-contact__whatsapp" target="_blank"
+                                rel="noopener noreferrer">
+                                <span class="demo-contact__whatsapp-icon">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M20.52 3.48A11.8 11.8 0 0 0 12.12 0
+                                C5.6 0 .3 5.3.3 11.82
+                                c0 2.08.54 4.11 1.57 5.9L.2 24
+                                l6.43-1.68a11.8 11.8 0 0 0 5.49 1.4h.01
+                                c6.52 0 11.82-5.3 11.82-11.82
+                                0-3.15-1.23-6.11-3.43-8.42z
+                                M12.13 21.67h-.01
+                                a9.82 9.82 0 0 1-5-1.37l-.36-.21
+                                -3.82 1 1.02-3.72-.23-.38
+                                a9.82 9.82 0 1 1 8.4 4.68z">
+                                        </path>
+                                        <path d="M17.58 14.08c-.3-.15-1.77-.87-2.05-.97
+                                -.28-.1-.48-.15-.68.15
+                                -.2.3-.78.97-.96 1.17
+                                -.18.2-.35.22-.65.07
+                                -.3-.15-1.27-.47-2.42-1.5
+                                -.9-.8-1.5-1.78-1.68-2.08
+                                -.18-.3-.02-.46.13-.61
+                                .13-.13.3-.35.45-.52
+                                .15-.17.2-.3.3-.5
+                                .1-.2.05-.37-.02-.52
+                                -.07-.15-.68-1.64-.93-2.25
+                                -.25-.6-.5-.52-.68-.53
+                                h-.58c-.2 0-.52.07-.8.37
+                                -.27.3-1.04 1.02-1.04 2.48
+                                0 1.47 1.07 2.89 1.22 3.09
+                                .15.2 2.1 3.2 5.08 4.49
+                                .71.31 1.26.5 1.69.64
+                                .71.23 1.35.2 1.86.12
+                                .57-.08 1.77-.72 2.02-1.42
+                                .25-.7.25-1.3.18-1.42
+                                -.07-.12-.27-.2-.57-.35z">
+                                        </path>
+                                    </svg>
+                                </span>
+                                <span class="demo-contact__whatsapp-content">
+                                    <strong>
+                                        Chat with us on WhatsApp
+                                    </strong>
+                                    <span>
+                                        Quick questions? We’re here.
+                                    </span>
+                                </span>
+                                <span class="demo-contact__whatsapp-arrow">
+                                    →
+                                </span>
+                            </a>
+                            <!-- Availability -->
+                            <div class="demo-contact__availability">
+                                <span class="demo-contact__availability-dot"></span>
+                                <span>
+                                    Usually available during store hours
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="demo-footer">
+        <div class="demo-footer__main">
+
+            <!-- Brand -->
+            <div class="demo-footer__brand">
+
+                <a href="/" class="demo-footer__logo" aria-label="Demo home">
+                    demo
+                </a>
+
+                <p class="demo-footer__description">
+                    Discover laptops from trusted brands, carefully selected
+                    for work, gaming, creativity, and everyday life.
+                </p>
+
+            </div>
+
+
+            <!-- Navigation -->
+            <div class="demo-footer__column">
+
+                <h3 class="demo-footer__title">
+                    Explore
+                </h3>
+
+                <nav aria-label="Footer navigation">
+
+                    <a href="/">
+                        Home
+                    </a>
+
+                    <a href="/products-listing-page/">
+                        All products
+                    </a>
+
+                    <a href="/#brands">
+                        Brands
+                    </a>
+
+                    <a href="/#featured-products">
+                        Featured products
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <!-- Company -->
+            <div class="demo-footer__column">
+
+                <h3 class="demo-footer__title">
+                    Company
+                </h3>
+
+                <nav aria-label="Company navigation">
+
+                    <a href="/#about">
+                        About us
+                    </a>
+
+                    <a href="/#contact">
+                        Contact
+                    </a>
+
+                    <a href="#">
+                        Privacy policy
+                    </a>
+
+                    <a href="#">
+                        Terms & conditions
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <!-- Social / contact -->
+            <div class="demo-footer__column">
+
+                <h3 class="demo-footer__title">
+                    Follow us
+                </h3>
+
+                <div class="demo-footer__social">
+
+                    <a href="#" aria-label="Instagram">
+                        Instagram
+                    </a>
+
+                    <a href="#" aria-label="Facebook">
+                        Facebook
+                    </a>
+
+                    <a href="#" aria-label="TikTok">
+                        TikTok
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bottom -->
+        <div class="demo-footer__bottom">
+
+            <p class="demo-footer__copyright">
+                © 2026 Demo. All rights reserved.
+            </p>
+
+            <p class="demo-footer__tagline">
+                Find your next laptop.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script type="module" src="/js/main.js"></script>
+
+</body>
+
+</html>
