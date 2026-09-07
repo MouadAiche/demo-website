@@ -473,6 +473,492 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //  #endregion
 
+// #region SECONDARY HEADER
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const secondaryHeader =
+        document.querySelector(".secondary-header");
+
+    if (!secondaryHeader) return;
+
+
+    const html =
+        document.documentElement;
+
+    const backButton =
+        secondaryHeader.querySelector(
+            ".secondary-header__back"
+        );
+
+    const themeButton =
+        secondaryHeader.querySelector(
+            ".secondary-header__theme-toggle"
+        );
+
+    const language =
+        secondaryHeader.querySelector(
+            ".secondary-language"
+        );
+
+    const languageButton =
+        secondaryHeader.querySelector(
+            ".secondary-language__button"
+        );
+
+    const currentLanguage =
+        secondaryHeader.querySelector(
+            ".secondary-language__current"
+        );
+
+    const languageOptions =
+        secondaryHeader.querySelectorAll(
+            ".secondary-language__dropdown button"
+        );
+
+    const mobileSearchButton =
+        secondaryHeader.querySelector(
+            ".secondary-header__mobile-search-button"
+        );
+
+    const mobileSearchPanel =
+        secondaryHeader.querySelector(
+            ".secondary-mobile-search-panel"
+        );
+
+    const searches =
+        secondaryHeader.querySelectorAll(
+            ".secondary-search, .secondary-mobile-search"
+        );
+
+
+    /* =====================================================
+       BACK
+    ===================================================== */
+
+    backButton.addEventListener(
+        "click",
+        () => {
+            window.history.back();
+        }
+    );
+
+
+    /* =====================================================
+       THEME
+    ===================================================== */
+
+    if (
+        localStorage.getItem("theme")
+        === "dark"
+    ) {
+        html.setAttribute(
+            "data-theme",
+            "dark"
+        );
+    }
+
+
+    themeButton.addEventListener(
+        "click",
+        () => {
+
+            const dark =
+                html.getAttribute(
+                    "data-theme"
+                ) === "dark";
+
+            if (dark) {
+
+                html.removeAttribute(
+                    "data-theme"
+                );
+
+                localStorage.setItem(
+                    "theme",
+                    "light"
+                );
+
+            } else {
+
+                html.setAttribute(
+                    "data-theme",
+                    "dark"
+                );
+
+                localStorage.setItem(
+                    "theme",
+                    "dark"
+                );
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       LANGUAGE
+    ===================================================== */
+
+    const savedLanguage =
+        localStorage.getItem(
+            "selectedLanguage"
+        );
+
+    if (savedLanguage) {
+        currentLanguage.textContent =
+            savedLanguage;
+    }
+
+
+    languageButton.addEventListener(
+        "click",
+        (event) => {
+
+            event.stopPropagation();
+
+            const open =
+                language.classList.contains(
+                    "secondary-language--open"
+                );
+
+            closeSecondaryPanels();
+
+            if (!open) {
+
+                language.classList.add(
+                    "secondary-language--open"
+                );
+
+                languageButton.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+            }
+
+        }
+    );
+
+
+    languageOptions.forEach(
+        (option) => {
+
+            option.addEventListener(
+                "click",
+                () => {
+
+                    const selected =
+                        option.dataset.lang;
+
+                    currentLanguage.textContent =
+                        selected;
+
+                    localStorage.setItem(
+                        "selectedLanguage",
+                        selected
+                    );
+
+                    language.classList.remove(
+                        "secondary-language--open"
+                    );
+
+                    languageButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       MOBILE SEARCH
+    ===================================================== */
+
+    mobileSearchButton.addEventListener(
+        "click",
+        (event) => {
+
+            event.stopPropagation();
+
+            const open =
+                mobileSearchPanel.classList.contains(
+                    "secondary-mobile-search-panel--open"
+                );
+
+            closeSecondaryPanels();
+
+            if (!open) {
+
+                mobileSearchPanel.classList.add(
+                    "secondary-mobile-search-panel--open"
+                );
+
+                mobileSearchButton.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+                const input =
+                    mobileSearchPanel.querySelector(
+                        ".secondary-search__input"
+                    );
+
+                setTimeout(
+                    () => input.focus(),
+                    120
+                );
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       SEARCHES
+    ===================================================== */
+
+    searches.forEach(
+        (search) => {
+
+            const input =
+                search.querySelector(
+                    ".secondary-search__input"
+                );
+
+            const button =
+                search.querySelector(
+                    ".secondary-search__submit"
+                );
+
+
+            input.addEventListener(
+                "focus",
+                () => {
+
+                    closeSecondarySearch(
+                        search
+                    );
+
+                    search.classList.add(
+                        "secondary-search--active"
+                    );
+
+                }
+            );
+
+
+            input.addEventListener(
+                "input",
+                () => {
+
+                    search.classList.add(
+                        "secondary-search--active"
+                    );
+
+                }
+            );
+
+
+            input.addEventListener(
+                "keydown",
+                (event) => {
+
+                    if (event.key === "Enter") {
+                        secondaryPerformSearch(
+                            input
+                        );
+                    }
+
+                }
+            );
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    secondaryPerformSearch(
+                        input
+                    );
+
+                }
+            );
+
+
+            search.addEventListener(
+                "click",
+                (event) => {
+                    event.stopPropagation();
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       SEARCH FUNCTION
+    ===================================================== */
+
+    function secondaryPerformSearch(input) {
+
+        const query =
+            input.value.trim();
+
+        if (!query) {
+            input.focus();
+            return;
+        }
+
+        console.log(
+            "Searching for:",
+            query
+        );
+    }
+
+
+    /* =====================================================
+       CLOSE SEARCH
+    ===================================================== */
+
+    function closeSecondarySearch(
+        exception = null
+    ) {
+
+        searches.forEach(
+            (search) => {
+
+                if (search !== exception) {
+
+                    search.classList.remove(
+                        "secondary-search--active"
+                    );
+                }
+
+            }
+        );
+    }
+
+
+    /* =====================================================
+       CLOSE PANELS
+    ===================================================== */
+
+    function closeSecondaryPanels() {
+
+        language.classList.remove(
+            "secondary-language--open"
+        );
+
+        languageButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+
+        mobileSearchPanel.classList.remove(
+            "secondary-mobile-search-panel--open"
+        );
+
+        mobileSearchButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+
+        closeSecondarySearch();
+    }
+
+
+    /* =====================================================
+       OUTSIDE CLICK
+    ===================================================== */
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                !event.target.closest(
+                    ".secondary-language"
+                )
+            ) {
+
+                language.classList.remove(
+                    "secondary-language--open"
+                );
+
+                languageButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+            }
+
+
+            if (
+                !event.target.closest(
+                    ".secondary-search"
+                )
+                &&
+                !event.target.closest(
+                    ".secondary-mobile-search"
+                )
+            ) {
+
+                closeSecondarySearch();
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       ESCAPE
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (event.key === "Escape") {
+                closeSecondaryPanels();
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       RESIZE
+    ===================================================== */
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            if (window.innerWidth > 900) {
+
+                mobileSearchPanel.classList.remove(
+                    "secondary-mobile-search-panel--open"
+                );
+
+                mobileSearchButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+            }
+
+        }
+    );
+
+});
+
+// #endregion
+
 // #region HERO
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -545,3 +1031,108 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //  #endregion
+
+// #region SINGLE PRODUCT
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const singleProduct =
+        document.querySelector(".single-product-page");
+
+    if (!singleProduct) return;
+
+
+    /* =====================================================
+       COLOR
+    ===================================================== */
+
+    const colorButtons =
+        singleProduct.querySelectorAll(
+            ".single-product-color"
+        );
+
+    const selectedColor =
+        singleProduct.querySelector(
+            "#selectedColor"
+        );
+
+
+    colorButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            colorButtons.forEach((item) => {
+
+                item.classList.remove(
+                    "is-selected"
+                );
+
+                item.setAttribute(
+                    "aria-pressed",
+                    "false"
+                );
+
+            });
+
+
+            button.classList.add(
+                "is-selected"
+            );
+
+            button.setAttribute(
+                "aria-pressed",
+                "true"
+            );
+
+
+            selectedColor.textContent =
+                button.dataset.color;
+
+        });
+
+    });
+
+
+    /* =====================================================
+       STORAGE
+    ===================================================== */
+
+    const storageButtons =
+        singleProduct.querySelectorAll(
+            ".single-product-storage__button"
+        );
+
+    const selectedStorage =
+        singleProduct.querySelector(
+            "#selectedStorage"
+        );
+
+
+    storageButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            storageButtons.forEach((item) => {
+
+                item.classList.remove(
+                    "is-selected"
+                );
+
+            });
+
+
+            button.classList.add(
+                "is-selected"
+            );
+
+
+            selectedStorage.textContent =
+                button.dataset.storage;
+
+        });
+
+    });
+
+});
+
+// #endregion

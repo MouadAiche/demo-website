@@ -1,13 +1,1026 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/hamid-phones/css/style.css">
 </head>
+
 <body>
-    
-    <script src="js/main.js"></script>
+    <header class="secondary-header" id="secondaryHeader">
+
+        <div class="secondary-header__container">
+
+            <!-- LEFT -->
+            <div class="secondary-header__left">
+
+                <button class="secondary-header__back" type="button" aria-label="Go back">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M19 12H5M11 18l-6-6 6-6" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+
+                <button class="secondary-header__theme-toggle" type="button" aria-label="Toggle dark mode">
+                    <svg class="secondary-header__moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20.5 15.4A8.5 8.5 0 0 1 8.6 3.5 9 9 0 1 0 20.5 15.4Z" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                    </svg>
+
+                    <svg class="secondary-header__sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+
+                        <path
+                            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+
+                <div class="secondary-language">
+
+                    <button class="secondary-language__button" type="button" aria-expanded="false">
+                        <span class="secondary-language__current">
+                            EN
+                        </span>
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="m7 9 5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+
+                    <div class="secondary-language__dropdown">
+
+                        <button type="button" data-lang="EN">
+                            <span>EN</span>
+                            English
+                        </button>
+
+                        <button type="button" data-lang="FR">
+                            <span>FR</span>
+                            Français
+                        </button>
+
+                        <button type="button" data-lang="AR">
+                            <span>AR</span>
+                            العربية
+                        </button>
+
+                        <button type="button" data-lang="ES">
+                            <span>ES</span>
+                            Español
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CENTER LOGO -->
+            <a href="../index.html" class="secondary-header__logo" aria-label="Home">
+                <img src="../assets/images/logo.png" alt="Phone Store Logo">
+            </a>
+
+
+            <!-- RIGHT -->
+            <div class="secondary-header__right">
+
+                <div class="secondary-search secondary-search--desktop">
+
+                    <div class="secondary-search__box">
+
+                        <input type="search" class="secondary-search__input" placeholder="Search products..."
+                            autocomplete="off" aria-label="Search products">
+
+                        <button class="secondary-search__submit" type="button">
+                            Search
+                        </button>
+
+                    </div>
+
+
+                    <div class="secondary-search__dropdown">
+
+                        <a href="../single/index.html" class="secondary-search-product">
+
+                            <div class="secondary-search-product__image">
+                                <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=700&q=85"
+                                    alt="iPhone 15 Pro" loading="lazy">
+                            </div>
+
+                            <div class="secondary-search-product__info">
+
+                                <span class="secondary-search-product__category">
+                                    Apple
+                                </span>
+
+                                <strong>
+                                    iPhone 15 Pro
+                                </strong>
+
+                                <span class="secondary-search-product__price">
+                                    12,499 DH
+                                </span>
+
+                            </div>
+
+                            <span class="secondary-search-product__arrow">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+
+                        </a>
+
+
+                        <a href="../single/index.html" class="secondary-search-product">
+
+                            <div class="secondary-search-product__image">
+                                <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=700&q=85"
+                                    alt="Galaxy S24 Ultra" loading="lazy">
+                            </div>
+
+                            <div class="secondary-search-product__info">
+
+                                <span class="secondary-search-product__category">
+                                    Samsung
+                                </span>
+
+                                <strong>
+                                    Galaxy S24 Ultra
+                                </strong>
+
+                                <span class="secondary-search-product__price">
+                                    11,999 DH
+                                </span>
+
+                            </div>
+
+                            <span class="secondary-search-product__arrow">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+
+                        </a>
+
+
+                        <a href="../single/index.html" class="secondary-search-product">
+
+                            <div class="secondary-search-product__image">
+                                <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=700&q=85"
+                                    alt="Xiaomi 14" loading="lazy">
+                            </div>
+
+                            <div class="secondary-search-product__info">
+
+                                <span class="secondary-search-product__category">
+                                    Xiaomi
+                                </span>
+
+                                <strong>
+                                    Xiaomi 14
+                                </strong>
+
+                                <span class="secondary-search-product__price">
+                                    7,499 DH
+                                </span>
+
+                            </div>
+
+                            <span class="secondary-search-product__arrow">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+
+                        </a>
+
+
+                        <a href="../single/index.html" class="secondary-search-product">
+
+                            <div class="secondary-search-product__image">
+                                <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=700&q=85"
+                                    alt="Google Pixel 9 Pro" loading="lazy">
+                            </div>
+
+                            <div class="secondary-search-product__info">
+
+                                <span class="secondary-search-product__category">
+                                    Google
+                                </span>
+
+                                <strong>
+                                    Google Pixel 9 Pro
+                                </strong>
+
+                                <span class="secondary-search-product__price">
+                                    9,499 DH
+                                </span>
+
+                            </div>
+
+                            <span class="secondary-search-product__arrow">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+
+                        </a>
+
+
+                        <a href="../products-listing/index.html" class="secondary-search__results">
+                            See all products
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <button class="secondary-header__mobile-search-button" type="button" aria-label="Open search"
+                    aria-expanded="false">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="11" cy="11" r="7" stroke-width="2" />
+
+                        <path d="M20 20l-4-4" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOBILE SEARCH -->
+        <div class="secondary-mobile-search-panel">
+
+            <div class="secondary-mobile-search">
+
+                <div class="secondary-search__box">
+
+                    <input type="search" class="secondary-search__input" placeholder="Search products..."
+                        autocomplete="off" aria-label="Search products">
+
+                    <button class="secondary-search__submit" type="button">
+                        Search
+                    </button>
+
+                </div>
+
+
+                <div class="secondary-search__dropdown">
+
+                    <a href="../single/index.html" class="secondary-search-product">
+
+                        <div class="secondary-search-product__image">
+                            <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=700&q=85"
+                                alt="iPhone 15 Pro">
+                        </div>
+
+                        <div class="secondary-search-product__info">
+                            <span class="secondary-search-product__category">
+                                Apple
+                            </span>
+
+                            <strong>
+                                iPhone 15 Pro
+                            </strong>
+
+                            <span class="secondary-search-product__price">
+                                12,499 DH
+                            </span>
+                        </div>
+
+                        <span class="secondary-search-product__arrow">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+
+                    </a>
+
+
+                    <a href="../single/index.html" class="secondary-search-product">
+
+                        <div class="secondary-search-product__image">
+                            <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=700&q=85"
+                                alt="Galaxy S24 Ultra">
+                        </div>
+
+                        <div class="secondary-search-product__info">
+                            <span class="secondary-search-product__category">
+                                Samsung
+                            </span>
+
+                            <strong>
+                                Galaxy S24 Ultra
+                            </strong>
+
+                            <span class="secondary-search-product__price">
+                                11,999 DH
+                            </span>
+                        </div>
+
+                        <span class="secondary-search-product__arrow">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+
+                    </a>
+
+
+                    <a href="../single/index.html" class="secondary-search-product">
+
+                        <div class="secondary-search-product__image">
+                            <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=700&q=85"
+                                alt="Xiaomi 14">
+                        </div>
+
+                        <div class="secondary-search-product__info">
+                            <span class="secondary-search-product__category">
+                                Xiaomi
+                            </span>
+
+                            <strong>
+                                Xiaomi 14
+                            </strong>
+
+                            <span class="secondary-search-product__price">
+                                7,499 DH
+                            </span>
+                        </div>
+
+                        <span class="secondary-search-product__arrow">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+
+                    </a>
+
+
+                    <a href="../single/index.html" class="secondary-search-product">
+
+                        <div class="secondary-search-product__image">
+                            <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=700&q=85"
+                                alt="Google Pixel 9 Pro">
+                        </div>
+
+                        <div class="secondary-search-product__info">
+                            <span class="secondary-search-product__category">
+                                Google
+                            </span>
+
+                            <strong>
+                                Google Pixel 9 Pro
+                            </strong>
+
+                            <span class="secondary-search-product__price">
+                                9,499 DH
+                            </span>
+                        </div>
+
+                        <span class="secondary-search-product__arrow">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+
+                    </a>
+
+
+                    <a href="../products-listing/index.html" class="secondary-search__results">
+                        See all products
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- #region SINGLE PRODUCT -->
+
+    <main class="single-product-page">
+
+        <!-- =====================================================
+         MAIN PRODUCT
+    ====================================================== -->
+
+        <section class="single-product-section">
+
+            <div class="single-product-container">
+
+                <!-- =============================================
+                 LEFT — STICKY IMAGE
+            ============================================== -->
+
+                <div class="single-product-gallery">
+
+                    <div class="single-product-gallery__sticky">
+
+                        <div class="single-product-main-image">
+
+                            <span class="single-product-badge">
+                                In Stock
+                            </span>
+
+                            <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1000&q=90"
+                                alt="iPhone 15 Pro" id="singleProductImage">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =============================================
+                 RIGHT — PRODUCT DETAILS
+            ============================================== -->
+
+                <div class="single-product-details">
+
+
+                    <!-- BRAND -->
+                    <a href="../products-listing/index.html" class="single-product-brand">
+                        Apple
+                    </a>
+
+
+                    <!-- TITLE -->
+                    <h1 class="single-product-title">
+                        iPhone 15 Pro
+                    </h1>
+
+
+                    <!-- SHORT DESCRIPTION -->
+                    <p class="single-product-intro">
+                        Powerful performance, premium titanium design,
+                        advanced cameras, and the A17 Pro chip in a compact
+                        flagship smartphone.
+                    </p>
+
+
+                    <!-- PRICE -->
+                    <div class="single-product-price">
+
+                        <span class="single-product-price__label">
+                            Price
+                        </span>
+
+                        <strong class="single-product-price__value">
+                            12,499 DH
+                        </strong>
+
+                    </div>
+
+
+                    <!-- =========================================
+                     COLOR
+                ========================================== -->
+
+                    <div class="single-product-option">
+
+                        <div class="single-product-option__header">
+
+                            <span class="single-product-option__title">
+                                Color
+                            </span>
+
+                            <span class="single-product-option__selected" id="selectedColor">
+                                Natural Titanium
+                            </span>
+
+                        </div>
+
+
+                        <div class="single-product-colors" role="radiogroup" aria-label="Choose color">
+
+                            <button class="single-product-color is-selected" type="button" data-color="Natural Titanium"
+                                aria-label="Natural Titanium" aria-pressed="true">
+                                <span style="background:#bbb7ae;"></span>
+                            </button>
+
+
+                            <button class="single-product-color" type="button" data-color="Blue Titanium"
+                                aria-label="Blue Titanium" aria-pressed="false">
+                                <span style="background:#536475;"></span>
+                            </button>
+
+
+                            <button class="single-product-color" type="button" data-color="White Titanium"
+                                aria-label="White Titanium" aria-pressed="false">
+                                <span style="background:#e7e5df;"></span>
+                            </button>
+
+
+                            <button class="single-product-color" type="button" data-color="Black Titanium"
+                                aria-label="Black Titanium" aria-pressed="false">
+                                <span style="background:#30302e;"></span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================================
+                     STORAGE
+                ========================================== -->
+
+                    <div class="single-product-option">
+
+                        <div class="single-product-option__header">
+
+                            <span class="single-product-option__title">
+                                Storage
+                            </span>
+
+                            <span class="single-product-option__selected" id="selectedStorage">
+                                256 GB
+                            </span>
+
+                        </div>
+
+
+                        <div class="single-product-storage">
+
+                            <button class="single-product-storage__button" type="button" data-storage="128 GB">
+                                128 GB
+                            </button>
+
+                            <button class="single-product-storage__button is-selected" type="button"
+                                data-storage="256 GB">
+                                256 GB
+                            </button>
+
+                            <button class="single-product-storage__button" type="button" data-storage="512 GB">
+                                512 GB
+                            </button>
+
+                            <button class="single-product-storage__button" type="button" data-storage="1 TB">
+                                1 TB
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================================
+                     MAIN SPECS
+                ========================================== -->
+
+                    <div class="single-product-specifications">
+
+                        <div class="single-product-specifications__header">
+
+                            <span>
+                                Main Specifications
+                            </span>
+
+                        </div>
+
+
+                        <div class="single-product-spec-grid">
+
+
+                            <!-- RAM -->
+                            <div class="single-product-spec">
+
+                                <div class="single-product-spec__icon">
+
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <rect x="4" y="7" width="16" height="10" rx="1" stroke-width="1.8" />
+
+                                        <path d="M8 3v4M12 3v4M16 3v4M8 17v4M12 17v4M16 17v4" stroke-width="1.8"
+                                            stroke-linecap="round" />
+                                    </svg>
+
+                                </div>
+
+                                <span>
+                                    RAM
+                                </span>
+
+                                <strong>
+                                    8 GB
+                                </strong>
+
+                            </div>
+
+
+                            <!-- CAMERA -->
+                            <div class="single-product-spec">
+
+                                <div class="single-product-spec__icon">
+
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M4 8h3l1.5-2h7L17 8h3v10H4V8Z" stroke-width="1.8"
+                                            stroke-linejoin="round" />
+
+                                        <circle cx="12" cy="13" r="3" stroke-width="1.8" />
+                                    </svg>
+
+                                </div>
+
+                                <span>
+                                    Camera
+                                </span>
+
+                                <strong>
+                                    48 MP
+                                </strong>
+
+                            </div>
+
+
+                            <!-- DISPLAY -->
+                            <div class="single-product-spec">
+
+                                <div class="single-product-spec__icon">
+
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <rect x="6" y="2" width="12" height="20" rx="2" stroke-width="1.8" />
+
+                                        <path d="M10 18h4" stroke-width="1.8" stroke-linecap="round" />
+                                    </svg>
+
+                                </div>
+
+                                <span>
+                                    Display
+                                </span>
+
+                                <strong>
+                                    6.1″
+                                </strong>
+
+                            </div>
+
+
+                            <!-- BATTERY -->
+                            <div class="single-product-spec">
+
+                                <div class="single-product-spec__icon">
+
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <rect x="4" y="7" width="15" height="10" rx="2" stroke-width="1.8" />
+
+                                        <path d="M19 10h2v4h-2" stroke-width="1.8" />
+
+                                        <path d="m11 9-2 4h3l-1 3 4-5h-3l1-2" stroke-width="1.5"
+                                            stroke-linejoin="round" />
+                                    </svg>
+
+                                </div>
+
+                                <span>
+                                    Battery
+                                </span>
+
+                                <strong>
+                                    3274 mAh
+                                </strong>
+
+                            </div>
+
+
+                            <!-- PROCESSOR -->
+                            <div class="single-product-spec">
+
+                                <div class="single-product-spec__icon">
+
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <rect x="7" y="7" width="10" height="10" rx="1" stroke-width="1.8" />
+
+                                        <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"
+                                            stroke-width="1.8" stroke-linecap="round" />
+                                    </svg>
+
+                                </div>
+
+                                <span>
+                                    Processor
+                                </span>
+
+                                <strong>
+                                    A17 Pro
+                                </strong>
+
+                            </div>
+
+
+                            <!-- NETWORK -->
+                            <div class="single-product-spec">
+
+                                <div class="single-product-spec__icon">
+
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M5 16a10 10 0 0 1 14 0M8 19a6 6 0 0 1 8 0M11 22a2 2 0 0 1 2 0"
+                                            stroke-width="1.8" stroke-linecap="round" />
+
+                                        <path d="M2 12a14 14 0 0 1 20 0" stroke-width="1.8" stroke-linecap="round" />
+                                    </svg>
+
+                                </div>
+
+                                <span>
+                                    Network
+                                </span>
+
+                                <strong>
+                                    5G
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================================
+                     ACTION
+                ========================================== -->
+
+                    <a href="https://wa.me/" class="single-product-contact-button">
+                        Contact Us About This Product
+
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 12h14M13 6l6 6-6 6" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+         MORE DETAILS
+    ====================================================== -->
+
+        <section class="single-product-more">
+
+            <div class="single-product-more__container">
+
+                <div class="single-product-more__heading">
+
+                    <span>
+                        Product Details
+                    </span>
+
+                    <h2>
+                        More About The iPhone 15 Pro
+                    </h2>
+
+                    <p>
+                        Everything you need to know about the device,
+                        from its display and performance to its cameras,
+                        connectivity, and physical design.
+                    </p>
+
+                </div>
+
+
+                <div class="single-product-more__layout">
+
+
+                    <!-- LEFT -->
+                    <div class="single-product-description">
+
+                        <h3>
+                            Premium Performance
+                        </h3>
+
+                        <p>
+                            The iPhone 15 Pro combines a lightweight titanium
+                            design with Apple's A17 Pro processor, providing
+                            powerful performance for everyday use, photography,
+                            gaming, and demanding applications.
+                        </p>
+
+                        <p>
+                            Its Super Retina XDR display offers rich colors,
+                            excellent brightness, and smooth interaction,
+                            while the advanced camera system provides flexible
+                            photography and video capabilities.
+                        </p>
+
+                        <p>
+                            With 5G connectivity, USB-C, Face ID, and a durable
+                            premium construction, it is designed for users
+                            looking for a modern high-end smartphone.
+                        </p>
+
+                    </div>
+
+
+                    <!-- RIGHT SPECIFICATIONS -->
+                    <div class="single-product-full-specs">
+
+
+                        <div class="single-product-full-spec">
+
+                            <span>
+                                Brand
+                            </span>
+
+                            <strong>
+                                Apple
+                            </strong>
+
+                        </div>
+
+
+                        <div class="single-product-full-spec">
+
+                            <span>
+                                Model
+                            </span>
+
+                            <strong>
+                                iPhone 15 Pro
+                            </strong>
+
+                        </div>
+
+
+                        <div class="single-product-full-spec">
+
+                            <span>
+                                Display
+                            </span>
+
+                            <strong>
+                                6.1″ Super Retina XDR OLED
+                            </strong>
+
+                        </div>
+
+
+                        <div class="single-product-full-spec">
+
+                            <span>
+                                Refresh Rate
+                            </span>
+
+                            <strong>
+                                120 Hz ProMotion
+                            </strong>
+
+                        </div>
+
+
+                        <div class="single-product-full-spec">
+
+                            <span>
+                                Processor
+                            </span>
+
+                            <strong>
+                                Apple A17 Pro
+                            </strong>
+
+                        </div>
+
+
+                        <div class="single-product-full-spec">
+
+                            <span>
+                                RAM
+                            </span>
+
+                            <strong>
+                                8 GB
+                            </strong>
+
+                        </div>
+
+
+                        <div class="single-product-full-spec">
+
+                            <span>
+                                Rear Camera
+                            </span>
+
+                            <strong>
+                                48 MP + 12 MP + 12 MP
+                            </strong>
+
+                        </div>
+
+
+                        <div class="single-product-full-spec">
+
+                            <span>
+                                Front Camera
+                            </span>
+
+                            <strong>
+                                12 MP
+                            </strong>
+
+                        </div>
+
+
+                        <div class="single-product-full-spec">
+
+                            <span>
+                                Battery
+                            </span>
+
+                            <strong>
+                                3274 mAh
+                            </strong>
+
+                        </div>
+
+
+                        <div class="single-product-full-spec">
+
+                            <span>
+                                Charging
+                            </span>
+
+                            <strong>
+                                USB-C / MagSafe
+                            </strong>
+
+                        </div>
+
+
+                        <div class="single-product-full-spec">
+
+                            <span>
+                                Connectivity
+                            </span>
+
+                            <strong>
+                                5G / Wi-Fi 6E / Bluetooth 5.3
+                            </strong>
+
+                        </div>
+
+
+                        <div class="single-product-full-spec">
+
+                            <span>
+                                Operating System
+                            </span>
+
+                            <strong>
+                                iOS
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        </section>
+
+    </main>
+
+    <!-- #endregion -->
+
+    <script src="/hamid-phones/js/main.js"></script>
 </body>
+
 </html>
