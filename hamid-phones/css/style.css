@@ -16,6 +16,7 @@ body {
 
 /* #region HEADER */
 
+
 /* =========================================================
    VARIABLES
 ========================================================= */
@@ -219,20 +220,25 @@ a {
     transform: translateX(-50%);
 
     background:
-        linear-gradient(90deg,
+        linear-gradient(
+            90deg,
             var(--blue-800),
-            var(--blue-500));
+            var(--blue-500)
+        );
 
-    transition: width var(--transition);
+    transition:
+        width var(--transition);
 }
 
 .desktop-nav a:hover {
     color: var(--blue-700);
 
     background:
-        linear-gradient(180deg,
+        linear-gradient(
+            180deg,
             transparent,
-            rgba(8, 114, 223, 0.035));
+            rgba(8, 114, 223, 0.035)
+        );
 }
 
 .desktop-nav a:hover::after {
@@ -286,6 +292,7 @@ a {
 
 .search-input {
     min-width: 0;
+
     flex: 1;
 
     padding: 0 14px;
@@ -313,15 +320,20 @@ a {
     padding: 0 16px;
 
     border: 0;
-    border-left: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-left:
+        1px solid
+        rgba(255, 255, 255, 0.15);
 
     color: #ffffff;
 
     background:
-        linear-gradient(135deg,
+        linear-gradient(
+            135deg,
             #087ee7 0%,
             #1aa8f5 70%,
-            #4fd8ff 100%);
+            #4fd8ff 100%
+        );
 
     font-size: 12px;
     font-weight: 750;
@@ -366,6 +378,7 @@ a {
     background: var(--surface);
 
     border: 1px solid var(--border);
+
     border-radius: var(--radius);
 
     box-shadow: var(--overlay-shadow);
@@ -385,20 +398,13 @@ a {
     transform: translateY(0);
 }
 
-.search-dropdown-heading {
-    padding: 9px 10px 8px;
-
-    color: var(--text-muted);
-
-    font-size: 10px;
-    font-weight: 800;
-
-    letter-spacing: 0.12em;
-
-    text-transform: uppercase;
-}
+/* =========================================================
+   SEARCH PRODUCT
+========================================================= */
 
 .search-product {
+    min-width: 0;
+
     display: flex;
     align-items: center;
 
@@ -408,41 +414,83 @@ a {
 
     color: var(--text);
 
+    background: var(--surface-soft);
+
+    border: 1px solid transparent;
+
     border-radius: var(--radius);
 
     text-decoration: none;
 
-    transition: background var(--transition);
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.search-product + .search-product {
+    margin-top: 6px;
 }
 
 .search-product:hover {
-    background: var(--surface-hover);
+    transform: translateY(-2px);
+
+    background: var(--surface);
+
+    border-color:
+        rgba(26, 168, 245, 0.35);
+
+    box-shadow:
+        0 9px 22px
+        rgba(7, 50, 110, 0.09);
 }
 
+
+/* =========================================================
+   SEARCH PRODUCT IMAGE
+========================================================= */
+
 .product-image {
-    width: 42px;
-    height: 42px;
+    width: 58px;
+    height: 58px;
 
     flex: 0 0 auto;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
 
-    background:
-        linear-gradient(145deg,
-            rgba(8, 86, 189, 0.08),
-            rgba(21, 148, 237, 0.16));
+    background: #ffffff;
 
     border: 1px solid var(--border);
 
     border-radius: var(--radius);
-
-    font-size: 19px;
 }
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.4s ease;
+}
+
+.search-product:hover .product-image img {
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   PRODUCT INFO
+========================================================= */
 
 .product-info {
     min-width: 0;
+
+    flex: 1;
 
     display: flex;
     flex-direction: column;
@@ -450,29 +498,105 @@ a {
     gap: 3px;
 }
 
+.product-info .product-category {
+    color: #1aa8f5;
+
+    font-size: 7px;
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
 .product-info strong {
     overflow: hidden;
 
     color: var(--text);
 
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 11px;
+    font-weight: 800;
+
+    line-height: 1.25;
 
     white-space: nowrap;
+
     text-overflow: ellipsis;
 }
 
-.product-info span {
-    color: var(--text-muted);
+.product-info .product-price {
+    color: var(--text);
 
     font-size: 10px;
-    font-weight: 500;
+    font-weight: 850;
 }
+
+
+/* =========================================================
+   PRODUCT ARROW
+========================================================= */
+
+.search-product-arrow {
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #087ee7 0%,
+            #1aa8f5 70%,
+            #4fd8ff 100%
+        );
+
+    border-radius: var(--radius);
+
+    box-shadow:
+        0 7px 18px
+        rgba(26, 168, 245, 0.20);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.search-product-arrow svg {
+    width: 14px;
+    height: 14px;
+
+    transition:
+        transform var(--transition);
+}
+
+.search-product:hover .search-product-arrow {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 10px 22px
+        rgba(26, 168, 245, 0.32);
+}
+
+.search-product:hover .search-product-arrow svg {
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
+   SEE RESULTS
+========================================================= */
 
 .see-results {
     min-height: 42px;
 
-    margin-top: 5px;
+    margin-top: 8px;
+
     padding: 0 12px;
 
     display: flex;
@@ -482,10 +606,12 @@ a {
     color: #ffffff;
 
     background:
-        linear-gradient(135deg,
+        linear-gradient(
+            135deg,
             #087ee7 0%,
             #1aa8f5 70%,
-            #4fd8ff 100%);
+            #4fd8ff 100%
+        );
 
     border-radius: var(--radius);
 
@@ -493,17 +619,50 @@ a {
     font-weight: 750;
 
     text-decoration: none;
+
+    box-shadow:
+        0 9px 22px
+        rgba(26, 168, 245, 0.20);
+
+    transition:
+        transform var(--transition),
+        filter var(--transition),
+        box-shadow var(--transition);
 }
 
 .see-results svg {
     width: 17px;
     height: 17px;
 
-    transition: transform var(--transition);
+    transition:
+        transform var(--transition);
+}
+
+.see-results:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.05);
+
+    box-shadow:
+        0 12px 28px
+        rgba(26, 168, 245, 0.32);
 }
 
 .see-results:hover svg {
     transform: translateX(3px);
+}
+
+
+/* =========================================================
+   DARK MODE SEARCH
+========================================================= */
+
+html[data-theme="dark"] .product-image {
+    background: #0d1727;
+}
+
+html[data-theme="dark"] .search-product:hover {
+    background: #0d1727;
 }
 
 
@@ -625,7 +784,8 @@ html[data-theme="dark"] .sun-icon {
     width: 14px;
     height: 14px;
 
-    transition: transform var(--transition);
+    transition:
+        transform var(--transition);
 }
 
 .language-wrapper.language-open .language-button svg {
@@ -650,6 +810,7 @@ html[data-theme="dark"] .sun-icon {
     background: var(--surface);
 
     border: 1px solid var(--border);
+
     border-radius: var(--radius);
 
     box-shadow: var(--overlay-shadow);
@@ -695,7 +856,8 @@ html[data-theme="dark"] .sun-icon {
 
     cursor: pointer;
 
-    transition: background var(--transition);
+    transition:
+        background var(--transition);
 }
 
 .language-dropdown button:hover {
@@ -722,6 +884,7 @@ html[data-theme="dark"] .sun-icon {
     width: 42px;
 
     display: none;
+
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -768,10 +931,6 @@ html[data-theme="dark"] .sun-icon {
 
 /* =========================================================
    OVERLAY PANELS
-
-   These use absolute positioning.
-   Therefore they appear over the website instead of
-   pushing the content below the header.
 ========================================================= */
 
 .mobile-panel {
@@ -926,6 +1085,7 @@ html[data-theme="dark"] .sun-icon {
 
     .desktop-search {
         width: 250px;
+
         flex-basis: 250px;
     }
 
@@ -1009,6 +1169,30 @@ html[data-theme="dark"] .sun-icon {
 
         font-size: 11px;
     }
+
+    .search-product {
+        gap: 9px;
+
+        padding: 8px;
+    }
+
+    .product-image {
+        width: 52px;
+        height: 52px;
+    }
+
+    .product-info strong {
+        font-size: 10px;
+    }
+
+    .product-info .product-price {
+        font-size: 9px;
+    }
+
+    .search-product-arrow {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 
@@ -1039,6 +1223,7 @@ html[data-theme="dark"] .sun-icon {
         width: 11px;
     }
 }
+
 
 /* #endregion */
 
