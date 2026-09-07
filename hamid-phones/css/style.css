@@ -1643,6 +1643,578 @@ main {
 
 /* #endregion */
 
+/* #region BRANDS */
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+.brands-section {
+    --brands-blue-dark: #087ee7;
+    --brands-blue: #1aa8f5;
+    --brands-blue-light: #4fd8ff;
+
+    --brands-gradient:
+        linear-gradient(
+            135deg,
+            #087ee7 0%,
+            #1aa8f5 70%,
+            #4fd8ff 100%
+        );
+
+    --brands-text: #0b1d38;
+    --brands-muted: #6a7890;
+
+    --brands-bg: #ffffff;
+    --brands-soft: #f5f9ff;
+
+    --brands-border: #dce8f7;
+
+    --brands-radius: 5px;
+
+    --brands-transition: 0.22s ease;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.brands-section {
+    width: 100%;
+
+    padding: 85px 0;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: var(--brands-bg);
+}
+
+.brands-container {
+    width: min(100% - 40px, 1400px);
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.brands-header {
+    max-width: 650px;
+
+    margin: 0 auto 45px;
+
+    text-align: center;
+}
+
+.brands-eyebrow {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: var(--brands-blue);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+}
+
+.brands-header h2 {
+    margin: 0;
+
+    color: var(--brands-text);
+
+    font-size:
+        clamp(30px, 4vw, 46px);
+
+    font-weight: 850;
+
+    line-height: 1.1;
+
+    letter-spacing: -0.03em;
+}
+
+.brands-header p {
+    max-width: 570px;
+
+    margin: 15px auto 0;
+
+    color: var(--brands-muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.brands-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+
+/* =========================================================
+   BRAND CARD
+========================================================= */
+
+.brand-card {
+    min-width: 0;
+
+    min-height: 112px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 18px;
+
+    color: var(--brands-text);
+
+    background: var(--brands-soft);
+
+    border:
+        1px solid
+        var(--brands-border);
+
+    border-radius:
+        var(--brands-radius);
+
+    text-decoration: none;
+
+    transition:
+        transform var(--brands-transition),
+        background var(--brands-transition),
+        border-color var(--brands-transition),
+        box-shadow var(--brands-transition);
+}
+
+.brand-card:hover {
+    transform: translateY(-4px);
+
+    background: #ffffff;
+
+    border-color:
+        rgba(26, 168, 245, 0.42);
+
+    box-shadow:
+        0 16px 35px
+        rgba(7, 50, 110, 0.10);
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.brand-card-logo {
+    width: 64px;
+    height: 64px;
+
+    flex: 0 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 13px;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        var(--brands-border);
+
+    border-radius:
+        var(--brands-radius);
+
+    transition:
+        transform var(--brands-transition),
+        border-color var(--brands-transition),
+        box-shadow var(--brands-transition);
+}
+
+.brand-card-logo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+.brand-card:hover .brand-card-logo {
+    transform: scale(1.04);
+
+    border-color:
+        rgba(26, 168, 245, 0.35);
+
+    box-shadow:
+        0 8px 22px
+        rgba(26, 168, 245, 0.10);
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.brand-card-content {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.brand-card-content strong {
+    color: var(--brands-text);
+
+    font-size: 14px;
+    font-weight: 800;
+
+    line-height: 1.3;
+}
+
+.brand-card-content span {
+    color: var(--brands-muted);
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.brand-card-arrow {
+    width: 35px;
+    height: 35px;
+
+    flex: 0 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: var(--brands-blue);
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        var(--brands-border);
+
+    border-radius:
+        var(--brands-radius);
+
+    transition:
+        color var(--brands-transition),
+        background var(--brands-transition),
+        border-color var(--brands-transition),
+        transform var(--brands-transition);
+}
+
+.brand-card-arrow svg {
+    width: 15px;
+    height: 15px;
+
+    transition:
+        transform var(--brands-transition);
+}
+
+.brand-card:hover .brand-card-arrow {
+    color: #ffffff;
+
+    background:
+        var(--brands-gradient);
+
+    border-color: transparent;
+
+    transform: translateX(2px);
+}
+
+.brand-card:hover .brand-card-arrow svg {
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
+   FOOTER BUTTON
+========================================================= */
+
+.brands-footer {
+    margin-top: 35px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.brands-button {
+    min-height: 46px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 0 18px;
+
+    color: #ffffff;
+
+    background:
+        var(--brands-gradient);
+
+    border-radius:
+        var(--brands-radius);
+
+    font-size: 11px;
+    font-weight: 750;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 12px 30px
+        rgba(26, 168, 245, 0.25);
+
+    transition:
+        transform var(--brands-transition),
+        filter var(--brands-transition),
+        box-shadow var(--brands-transition);
+}
+
+.brands-button svg {
+    width: 16px;
+    height: 16px;
+
+    transition:
+        transform var(--brands-transition);
+}
+
+.brands-button:hover {
+    transform: translateY(-3px);
+
+    filter: brightness(1.06);
+
+    box-shadow:
+        0 17px 38px
+        rgba(26, 168, 245, 0.36);
+}
+
+.brands-button:hover svg {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+html[data-theme="dark"] .brands-section {
+    --brands-text: #f3f7ff;
+    --brands-muted: #93a4be;
+
+    --brands-bg: #050a12;
+    --brands-soft: #08101c;
+
+    --brands-border: #172943;
+}
+
+html[data-theme="dark"] .brand-card:hover {
+    background: #0d1727;
+}
+
+html[data-theme="dark"] .brand-card-logo,
+html[data-theme="dark"] .brand-card-arrow {
+    background: #0d1727;
+}
+
+html[data-theme="dark"] .brand-card:hover .brand-card-arrow {
+    background: var(--brands-gradient);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .brands-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .brands-section {
+        padding: 55px 0;
+    }
+
+    .brands-container {
+        width: calc(100% - 24px);
+    }
+
+    .brands-header {
+        margin-bottom: 30px;
+    }
+
+    .brands-header h2 {
+        font-size: 29px;
+    }
+
+    .brands-header p {
+        font-size: 11px;
+    }
+
+
+    /* 1 BRAND PER ROW */
+
+    .brands-grid {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+
+    /*
+        Keep the exact same horizontal card appearance:
+        LOGO -> TEXT -> ARROW
+    */
+
+    .brand-card {
+        min-height: 112px;
+
+        flex-direction: row;
+
+        align-items: center;
+
+        gap: 16px;
+
+        padding: 18px;
+    }
+
+    .brand-card-logo {
+        width: 64px;
+        height: 64px;
+
+        padding: 13px;
+    }
+
+    .brand-card-content {
+        width: auto;
+
+        flex: 1;
+    }
+
+    .brand-card-content strong {
+        font-size: 14px;
+    }
+
+    .brand-card-content span {
+        font-size: 10px;
+    }
+
+    .brand-card-arrow {
+        width: 35px;
+        height: 35px;
+
+        margin-top: 0;
+
+        align-self: auto;
+    }
+
+    .brand-card-arrow svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .brands-footer {
+        margin-top: 25px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .brands-container {
+        width: calc(100% - 18px);
+    }
+
+    .brands-grid {
+        gap: 8px;
+    }
+
+    .brand-card {
+        min-height: 100px;
+
+        gap: 12px;
+
+        padding: 14px;
+    }
+
+    .brand-card-logo {
+        width: 56px;
+        height: 56px;
+
+        padding: 11px;
+    }
+
+    .brand-card-content strong {
+        font-size: 13px;
+    }
+
+    .brand-card-content span {
+        font-size: 9px;
+    }
+
+    .brand-card-arrow {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+/* #endregion */
+
 /* #region FEATURED PRODUCTS */
 
 
