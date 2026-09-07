@@ -1643,6 +1643,859 @@ main {
 
 /* #endregion */
 
+/* #region ABOUT */
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+.about-section {
+    --about-blue-dark: #087ee7;
+    --about-blue: #1aa8f5;
+    --about-blue-light: #4fd8ff;
+
+    --about-gradient:
+        linear-gradient(
+            135deg,
+            #087ee7 0%,
+            #1aa8f5 70%,
+            #4fd8ff 100%
+        );
+
+    --about-text: #0b1d38;
+    --about-muted: #6a7890;
+
+    --about-bg: #ffffff;
+    --about-soft: #f5f9ff;
+
+    --about-border: #dce8f7;
+
+    --about-radius: 5px;
+
+    --about-transition: 0.22s ease;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.about-section {
+    width: 100%;
+
+    padding: 85px 0;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: var(--about-bg);
+}
+
+.about-container {
+    width: min(100% - 40px, 1400px);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 60px;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.about-content {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.about-text {
+    width: 100%;
+}
+
+.about-eyebrow {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: var(--about-blue);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+}
+
+.about-content h2 {
+    margin: 0 0 16px;
+
+    color: var(--about-text);
+
+    font-size:
+        clamp(28px, 3.4vw, 46px);
+
+    font-weight: 850;
+
+    line-height: 1.08;
+
+    letter-spacing: -0.03em;
+}
+
+.about-content h2 span {
+    background: var(--about-gradient);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.about-description {
+    margin: 0 0 10px;
+
+    color: var(--about-muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.about-visual {
+    min-width: 0;
+}
+
+.about-image-wrapper {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    background: var(--about-soft);
+
+    border: 1px solid var(--about-border);
+
+    border-radius: var(--about-radius);
+
+    box-shadow:
+        0 24px 60px rgba(7, 50, 110, 0.12);
+}
+
+.about-image {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.6s ease;
+}
+
+.about-image-wrapper:hover .about-image {
+    transform: scale(1.04);
+}
+
+
+/* =========================================================
+   DESKTOP IMAGE
+========================================================= */
+
+.about-visual--desktop {
+    min-width: 0;
+    min-height: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    align-self: stretch;
+}
+
+
+/*
+    The desktop image is square.
+
+    The visual column stretches only to the height
+    created by the content column.
+
+    The image wrapper uses that available height
+    as its maximum size, so the image cannot become
+    taller than the content beside it.
+*/
+
+.about-visual--desktop .about-image-wrapper {
+    width: auto;
+    height: 100%;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    aspect-ratio: 1 / 1;
+}
+
+
+/* mobile/tablet image hidden on desktop */
+
+.about-visual--mobile {
+    display: none;
+}
+
+
+/* =========================================================
+   DESKTOP HEIGHT CONSTRAINT
+========================================================= */
+
+@media (min-width: 901px) {
+
+    /*
+        The left content determines the natural
+        height of the grid row.
+    */
+
+    .about-content {
+        height: fit-content;
+        align-self: center;
+    }
+
+
+    /*
+        The right column receives the same available
+        height as the content column.
+    */
+
+    .about-visual--desktop {
+        height: 100%;
+        max-height: 100%;
+    }
+
+
+    /*
+        Square image:
+        - height follows available content height
+        - width follows from 1:1
+        - cannot exceed its column width
+    */
+
+    .about-visual--desktop .about-image-wrapper {
+        width: auto;
+        height: 100%;
+
+        max-width: 100%;
+        max-height: 100%;
+
+        aspect-ratio: 1 / 1;
+    }
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
+
+.about-image-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.03) 0%,
+            rgba(0, 0, 0, 0.10) 50%,
+            rgba(0, 0, 0, 0.50) 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.about-badge {
+    position: absolute;
+
+    left: 18px;
+    bottom: 18px;
+
+    min-width: 145px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+
+    padding: 14px 16px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8, 126, 231, 0.94),
+            rgba(26, 168, 245, 0.94) 70%,
+            rgba(79, 216, 255, 0.94)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: var(--about-radius);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.18);
+}
+
+.about-badge-number {
+    font-size: 23px;
+    font-weight: 850;
+
+    line-height: 1.1;
+}
+
+.about-badge-text {
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.04em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   BOTTOM
+========================================================= */
+
+.about-bottom {
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.about-features {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+.about-feature {
+    min-height: 92px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 11px;
+
+    padding: 13px;
+
+    background: var(--about-soft);
+
+    border: 1px solid var(--about-border);
+
+    border-radius: var(--about-radius);
+
+    transition:
+        transform var(--about-transition),
+        background var(--about-transition),
+        border-color var(--about-transition),
+        box-shadow var(--about-transition);
+}
+
+.about-feature:hover {
+    transform: translateY(-3px);
+
+    background: #ffffff;
+
+    border-color:
+        rgba(26, 168, 245, 0.40);
+
+    box-shadow:
+        0 12px 30px
+        rgba(26, 168, 245, 0.10);
+}
+
+
+/* =========================================================
+   FEATURE ICON
+========================================================= */
+
+.about-feature-icon {
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+
+    background: var(--about-gradient);
+
+    border-radius: var(--about-radius);
+
+    box-shadow:
+        0 8px 20px
+        rgba(26, 168, 245, 0.20);
+}
+
+.about-feature-icon svg {
+    width: 17px;
+    height: 17px;
+}
+
+
+/* =========================================================
+   FEATURE CONTENT
+========================================================= */
+
+.about-feature-content {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.about-feature-content strong {
+    color: var(--about-text);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    line-height: 1.35;
+}
+
+.about-feature-content span {
+    color: var(--about-muted);
+
+    font-size: 10px;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.about-button {
+    width: fit-content;
+
+    min-height: 44px;
+
+    margin-top: 17px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 0 17px;
+
+    color: #ffffff;
+
+    background: var(--about-gradient);
+
+    border-radius: var(--about-radius);
+
+    font-size: 11px;
+    font-weight: 750;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 12px 30px
+        rgba(26, 168, 245, 0.25);
+
+    transition:
+        transform var(--about-transition),
+        filter var(--about-transition),
+        box-shadow var(--about-transition);
+}
+
+.about-button svg {
+    width: 15px;
+    height: 15px;
+
+    transition:
+        transform var(--about-transition);
+}
+
+.about-button:hover {
+    transform: translateY(-3px);
+
+    filter: brightness(1.06);
+
+    box-shadow:
+        0 17px 38px
+        rgba(26, 168, 245, 0.36);
+}
+
+.about-button:hover svg {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+html[data-theme="dark"] .about-section {
+    --about-text: #f3f7ff;
+    --about-muted: #93a4be;
+
+    --about-bg: #050a12;
+    --about-soft: #08101c;
+
+    --about-border: #172943;
+}
+
+html[data-theme="dark"] .about-feature:hover {
+    background: #0d1727;
+}
+
+
+/* =========================================================
+   SMALLER DESKTOP
+   STILL DESKTOP UNTIL 900px
+========================================================= */
+
+@media (max-width: 1180px) and (min-width: 901px) {
+
+    .about-section {
+        padding: 65px 0;
+    }
+
+    .about-container {
+        width: min(100% - 32px, 1400px);
+
+        gap: 35px;
+    }
+
+    .about-content h2 {
+        font-size:
+            clamp(27px, 3.5vw, 39px);
+    }
+
+    .about-description {
+        font-size: 12px;
+
+        line-height: 1.55;
+    }
+
+    .about-bottom {
+        margin-top: 16px;
+    }
+
+    .about-features {
+        gap: 8px;
+    }
+
+    .about-feature {
+        min-height: 78px;
+
+        padding: 10px;
+
+        gap: 9px;
+    }
+
+    .about-feature-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .about-feature-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .about-feature-content strong {
+        font-size: 10px;
+    }
+
+    .about-feature-content span {
+        font-size: 8px;
+
+        line-height: 1.4;
+    }
+
+    .about-button {
+        min-height: 40px;
+
+        margin-top: 13px;
+
+        padding: 0 14px;
+
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   900px AND BELOW
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .about-section {
+        padding: 65px 0;
+    }
+
+    .about-container {
+        width: calc(100% - 28px);
+
+        display: block;
+    }
+
+
+    /* hide desktop image */
+
+    .about-visual--desktop {
+        display: none;
+    }
+
+
+    /*
+        Show image between:
+
+        TEXT
+        ↓
+        IMAGE
+        ↓
+        FEATURE BOXES
+    */
+
+    .about-visual--mobile {
+        display: block;
+
+        width: 100%;
+
+        margin: 25px 0;
+    }
+
+
+    /* tablet image = 16:9 */
+
+    .about-visual--mobile .about-image-wrapper {
+        width: 100%;
+        height: auto;
+
+        aspect-ratio: 16 / 9;
+    }
+
+    .about-content {
+        display: block;
+    }
+
+    .about-content h2 {
+        font-size:
+            clamp(28px, 5vw, 40px);
+    }
+
+    .about-description {
+        max-width: 750px;
+
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+
+    .about-bottom {
+        margin-top: 0;
+    }
+
+    .about-features {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .about-section {
+        padding: 55px 0;
+    }
+
+    .about-container {
+        width: calc(100% - 24px);
+    }
+
+    .about-eyebrow {
+        margin-bottom: 7px;
+
+        font-size: 9px;
+    }
+
+    .about-content h2 {
+        margin-bottom: 12px;
+
+        font-size:
+            clamp(26px, 8vw, 34px);
+    }
+
+    .about-description {
+        margin-bottom: 8px;
+
+        font-size: 11px;
+
+        line-height: 1.6;
+    }
+
+    .about-visual--mobile {
+        margin: 20px 0;
+    }
+
+
+    /* one feature per row */
+
+    .about-features {
+        grid-template-columns: 1fr;
+
+        gap: 9px;
+    }
+
+    .about-feature {
+        min-height: 80px;
+
+        padding: 12px;
+
+        gap: 11px;
+    }
+
+    .about-feature-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .about-feature-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .about-feature-content strong {
+        font-size: 11px;
+    }
+
+    .about-feature-content span {
+        font-size: 9px;
+    }
+
+
+    /* badge */
+
+    .about-badge {
+        left: 10px;
+        bottom: 10px;
+
+        min-width: 120px;
+
+        padding: 10px 12px;
+    }
+
+    .about-badge-number {
+        font-size: 18px;
+    }
+
+    .about-badge-text {
+        font-size: 7px;
+    }
+
+
+    /* button */
+
+    .about-button {
+        min-height: 40px;
+
+        margin-top: 14px;
+
+        padding: 0 14px;
+
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .about-section {
+        padding: 45px 0;
+    }
+
+    .about-container {
+        width: calc(100% - 20px);
+    }
+
+    .about-content h2 {
+        font-size: 24px;
+    }
+
+    .about-description {
+        font-size: 10px;
+    }
+}
+
+
+/* #endregion */
+
 /* #region CONTACT */
 
 
@@ -1656,12 +2509,10 @@ main {
     --contact-blue-light: #4fd8ff;
 
     --contact-gradient:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #087ee7 0%,
             #1aa8f5 70%,
-            #4fd8ff 100%
-        );
+            #4fd8ff 100%);
 
     --contact-text: #0b1d38;
     --contact-muted: #6a7890;
@@ -1763,8 +2614,7 @@ main {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1.45fr)
-        minmax(320px, 0.75fr);
+        minmax(0, 1.45fr) minmax(320px, 0.75fr);
 
     gap: 28px;
 
