@@ -1133,6 +1133,131 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+
+    /* =====================================================
+       VARIANT HORIZONTAL SCROLL
+    ===================================================== */
+
+    const variantScrollers =
+        singleProduct.querySelectorAll(
+            ".single-product-variant-scroll"
+        );
+
+
+    variantScrollers.forEach((scroller) => {
+
+        const track =
+            scroller.querySelector(
+                ".single-product-variant-scroll__track"
+            );
+
+        const previousButton =
+            scroller.querySelector(
+                ".single-product-variant-scroll__arrow--previous"
+            );
+
+        const nextButton =
+            scroller.querySelector(
+                ".single-product-variant-scroll__arrow--next"
+            );
+
+
+        if (
+            !track ||
+            !previousButton ||
+            !nextButton
+        ) {
+            return;
+        }
+
+
+        function getScrollAmount() {
+
+            const firstItem =
+                track.firstElementChild;
+
+            if (!firstItem) {
+                return 120;
+            }
+
+
+            const itemWidth =
+                firstItem.getBoundingClientRect().width;
+
+            const trackStyles =
+                window.getComputedStyle(track);
+
+            const gap =
+                parseFloat(trackStyles.gap) || 0;
+
+
+            return itemWidth + gap;
+
+        }
+
+
+        previousButton.addEventListener(
+            "click",
+            () => {
+
+                track.scrollBy({
+                    left: -getScrollAmount(),
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+
+        nextButton.addEventListener(
+            "click",
+            () => {
+
+                track.scrollBy({
+                    left: getScrollAmount(),
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+
+        function updateArrows() {
+
+            const maximumScroll =
+                track.scrollWidth -
+                track.clientWidth;
+
+
+            previousButton.disabled =
+                track.scrollLeft <= 1;
+
+
+            nextButton.disabled =
+                maximumScroll <= 1 ||
+                track.scrollLeft >=
+                maximumScroll - 1;
+
+        }
+
+
+        track.addEventListener(
+            "scroll",
+            updateArrows,
+            { passive: true }
+        );
+
+
+        window.addEventListener(
+            "resize",
+            updateArrows
+        );
+
+
+        updateArrows();
+
+    });
+
 });
 
 // #endregion
