@@ -6521,33 +6521,8 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
 
 /* =========================================================
-   SPECIFICATION ICON
+   MAIN SPECIFICATION TEXT
 ========================================================= */
-
-.single-product-spec__icon {
-    width: 36px;
-    height: 36px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: #ffffff;
-
-    background: var(--single-gradient);
-
-    border-radius: var(--single-radius);
-
-    box-shadow:
-        0 8px 18px
-        rgba(26, 168, 245, 0.18);
-}
-
-.single-product-spec__icon svg {
-    width: 18px;
-    height: 18px;
-}
 
 .single-product-spec span {
     color: var(--single-muted);
@@ -6567,7 +6542,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
     color: var(--single-text);
 
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 850;
 
     white-space: nowrap;
@@ -6776,10 +6751,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
 
 /* =========================================================
-   FULL SPECIFICATIONS
-
-   The entire specifications block scrolls horizontally.
-   Individual rows DO NOT have their own scroll.
+   FULL SPECIFICATIONS SCROLL CONTAINER
 ========================================================= */
 
 .single-product-full-specs {
@@ -6809,13 +6781,30 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
 
 /* =========================================================
+   FULL SPECIFICATIONS TABLE
+
+   The table stays 100% wide when all content fits.
+
+   If one value becomes wider than the available area,
+   the table expands to fit that largest value.
+
+   Because every row belongs to this same table,
+   every row follows the same final width.
+========================================================= */
+
+.single-product-full-specs__table {
+    width: max-content;
+
+    min-width: 100%;
+}
+
+
+/* =========================================================
    FULL SPECIFICATION ROW
 ========================================================= */
 
 .single-product-full-spec {
-    width: max-content;
-
-    min-width: 100%;
+    width: 100%;
 
     min-height: 55px;
 
@@ -6825,7 +6814,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
     grid-template-columns:
         180px
-        minmax(420px, max-content);
+        max-content;
 
     align-items: center;
 
@@ -7078,22 +7067,12 @@ html[data-theme="dark"]
         gap: 5px;
     }
 
-    .single-product-spec__icon {
-        width: 31px;
-        height: 31px;
-    }
-
-    .single-product-spec__icon svg {
-        width: 15px;
-        height: 15px;
-    }
-
     .single-product-spec span {
         font-size: 6px;
     }
 
     .single-product-spec strong {
-        font-size: 9px;
+        font-size: 10px;
     }
 
 
@@ -7137,22 +7116,16 @@ html[data-theme="dark"]
 
     /* =====================================================
        FULL SPECIFICATIONS
-
-       Entire block scrolls horizontally.
-       Rows remain aligned.
-       Text never wraps.
     ===================================================== */
 
     .single-product-full-spec {
-        min-width: 620px;
-
         min-height: 50px;
 
         padding: 11px 12px;
 
         grid-template-columns:
             150px
-            minmax(400px, max-content);
+            max-content;
 
         gap: 20px;
     }
@@ -7186,18 +7159,16 @@ html[data-theme="dark"]
     }
 
     .single-product-spec strong {
-        font-size: 8px;
+        font-size: 9px;
     }
 
 
     /* FULL SPECS */
 
     .single-product-full-spec {
-        min-width: 600px;
-
         grid-template-columns:
             140px
-            minmax(390px, max-content);
+            max-content;
 
         gap: 18px;
 
