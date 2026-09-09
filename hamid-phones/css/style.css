@@ -3692,6 +3692,107 @@ html[data-theme="dark"] .brand-card:hover .brand-card-arrow {
 
 
 /* =========================================================
+   PRODUCTS PAGINATION
+========================================================= */
+
+.products-pagination {
+    margin-top: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+}
+
+.products-pagination__number,
+.products-pagination__button {
+    width: 40px;
+    height: 40px;
+
+    flex: 0 0 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: var(--featured-text);
+
+    background: var(--featured-bg);
+
+    border:
+        1px solid var(--featured-border);
+
+    border-radius:
+        var(--featured-radius);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    transition:
+        color var(--featured-transition),
+        background var(--featured-transition),
+        border-color var(--featured-transition),
+        transform var(--featured-transition),
+        box-shadow var(--featured-transition);
+}
+
+.products-pagination__number.is-active {
+    color: #ffffff;
+
+    background:
+        var(--featured-gradient);
+
+    border-color: transparent;
+
+    box-shadow:
+        0 8px 20px rgba(26, 168, 245, 0.22);
+}
+
+.products-pagination__number:hover:not(.is-active),
+.products-pagination__button:hover {
+    color: var(--featured-blue);
+
+    background: var(--featured-bg);
+
+    border-color:
+        rgba(26, 168, 245, 0.45);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(7, 50, 110, 0.08);
+}
+
+.products-pagination__button svg {
+    width: 15px;
+    height: 15px;
+}
+
+.products-pagination__dots {
+    min-width: 30px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: var(--featured-muted);
+
+    font-size: 11px;
+    font-weight: 750;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
    DARK MODE
 ========================================================= */
 
@@ -3848,6 +3949,36 @@ html[data-theme="dark"] .product-card__image {
     .featured-products__footer {
         margin-top: 25px;
     }
+
+
+    /* PAGINATION */
+
+    .products-pagination {
+        margin-top: 28px;
+
+        gap: 5px;
+    }
+
+    .products-pagination__number,
+    .products-pagination__button {
+        width: 34px;
+        height: 34px;
+
+        flex-basis: 34px;
+
+        font-size: 9px;
+    }
+
+    .products-pagination__button svg {
+        width: 13px;
+        height: 13px;
+    }
+
+    .products-pagination__dots {
+        min-width: 20px;
+
+        font-size: 9px;
+    }
 }
 
 
@@ -3880,6 +4011,21 @@ html[data-theme="dark"] .product-card__image {
     .product-card__button {
         width: 28px;
         height: 28px;
+    }
+
+
+    /* PAGINATION */
+
+    .products-pagination {
+        gap: 4px;
+    }
+
+    .products-pagination__number,
+    .products-pagination__button {
+        width: 31px;
+        height: 31px;
+
+        flex-basis: 31px;
     }
 }
 
