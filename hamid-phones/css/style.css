@@ -6836,10 +6836,9 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
     display: grid;
 
-    grid-template-columns:
-        minmax(0, 0.8fr) minmax(0, 1.2fr);
+    grid-template-columns: 1fr;
 
-    gap: 60px;
+    gap: 20px;
 
     align-items: start;
 }
@@ -7036,10 +7035,6 @@ html[data-theme="dark"] .single-product-spec:hover {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
     }
-
-    .single-product-more__layout {
-        gap: 35px;
-    }
 }
 
 
@@ -7094,12 +7089,6 @@ html[data-theme="dark"] .single-product-spec:hover {
 
     .single-product-more__container {
         width: calc(100% - 28px);
-    }
-
-    .single-product-more__layout {
-        grid-template-columns: 1fr;
-
-        gap: 20px;
     }
 
     /* =====================================================
