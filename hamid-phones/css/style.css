@@ -108,7 +108,8 @@ a {
 ========================================================= */
 
 .site-header {
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 1000;
 
     width: 100%;
@@ -1236,7 +1237,8 @@ html[data-theme="dark"] .sun-icon {
 
     --secondary-height: 82px;
 
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 1000;
 
     width: 100%;
