@@ -2719,7 +2719,7 @@ main {
 .brands-section {
     width: 100%;
 
-    padding: 85px 0;
+    padding: 35px 0;
 
     font-family:
         Inter,
@@ -3109,10 +3109,6 @@ html[data-theme="dark"] .brand-card:hover .brand-card-arrow {
 
 @media (max-width: 600px) {
 
-    .brands-section {
-        padding: 55px 0;
-    }
-
     .brands-container {
         width: calc(100% - 24px);
     }
@@ -3282,7 +3278,7 @@ html[data-theme="dark"] .brand-card:hover .brand-card-arrow {
 .featured-products {
     width: 100%;
 
-    padding: 85px 0;
+    padding: 35px 0;
 
     font-family:
         Inter,
@@ -3849,10 +3845,6 @@ html[data-theme="dark"] .product-card__image {
 
 @media (max-width: 600px) {
 
-    .featured-products {
-        padding: 55px 0;
-    }
-
     .featured-products__container {
         width: calc(100% - 24px);
     }
@@ -4073,7 +4065,7 @@ html[data-theme="dark"] .product-card__image {
 .about-section {
     width: 100%;
 
-    padding: 85px 0;
+    padding: 35px 0;
 
     font-family:
         Inter,
@@ -4589,10 +4581,6 @@ html[data-theme="dark"] .about-feature:hover {
 
 @media (max-width: 1180px) and (min-width: 901px) {
 
-    .about-section {
-        padding: 65px 0;
-    }
-
     .about-container {
         width: min(100% - 32px, 1400px);
 
@@ -4664,10 +4652,6 @@ html[data-theme="dark"] .about-feature:hover {
 ========================================================= */
 
 @media (max-width: 900px) {
-
-    .about-section {
-        padding: 65px 0;
-    }
 
     .about-container {
         width: calc(100% - 28px);
@@ -4746,10 +4730,6 @@ html[data-theme="dark"] .about-feature:hover {
 ========================================================= */
 
 @media (max-width: 600px) {
-
-    .about-section {
-        padding: 55px 0;
-    }
 
     .about-container {
         width: calc(100% - 24px);
@@ -4856,10 +4836,6 @@ html[data-theme="dark"] .about-feature:hover {
 
 @media (max-width: 360px) {
 
-    .about-section {
-        padding: 45px 0;
-    }
-
     .about-container {
         width: calc(100% - 20px);
     }
@@ -4915,7 +4891,7 @@ html[data-theme="dark"] .about-feature:hover {
 .contact-section {
     width: 100%;
 
-    padding: 95px 0;
+    padding: 35px 0;
 
     font-family:
         Inter,
@@ -5263,10 +5239,6 @@ html[data-theme="dark"] .contact-map-wrapper {
 
 @media (max-width: 900px) {
 
-    .contact-section {
-        padding: 80px 0;
-    }
-
     .contact-grid {
         display: flex;
 
@@ -5298,10 +5270,6 @@ html[data-theme="dark"] .contact-map-wrapper {
 ========================================================= */
 
 @media (max-width: 650px) {
-
-    .contact-section {
-        padding: 65px 0;
-    }
 
     .contact-container {
         width: calc(100% - 28px);
