@@ -1,14 +1,105 @@
-//  #region HEADER
+// #region DARK MODE
+
+const html = document.documentElement;
+
+function applySavedTheme() {
+
+    const savedTheme =
+        localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+        html.setAttribute(
+            "data-theme",
+            "dark"
+        );
+    } else {
+        html.removeAttribute(
+            "data-theme"
+        );
+    }
+}
+
+
+/* Apply theme when page first loads */
+applySavedTheme();
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const themeButtons =
+            document.querySelectorAll(
+                ".theme-toggle, .secondary-header__theme-toggle"
+            );
+
+        themeButtons.forEach(
+            (button) => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const isDark =
+                            html.getAttribute(
+                                "data-theme"
+                            ) === "dark";
+
+                        if (isDark) {
+
+                            html.removeAttribute(
+                                "data-theme"
+                            );
+
+                            localStorage.setItem(
+                                "theme",
+                                "light"
+                            );
+
+                        } else {
+
+                            html.setAttribute(
+                                "data-theme",
+                                "dark"
+                            );
+
+                            localStorage.setItem(
+                                "theme",
+                                "dark"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* Re-apply theme when returning with browser back/history */
+window.addEventListener(
+    "pageshow",
+    () => {
+
+        applySavedTheme();
+
+    }
+);
+
+// #endregion
+
+
+// #region HEADER
 
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        ELEMENTS
     ===================================================== */
-
-    const html = document.documentElement;
-
-    const themeToggle = document.querySelector(".theme-toggle");
 
     const languageWrapper = document.querySelector(".language-wrapper");
     const languageButton = document.querySelector(".language-button");
@@ -28,31 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     const searchWrappers = document.querySelectorAll(".search-wrapper");
-
-
-    /* =====================================================
-       DARK MODE
-    ===================================================== */
-
-    const savedTheme = localStorage.getItem("theme");
-
-    if (savedTheme === "dark") {
-        html.setAttribute("data-theme", "dark");
-    }
-
-    themeToggle.addEventListener("click", () => {
-
-        const isDark =
-            html.getAttribute("data-theme") === "dark";
-
-        if (isDark) {
-            html.removeAttribute("data-theme");
-            localStorage.setItem("theme", "light");
-        } else {
-            html.setAttribute("data-theme", "dark");
-            localStorage.setItem("theme", "dark");
-        }
-    });
 
 
     /* =====================================================
@@ -471,7 +537,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-//  #endregion
+// #endregion
+
 
 // #region SECONDARY HEADER
 
@@ -483,17 +550,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!secondaryHeader) return;
 
 
-    const html =
-        document.documentElement;
-
     const backButton =
         secondaryHeader.querySelector(
             ".secondary-header__back"
-        );
-
-    const themeButton =
-        secondaryHeader.querySelector(
-            ".secondary-header__theme-toggle"
         );
 
     const language =
@@ -540,58 +599,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "click",
         () => {
             window.history.back();
-        }
-    );
-
-
-    /* =====================================================
-       THEME
-    ===================================================== */
-
-    if (
-        localStorage.getItem("theme")
-        === "dark"
-    ) {
-        html.setAttribute(
-            "data-theme",
-            "dark"
-        );
-    }
-
-
-    themeButton.addEventListener(
-        "click",
-        () => {
-
-            const dark =
-                html.getAttribute(
-                    "data-theme"
-                ) === "dark";
-
-            if (dark) {
-
-                html.removeAttribute(
-                    "data-theme"
-                );
-
-                localStorage.setItem(
-                    "theme",
-                    "light"
-                );
-
-            } else {
-
-                html.setAttribute(
-                    "data-theme",
-                    "dark"
-                );
-
-                localStorage.setItem(
-                    "theme",
-                    "dark"
-                );
-            }
-
         }
     );
 

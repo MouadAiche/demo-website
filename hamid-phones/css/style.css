@@ -310,6 +310,12 @@ a {
 }
 
 .search-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
     flex: 0 0 auto;
 
     min-width: 84px;
@@ -1604,6 +1610,11 @@ html[data-theme="dark"] .secondary-header__sun-icon {
 }
 
 .secondary-search__submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
     min-width: 84px;
 
     padding: 0 16px;
@@ -2113,6 +2124,7 @@ main {
 
     width: 100%;
     height: calc(100vh - var(--header-height));
+    scroll-margin: 15px;
 
     display: flex;
     align-items: center;
