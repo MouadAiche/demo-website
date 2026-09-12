@@ -2578,17 +2578,17 @@ main {
 
     .hero__actions {
         margin-top: 27px;
-
         gap: 8px;
 
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
     }
 
 
     /* compact mobile buttons */
 
     .hero__button {
-        width: auto;
+        width: 200px;
         min-width: 0;
 
         height: 42px;
@@ -3004,75 +3004,6 @@ main {
 .brand-card:hover .brand-card-arrow svg {
     transform: translateX(2px);
 }
-
-
-/* =========================================================
-   FOOTER BUTTON
-========================================================= */
-
-.brands-footer {
-    margin-top: 35px;
-
-    display: flex;
-
-    justify-content: center;
-}
-
-.brands-button {
-    min-height: 46px;
-
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 10px;
-
-    padding: 0 18px;
-
-    color: #ffffff;
-
-    background:
-        var(--brands-gradient);
-
-    border-radius:
-        var(--brands-radius);
-
-    font-size: 11px;
-    font-weight: 750;
-
-    text-decoration: none;
-
-    box-shadow:
-        0 12px 30px rgba(26, 168, 245, 0.25);
-
-    transition:
-        transform var(--brands-transition),
-        filter var(--brands-transition),
-        box-shadow var(--brands-transition);
-}
-
-.brands-button svg {
-    width: 16px;
-    height: 16px;
-
-    transition:
-        transform var(--brands-transition);
-}
-
-.brands-button:hover {
-    transform: translateY(-3px);
-
-    filter: brightness(1.06);
-
-    box-shadow:
-        0 17px 38px rgba(26, 168, 245, 0.36);
-}
-
-.brands-button:hover svg {
-    transform: translateX(4px);
-}
-
 
 /* =========================================================
    DARK MODE
