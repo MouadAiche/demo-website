@@ -3221,7 +3221,7 @@ html[data-theme="dark"] .brand-card:hover .brand-card-arrow {
 .featured-products {
     width: 100%;
 
-    padding: 35px 0;
+    padding: 10px 0 20px;
 
     font-family:
         Inter,
@@ -3446,6 +3446,12 @@ html[data-theme="dark"] .brand-card:hover .brand-card-arrow {
     color: var(--featured-text);
 
     text-decoration: none;
+
+    /* Prevent long titles from overflowing */
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     transition:
         color var(--featured-transition);
@@ -6003,7 +6009,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 .single-product-section {
     width: 100%;
 
-    padding: 70px 0 90px;
+    padding: 10px 0 20px;
 
     background: var(--single-bg);
 }
@@ -6671,7 +6677,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 .single-product-more {
     width: 100%;
 
-    padding: 90px 0;
+    padding: 35px 0;
 
     background: var(--single-soft);
 
@@ -6957,10 +6963,6 @@ html[data-theme="dark"] .single-product-spec:hover {
 
 @media (max-width: 800px) {
 
-    .single-product-section {
-        padding: 40px 0 65px;
-    }
-
     .single-product-container {
         width: calc(100% - 28px);
 
@@ -6995,10 +6997,6 @@ html[data-theme="dark"] .single-product-spec:hover {
 
 
     /* More details */
-
-    .single-product-more {
-        padding: 65px 0;
-    }
 
     .single-product-more__container {
         width: calc(100% - 28px);
@@ -7041,10 +7039,6 @@ html[data-theme="dark"] .single-product-spec:hover {
     /* =====================================================
        MAIN PRODUCT
     ===================================================== */
-
-    .single-product-section {
-        padding-top: 28px;
-    }
 
     .single-product-title {
         font-size: 30px;
@@ -7095,10 +7089,6 @@ html[data-theme="dark"] .single-product-spec:hover {
     /* =====================================================
        MORE DETAILS
     ===================================================== */
-
-    .single-product-more {
-        padding: 55px 0;
-    }
 
     .single-product-more__heading {
         margin-bottom: 28px;
