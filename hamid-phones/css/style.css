@@ -471,7 +471,7 @@ a {
 
     display: block;
 
-    object-fit: contain;
+    object-fit: cover;
 
     transition:
         transform 0.4s ease;
@@ -1756,7 +1756,7 @@ html[data-theme="dark"] .secondary-header__sun-icon {
 
     display: block;
 
-    object-fit: contain;
+    object-fit: cover;
 
     transition:
         transform 0.4s ease;
@@ -3366,7 +3366,7 @@ html[data-theme="dark"] .brand-card:hover .brand-card-arrow {
 
     display: block;
 
-    object-fit: contain;
+    object-fit: cover;
 
     transition:
         transform 0.45s ease;
@@ -6092,7 +6092,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
     display: block;
 
-    object-fit: contain;
+    object-fit: cover;
 }
 
 
@@ -6298,7 +6298,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
     display: block;
 
-    object-fit: contain;
+    object-fit: cover;
 }
 
 
