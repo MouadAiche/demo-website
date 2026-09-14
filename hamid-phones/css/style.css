@@ -4348,7 +4348,7 @@ html[data-theme="dark"] .product-card__image {
 
     display: flex;
 
-    align-items: flex-start;
+    align-items: center;
 
     gap: 11px;
 
