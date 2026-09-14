@@ -1267,4 +1267,154 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
+/* =========================================================
+   SINGLE PRODUCT GALLERY
+========================================================= */
+
+const mainImage = document.getElementById("singleProductImage");
+
+const thumbnails = Array.from(
+    document.querySelectorAll(".single-product-thumbnail")
+);
+
+const prevImageButton = document.getElementById("singleProductPrev");
+const nextImageButton = document.getElementById("singleProductNext");
+
+const thumbnailsContainer = document.getElementById(
+    "singleProductThumbnails"
+);
+
+const thumbnailPrev = document.getElementById("thumbnailPrev");
+const thumbnailNext = document.getElementById("thumbnailNext");
+
+
+if (
+    mainImage &&
+    thumbnails.length &&
+    prevImageButton &&
+    nextImageButton
+) {
+
+    let currentImageIndex = 0;
+
+
+    /* =====================================================
+       CHANGE IMAGE
+    ====================================================== */
+
+    function changeProductImage(index) {
+
+        if (index < 0) {
+            index = thumbnails.length - 1;
+        }
+
+        if (index >= thumbnails.length) {
+            index = 0;
+        }
+
+        currentImageIndex = index;
+
+        const selectedThumbnail = thumbnails[currentImageIndex];
+
+        const imageUrl =
+            selectedThumbnail.dataset.image;
+
+        mainImage.src = imageUrl;
+
+
+        /* Remove active state */
+
+        thumbnails.forEach((thumbnail) => {
+            thumbnail.classList.remove("active");
+        });
+
+
+        /* Add active state */
+
+        selectedThumbnail.classList.add("active");
+
+
+        /* Keep selected thumbnail visible */
+
+        selectedThumbnail.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "nearest"
+        });
+
+    }
+
+
+    /* =====================================================
+       CLICK THUMBNAIL
+    ====================================================== */
+
+    thumbnails.forEach((thumbnail, index) => {
+
+        thumbnail.addEventListener("click", () => {
+
+            changeProductImage(index);
+
+        });
+
+    });
+
+
+    /* =====================================================
+       MAIN IMAGE — PREVIOUS
+    ====================================================== */
+
+    prevImageButton.addEventListener("click", () => {
+
+        changeProductImage(currentImageIndex - 1);
+
+    });
+
+
+    /* =====================================================
+       MAIN IMAGE — NEXT
+    ====================================================== */
+
+    nextImageButton.addEventListener("click", () => {
+
+        changeProductImage(currentImageIndex + 1);
+
+    });
+
+}
+
+
+/* =========================================================
+   THUMBNAIL SCROLL ARROWS
+========================================================= */
+
+if (
+    thumbnailsContainer &&
+    thumbnailPrev &&
+    thumbnailNext
+) {
+
+    thumbnailPrev.addEventListener("click", () => {
+
+        thumbnailsContainer.scrollBy({
+            left: -250,
+            behavior: "smooth"
+        });
+
+    });
+
+
+    thumbnailNext.addEventListener("click", () => {
+
+        thumbnailsContainer.scrollBy({
+            left: 250,
+            behavior: "smooth"
+        });
+
+    });
+
+}
+
+
 // #endregion

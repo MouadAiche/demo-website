@@ -471,7 +471,7 @@ a {
 
     display: block;
 
-    object-fit: cover;
+    object-fit: contain;
 
     transition:
         transform 0.4s ease;
@@ -1756,7 +1756,7 @@ html[data-theme="dark"] .secondary-header__sun-icon {
 
     display: block;
 
-    object-fit: cover;
+    object-fit: contain;
 
     transition:
         transform 0.4s ease;
@@ -3366,7 +3366,7 @@ html[data-theme="dark"] .brand-card:hover .brand-card-arrow {
 
     display: block;
 
-    object-fit: cover;
+    object-fit: contain;
 
     transition:
         transform 0.45s ease;
@@ -6043,20 +6043,35 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 .single-product-gallery__sticky {
     position: sticky;
 
-    top: 25px;
+    top: calc(var(--header-height) + 10px);
+
+    min-width: 0;
+
+    max-height: calc(100vh - var(--header-height));
+
+    display: flex;
+
+    flex-direction: column;
 }
 
 
 /* =========================================================
-   IMAGE
+   MAIN IMAGE
 ========================================================= */
 
 .single-product-main-image {
     position: relative;
 
-    width: 100%;
+    width: min(
+        100%,
+        calc(100vh - var(--header-height) - 116px)
+    );
 
     aspect-ratio: 1 / 1;
+
+    align-self: center;
+
+    flex-shrink: 0;
 
     overflow: hidden;
 
@@ -6072,11 +6087,12 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
 .single-product-main-image img {
     width: 100%;
+
     height: 100%;
 
     display: block;
 
-    object-fit: cover;
+    object-fit: contain;
 }
 
 
@@ -6087,9 +6103,10 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 .single-product-badge {
     position: absolute;
 
-    z-index: 2;
+    z-index: 3;
 
     top: 16px;
+
     left: 16px;
 
     padding: 8px 11px;
@@ -6101,6 +6118,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
     border-radius: var(--single-radius);
 
     font-size: 8px;
+
     font-weight: 800;
 
     letter-spacing: 0.08em;
@@ -6109,6 +6127,275 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
     box-shadow:
         0 8px 20px rgba(26, 168, 245, 0.25);
+}
+
+
+/* =========================================================
+   MAIN IMAGE ARROWS
+========================================================= */
+
+.single-product-main-arrow {
+    position: absolute;
+
+    z-index: 4;
+
+    top: 50%;
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid var(--single-border);
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    color: #111111;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.single-product-main-arrow:hover {
+    background: #ffffff;
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+.single-product-main-arrow--prev {
+    left: 16px;
+}
+
+.single-product-main-arrow--next {
+    right: 16px;
+}
+
+
+/* =========================================================
+   THUMBNAILS WRAPPER
+========================================================= */
+
+.single-product-thumbnails-wrapper {
+    position: relative;
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 82px;
+
+    flex: 0 0 82px;
+
+    margin-top: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* =========================================================
+   THUMBNAILS
+========================================================= */
+
+.single-product-thumbnails {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+
+    gap: 10px;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+
+    overscroll-behavior-x: contain;
+}
+
+.single-product-thumbnails::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   THUMBNAIL
+========================================================= */
+
+.single-product-thumbnail {
+    flex: 0 0 82px;
+
+    width: 82px;
+
+    height: 82px;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    background: var(--single-soft);
+
+    border: 1px solid var(--single-border);
+
+    border-radius: var(--single-radius);
+
+    cursor: pointer;
+
+    opacity: 0.65;
+
+    transition:
+        opacity 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.single-product-thumbnail:hover {
+    opacity: 1;
+}
+
+.single-product-thumbnail.active {
+    opacity: 1;
+
+    border-color: #1aa8f5;
+
+    box-shadow:
+        0 0 0 2px rgba(26, 168, 245, 0.15);
+}
+
+.single-product-thumbnail img {
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   THUMBNAIL ARROWS
+========================================================= */
+
+.single-product-thumbnail-arrow {
+    flex: 0 0 38px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid var(--single-border);
+
+    border-radius: 50%;
+
+    background: var(--single-soft);
+
+    color: var(--single-text);
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.single-product-thumbnail-arrow:hover {
+    border-color: #1aa8f5;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .single-product-container {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .single-product-gallery__sticky {
+        position: relative;
+
+        top: auto;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .single-product-container {
+        width: min(100% - 24px, 1400px);
+    }
+
+    .single-product-main-arrow {
+        width: 38px;
+        height: 38px;
+
+        font-size: 15px;
+    }
+
+    .single-product-main-arrow--prev {
+        left: 10px;
+    }
+
+    .single-product-main-arrow--next {
+        right: 10px;
+    }
+
+    .single-product-thumbnail {
+        flex-basis: 68px;
+
+        width: 68px;
+        height: 68px;
+    }
+
+    .single-product-thumbnail-arrow {
+        flex-basis: 34px;
+
+        width: 34px;
+        height: 34px;
+    }
+
 }
 
 
@@ -6970,23 +7257,6 @@ html[data-theme="dark"] .single-product-spec:hover {
 
         gap: 32px;
     }
-
-
-    /* Disable sticky when stacked */
-
-    .single-product-gallery__sticky {
-        position: static;
-    }
-
-
-    /* Product image */
-
-    .single-product-main-image {
-        width: min(100%, 650px);
-
-        margin: 0 auto;
-    }
-
 
     /* Title */
 
