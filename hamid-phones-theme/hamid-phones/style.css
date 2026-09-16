@@ -3416,6 +3416,12 @@ html[data-theme="dark"] .brand-card:hover .brand-card-arrow {
         0 7px 18px rgba(26, 168, 245, 0.25);
 }
 
+.product-card__badge--out {
+    background: #e53935;
+
+    box-shadow:
+        0 8px 20px rgba(229, 57, 53, 0.25);
+}
 
 /* =========================================================
    CARD CONTENT
@@ -6133,6 +6139,12 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
         0 8px 20px rgba(26, 168, 245, 0.25);
 }
 
+.single-product-badge--out {
+    background: #e53935;
+
+    box-shadow:
+        0 8px 20px rgba(229, 57, 53, 0.25);
+}
 
 /* =========================================================
    MAIN IMAGE ARROWS
@@ -6567,6 +6579,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
 .single-product-variant-scroll__track {
     width: 100%;
+    height: 55px;
 
     min-width: 0;
 
@@ -6657,6 +6670,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
 .single-product-colors {
     display: flex;
+    align-items: flex-end;
 
     flex-wrap: nowrap;
 
@@ -6724,6 +6738,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
 .single-product-storage {
     display: flex;
+    align-items: flex-end;
 
     flex-wrap: nowrap;
 
@@ -6734,7 +6749,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
     width: 110px;
 
     min-width: 110px;
-    min-height: 46px;
+    height: 46px;
 
     flex: 0 0 110px;
 

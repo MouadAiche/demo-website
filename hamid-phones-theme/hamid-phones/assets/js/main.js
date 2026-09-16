@@ -1048,6 +1048,247 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!singleProduct) return;
 
+    /* =====================================================
+   WOOCOMMERCE VARIATIONS
+===================================================== */
+
+    const variationsDataElement =
+        document.getElementById("productVariationsData");
+
+    let productVariations = [];
+
+    if (variationsDataElement) {
+
+        try {
+            productVariations =
+                JSON.parse(variationsDataElement.textContent);
+        } catch (error) {
+            console.error(
+                "Could not load product variations.",
+                error
+            );
+        }
+
+    }
+
+    /* =====================================================
+   FIND SELECTED VARIATION
+===================================================== */
+
+    function findSelectedVariation() {
+
+        const selectedStorageButton =
+            singleProduct.querySelector(
+                ".single-product-storage__button.is-selected"
+            );
+
+        const selectedColorButton =
+            singleProduct.querySelector(
+                ".single-product-color.is-selected"
+            );
+
+
+        const storage = selectedStorageButton
+            ? selectedStorageButton.dataset.storage
+            : null;
+
+        const color = selectedColorButton
+            ? selectedColorButton.dataset.color
+            : null;
+
+
+        return productVariations.find((variation) => {
+
+            const variationStorage =
+                variation.attributes.attribute_pa_storage;
+
+            const variationColor =
+                variation.attributes.attribute_pa_color;
+
+
+            const storageMatches =
+                !storage ||
+                !variationStorage ||
+                variationStorage ===
+                storage.toLowerCase().replace(/\s+/g, "-");
+
+            const colorMatches =
+                !color ||
+                !variationColor ||
+                variationColor ===
+                color.toLowerCase().replace(/\s+/g, "-");
+
+
+            return storageMatches && colorMatches;
+
+        });
+
+    }
+
+    /* =====================================================
+   UPDATE VARIATION PRICE
+===================================================== */
+
+    const singleProductPrice =
+        singleProduct.querySelector("#singleProductPrice");
+
+
+    function updateVariationPrice() {
+
+        if (!singleProductPrice) return;
+
+        const variation = findSelectedVariation();
+
+        if (!variation) return;
+
+        singleProductPrice.innerHTML =
+            variation.price_html;
+
+    }
+
+    /* =====================================================
+   UPDATE VARIATION STOCK
+===================================================== */
+
+    const singleProductStock =
+        singleProduct.querySelector("#singleProductStock");
+
+
+    function updateVariationStock() {
+
+        if (!singleProductStock) return;
+
+        const variation = findSelectedVariation();
+
+        if (!variation) return;
+
+
+        if (variation.is_in_stock) {
+
+            singleProductStock.textContent = "In Stock";
+
+            singleProductStock.classList.remove(
+                "single-product-badge--out"
+            );
+
+        } else {
+
+            singleProductStock.textContent = "Out of Stock";
+
+            singleProductStock.classList.add(
+                "single-product-badge--out"
+            );
+
+        }
+
+    }
+
+    /* =====================================================
+   UPDATE VARIATION IMAGE
+===================================================== */
+
+    function updateVariationImage() {
+
+        const variation = findSelectedVariation();
+
+        if (!variation) return;
+
+        if (
+            !variation.image ||
+            !variation.image.full_src
+        ) {
+            return;
+        }
+
+
+        const variationImage =
+            variation.image.full_src;
+
+
+        // Update main image
+        mainImage.src = variationImage;
+
+
+        // Find matching thumbnail
+        const matchingThumbnail =
+            thumbnails.find((thumbnail) =>
+                thumbnail.dataset.image === variationImage
+            );
+
+
+        // Remove active state from all thumbnails
+        thumbnails.forEach((thumbnail) => {
+            thumbnail.classList.remove("active");
+        });
+
+
+        // Activate matching thumbnail if it exists
+        if (matchingThumbnail) {
+
+            matchingThumbnail.classList.add("active");
+
+            matchingThumbnail.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center"
+            });
+
+        }
+
+    }
+
+    /* =====================================================
+   UPDATE WHATSAPP MESSAGE
+===================================================== */
+
+    const singleProductContactButton =
+        singleProduct.querySelector("#singleProductContactButton");
+
+    function updateWhatsAppMessage() {
+
+        if (!singleProductContactButton) return;
+
+        const selectedStorageButton =
+            singleProduct.querySelector(
+                ".single-product-storage__button.is-selected"
+            );
+
+        const selectedColorButton =
+            singleProduct.querySelector(
+                ".single-product-color.is-selected"
+            );
+
+        const storage = selectedStorageButton
+            ? selectedStorageButton.dataset.storage
+            : null;
+
+        const color = selectedColorButton
+            ? selectedColorButton.dataset.color
+            : null;
+
+        const productName =
+            document.querySelector(".single-product-title")
+                ?.textContent.trim();
+
+
+        let message =
+            `Hello, I am interested in ${productName}`;
+
+
+        if (storage) {
+            message += `\nStorage: ${storage}`;
+        }
+
+
+        if (color) {
+            message += `\nColor: ${color}`;
+        }
+
+
+        singleProductContactButton.href =
+            `https://wa.me/212680449271?text=${encodeURIComponent(message)}`;
+
+    }
 
     /* =====================================================
        COLOR
@@ -1095,6 +1336,11 @@ document.addEventListener("DOMContentLoaded", () => {
             selectedColor.textContent =
                 button.dataset.color;
 
+            updateVariationPrice();
+            updateVariationStock();
+            updateVariationImage();
+            updateWhatsAppMessage();
+
         });
 
     });
@@ -1135,6 +1381,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             selectedStorage.textContent =
                 button.dataset.storage;
+
+            updateVariationPrice();
+            updateVariationStock();
+            updateVariationImage();
+            updateWhatsAppMessage();
 
         });
 
