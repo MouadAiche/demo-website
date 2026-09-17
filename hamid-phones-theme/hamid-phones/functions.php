@@ -425,3 +425,191 @@ add_action(
     'save_post_product',
     'hamid_phones_save_product_specifications'
 );
+
+
+/* =========================================================
+   STORE INFORMATION SETTINGS
+========================================================= */
+
+function hamid_phones_store_information_menu()
+{
+
+    add_options_page(
+        'Store Information',
+        'Store Information',
+        'manage_options',
+        'hamid-store-information',
+        'hamid_phones_store_information_page'
+    );
+}
+add_action('admin_menu', 'hamid_phones_store_information_menu');
+
+
+function hamid_phones_store_information_settings()
+{
+
+    $fields = array(
+        'hamid_store_phone',
+        'hamid_store_whatsapp',
+        'hamid_store_email',
+        'hamid_store_location',
+        'hamid_store_facebook',
+        'hamid_store_instagram',
+        'hamid_store_tiktok',
+    );
+
+    foreach ($fields as $field) {
+
+        register_setting(
+            'hamid_store_information',
+            $field,
+            array(
+                'sanitize_callback' => 'sanitize_text_field',
+            )
+        );
+    }
+}
+add_action('admin_init', 'hamid_phones_store_information_settings');
+
+
+function hamid_phones_store_information_page()
+{
+
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+?>
+
+    <div class="wrap">
+
+        <h1>Store Information</h1>
+
+        <p>
+            Manage the store contact information and social media links.
+        </p>
+
+        <form method="post" action="options.php">
+
+            <?php settings_fields('hamid_store_information'); ?>
+
+            <table class="form-table">
+
+                <tr>
+                    <th scope="row">
+                        Phone
+                    </th>
+
+                    <td>
+                        <input
+                            type="text"
+                            name="hamid_store_phone"
+                            value="<?php echo esc_attr(get_option('hamid_store_phone')); ?>"
+                            class="regular-text">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th scope="row">
+                        WhatsApp
+                    </th>
+
+                    <td>
+                        <input
+                            type="text"
+                            name="hamid_store_whatsapp"
+                            value="<?php echo esc_attr(get_option('hamid_store_whatsapp')); ?>"
+                            class="regular-text">
+
+                        <p class="description">
+                            Example: 212680449271
+                        </p>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th scope="row">
+                        Email
+                    </th>
+
+                    <td>
+                        <input
+                            type="email"
+                            name="hamid_store_email"
+                            value="<?php echo esc_attr(get_option('hamid_store_email')); ?>"
+                            class="regular-text">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th scope="row">
+                        Location
+                    </th>
+
+                    <td>
+                        <input
+                            type="text"
+                            name="hamid_store_location"
+                            value="<?php echo esc_attr(get_option('hamid_store_location')); ?>"
+                            class="regular-text">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th scope="row">
+                        Facebook
+                    </th>
+
+                    <td>
+                        <input
+                            type="url"
+                            name="hamid_store_facebook"
+                            value="<?php echo esc_attr(get_option('hamid_store_facebook')); ?>"
+                            class="regular-text">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th scope="row">
+                        Instagram
+                    </th>
+
+                    <td>
+                        <input
+                            type="url"
+                            name="hamid_store_instagram"
+                            value="<?php echo esc_attr(get_option('hamid_store_instagram')); ?>"
+                            class="regular-text">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th scope="row">
+                        TikTok
+                    </th>
+
+                    <td>
+                        <input
+                            type="url"
+                            name="hamid_store_tiktok"
+                            value="<?php echo esc_attr(get_option('hamid_store_tiktok')); ?>"
+                            class="regular-text">
+                    </td>
+                </tr>
+
+            </table>
+
+            <?php submit_button('Save Store Information'); ?>
+
+        </form>
+
+    </div>
+
+<?php
+}

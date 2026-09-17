@@ -23,7 +23,21 @@ if (is_tax('product_brand')) {
                     Browse Our Store
                 </span>
 
-                <h2>All Products</h2>
+                <h2>
+                    <?php
+
+                    if (is_tax('product_brand')) {
+
+                        $brand = get_queried_object();
+
+                        echo esc_html($brand->name . ' Products');
+                    } else {
+
+                        echo 'All Products';
+                    }
+
+                    ?>
+                </h2>
 
                 <p>
                     Explore our available smartphones and devices
