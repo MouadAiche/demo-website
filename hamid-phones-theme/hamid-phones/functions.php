@@ -17,6 +17,14 @@ function hamid_phones_assets()
         null,
         true
     );
+    wp_localize_script(
+        'hamid-phones-main',
+        'hamidPhones',
+        array(
+            'homeUrl' => home_url('/'),
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+        )
+    );
 }
 
 add_action('wp_enqueue_scripts', 'hamid_phones_assets');
@@ -613,3 +621,284 @@ function hamid_phones_store_information_page()
 
 <?php
 }
+
+
+/* =========================================================
+   PRODUCT SEARCH
+========================================================= */
+
+
+/*
+ * Normalize a search value.
+ *
+ * Examples:
+ * "iPhone 15"  -> "iphone15"
+ * "iphone15"   -> "iphone15"
+ * "iPhone 15 Pro" -> "iphone15pro"
+ */
+function hamid_normalize_product_search($value)
+{
+    $value = strtolower($value);
+
+    return preg_replace('/\s+/', '', $value);
+}
+
+
+/*
+ * Apply our title-only, space-insensitive product search.
+ *
+ * Used by:
+ * - Live AJAX search
+ * - Full search results page
+ */
+function hamid_search_products_by_title($where, $query)
+{
+    global $wpdb;
+
+    $search_term = $query->get('hamid_title_search');
+
+    if (!$search_term) {
+        return $where;
+    }
+
+    $normalized_search =
+        hamid_normalize_product_search($search_term);
+
+    if ($normalized_search === '') {
+        return $where;
+    }
+
+    $where .= $wpdb->prepare(
+        "
+        AND LOWER(
+            REPLACE({$wpdb->posts}.post_title, ' ', '')
+        ) LIKE %s
+        ",
+        '%' . $wpdb->esc_like($normalized_search) . '%'
+    );
+
+    return $where;
+}
+
+add_filter(
+    'posts_where',
+    'hamid_search_products_by_title',
+    10,
+    2
+);
+
+
+/* =========================================================
+   LIVE AJAX SEARCH
+========================================================= */
+
+function hamid_live_product_search()
+{
+    $search_term = isset($_GET['search'])
+        ? sanitize_text_field(wp_unslash($_GET['search']))
+        : '';
+
+    if (trim($search_term) === '') {
+        wp_send_json_success(array());
+    }
+
+
+    /*
+     * Maximum 4 matching products.
+     */
+    $product_query = new WP_Query(array(
+        'post_type'          => 'product',
+        'post_status'        => 'publish',
+        'posts_per_page'     => 4,
+        'orderby'            => 'date',
+        'order'              => 'DESC',
+        'hamid_title_search' => $search_term,
+    ));
+
+
+    $results = array();
+
+
+    while ($product_query->have_posts()) {
+
+        $product_query->the_post();
+
+        $product = wc_get_product(get_the_ID());
+
+        if (!$product) {
+            continue;
+        }
+
+
+        /* Product image */
+
+        $image_id = $product->get_image_id();
+
+        $image_url = $image_id
+            ? wp_get_attachment_image_url(
+                $image_id,
+                'woocommerce_thumbnail'
+            )
+            : wc_placeholder_img_src();
+
+
+        /* Product brand */
+
+        $brands = wp_get_post_terms(
+            $product->get_id(),
+            'product_brand'
+        );
+
+        $brand_name = '';
+
+        if (!empty($brands) && !is_wp_error($brands)) {
+            $brand_name = $brands[0]->name;
+        }
+
+
+        /* Product price */
+
+        if ($product->is_type('variable')) {
+
+            $min_price =
+                $product->get_variation_price('min', true);
+
+            $max_price =
+                $product->get_variation_price('max', true);
+
+
+            if ($min_price !== $max_price) {
+
+                $price =
+                    wc_format_localized_price($min_price)
+                    . ' - '
+                    . wc_format_localized_price($max_price)
+                    . ' DH';
+            } else {
+
+                $price =
+                    wc_format_localized_price($min_price)
+                    . ' DH';
+            }
+        } else {
+
+            $price =
+                wc_format_localized_price(
+                    $product->get_price()
+                )
+                . ' DH';
+        }
+
+
+        /* Result */
+
+        $results[] = array(
+            'name'  => $product->get_name(),
+            'url'   => $product->get_permalink(),
+            'image' => $image_url,
+            'brand' => $brand_name,
+            'price' => $price,
+        );
+    }
+
+
+    wp_reset_postdata();
+
+    wp_send_json_success($results);
+}
+
+
+/* Logged-in users */
+
+add_action(
+    'wp_ajax_hamid_live_product_search',
+    'hamid_live_product_search'
+);
+
+
+/* Visitors */
+
+add_action(
+    'wp_ajax_nopriv_hamid_live_product_search',
+    'hamid_live_product_search'
+);
+
+
+/* =========================================================
+   FULL SEARCH RESULTS PAGE
+========================================================= */
+
+function hamid_product_search_results($query)
+{
+    if (
+        is_admin() ||
+        !$query->is_main_query() ||
+        !$query->is_search()
+    ) {
+        return;
+    }
+
+
+    $search_term = $query->get('s');
+
+    if (!$search_term) {
+        return;
+    }
+
+
+    /*
+     * Search only WooCommerce products.
+     */
+    $query->set(
+        'post_type',
+        'product'
+    );
+
+
+    /*
+     * Use our custom search instead of WordPress's
+     * normal content/excerpt search.
+     *
+     * Save the original keyword first.
+     */
+    $query->set(
+        'hamid_title_search',
+        $search_term
+    );
+
+
+    /*
+     * Disable WordPress's built-in text search.
+     */
+    $query->set('s', '');
+
+
+    /*
+     * Keep this as a search page even though "s"
+     * was cleared internally.
+     */
+    $query->is_search = true;
+}
+
+add_action(
+    'pre_get_posts',
+    'hamid_product_search_results'
+);
+
+/* =========================================================
+   DISABLE SINGLE PRODUCT SEARCH REDIRECT
+========================================================= */
+
+function hamid_disable_single_product_search_redirect($redirect_url)
+{
+    if (is_search()) {
+        return false;
+    }
+
+    return $redirect_url;
+}
+
+add_filter(
+    'woocommerce_redirect_single_search_result',
+    'hamid_disable_single_product_search_redirect'
+);

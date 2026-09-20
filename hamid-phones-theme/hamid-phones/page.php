@@ -2,19 +2,34 @@
 
 <?php get_template_part('template-parts/header-inner'); ?>
 
-<main>
+<main class="legal-page">
 
-    <?php
+    <div class="legal-page__container">
 
-    while (have_posts()) {
-        the_post();
+        <?php while (have_posts()) : the_post(); ?>
 
-        the_title('<h1>', '</h1>');
+            <header class="legal-page__header">
 
-        the_content();
-    }
+                <span class="legal-page__eyebrow">
+                    Hamid Phones
+                </span>
 
-    ?>
+                <h1>
+                    <?php the_title(); ?>
+                </h1>
+
+            </header>
+
+
+            <div class="legal-page__content">
+
+                <?php the_content(); ?>
+
+            </div>
+
+        <?php endwhile; ?>
+
+    </div>
 
 </main>
 

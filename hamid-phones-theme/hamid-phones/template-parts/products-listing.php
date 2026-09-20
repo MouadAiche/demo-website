@@ -26,7 +26,14 @@ if (is_tax('product_brand')) {
                 <h2>
                     <?php
 
-                    if (is_tax('product_brand')) {
+                    if (is_search()) {
+
+                        $search_keyword = isset($_GET['s'])
+                            ? sanitize_text_field(wp_unslash($_GET['s']))
+                            : '';
+
+                        echo esc_html('"' . $search_keyword . '" Products');
+                    } elseif (is_tax('product_brand')) {
 
                         $brand = get_queried_object();
 

@@ -262,10 +262,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const input =
             wrapper.querySelector(".search-input");
 
-        const searchButton =
-            wrapper.querySelector(".search-submit");
-
-
         input.addEventListener("focus", () => {
 
             closeSearchDropdowns(wrapper);
@@ -283,26 +279,6 @@ document.addEventListener("DOMContentLoaded", () => {
             );
         });
 
-
-        input.addEventListener("keydown", (event) => {
-
-            if (event.key === "Enter") {
-                performSearch(input);
-            }
-
-        });
-
-
-        searchButton.addEventListener(
-            "click",
-            () => {
-
-                performSearch(input);
-
-            }
-        );
-
-
         wrapper.addEventListener(
             "click",
             (event) => {
@@ -313,36 +289,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     });
-
-
-    /* =====================================================
-       DEMO SEARCH
-    ===================================================== */
-
-    function performSearch(input) {
-
-        const query =
-            input.value.trim();
-
-        if (!query) {
-            input.focus();
-            return;
-        }
-
-        /*
-            Replace this part later with your real
-            results page, for example:
-
-            window.location.href =
-                `/results/?search=${encodeURIComponent(query)}`;
-        */
-
-        console.log(
-            "Searching for:",
-            query
-        );
-    }
-
 
     /* =====================================================
        CLOSE SEARCH DROPDOWNS
@@ -736,12 +682,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     ".secondary-search__input"
                 );
 
-            const button =
-                search.querySelector(
-                    ".secondary-search__submit"
-                );
-
-
             input.addEventListener(
                 "focus",
                 () => {
@@ -769,33 +709,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             );
 
-
-            input.addEventListener(
-                "keydown",
-                (event) => {
-
-                    if (event.key === "Enter") {
-                        secondaryPerformSearch(
-                            input
-                        );
-                    }
-
-                }
-            );
-
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    secondaryPerformSearch(
-                        input
-                    );
-
-                }
-            );
-
-
             search.addEventListener(
                 "click",
                 (event) => {
@@ -805,28 +718,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
     );
-
-
-    /* =====================================================
-       SEARCH FUNCTION
-    ===================================================== */
-
-    function secondaryPerformSearch(input) {
-
-        const query =
-            input.value.trim();
-
-        if (!query) {
-            input.focus();
-            return;
-        }
-
-        console.log(
-            "Searching for:",
-            query
-        );
-    }
-
 
     /* =====================================================
        CLOSE SEARCH
@@ -1013,26 +904,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         );
 
-    }
-
-});
-
-//  #endregion
-
-//  #region FOOTER
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    /* =====================================================
-       CURRENT YEAR
-    ===================================================== */
-
-    const footerYear =
-        document.getElementById("footerYear");
-
-    if (footerYear) {
-        footerYear.textContent =
-            new Date().getFullYear();
     }
 
 });
@@ -1669,3 +1540,232 @@ if (
 
 
 // #endregion
+
+// #region SEARCH
+
+/* =========================================================
+   LIVE PRODUCT SEARCH
+========================================================= */
+
+const searchWrappers = document.querySelectorAll(
+    ".search-wrapper, .secondary-search"
+);
+
+searchWrappers.forEach((wrapper) => {
+
+    const input = wrapper.querySelector(
+        ".search-input, .secondary-search__input"
+    );
+
+    const dropdown = wrapper.querySelector(
+        ".search-dropdown, .secondary-search__dropdown"
+    );
+
+    const isSecondarySearch =
+        wrapper.classList.contains("secondary-search");
+
+    if (!input || !dropdown) return;
+
+    const searchForm = wrapper.querySelector(
+        ".search-box, .secondary-search__box"
+    );
+
+    if (searchForm) {
+
+        searchForm.addEventListener("submit", (event) => {
+
+            const searchValue = input.value.trim();
+
+            // Do not submit an empty search
+            if (searchValue === "") {
+                event.preventDefault();
+
+                dropdown.style.display = "none";
+
+                input.focus();
+            }
+
+        });
+
+    }
+
+    dropdown.style.display = "none";
+
+    let searchTimeout;
+
+    input.addEventListener("input", () => {
+
+        const searchValue = input.value.trim();
+
+        clearTimeout(searchTimeout);
+
+        // Empty search
+        if (searchValue.length === 0) {
+            dropdown.style.display = "none";
+            dropdown.innerHTML = "";
+            return;
+        }
+
+        // Wait slightly before sending the request
+        searchTimeout = setTimeout(() => {
+
+            fetch(
+                `${hamidPhones.ajaxUrl}?action=hamid_live_product_search&search=${encodeURIComponent(searchValue)}`
+            )
+                .then((response) => response.json())
+
+                .then((response) => {
+
+                    // Make sure the user hasn't changed the search
+                    if (input.value.trim() !== searchValue) {
+                        return;
+                    }
+
+                    dropdown.innerHTML = "";
+
+                    if (
+                        !response.success ||
+                        !response.data ||
+                        response.data.length === 0
+                    ) {
+
+                        dropdown.innerHTML = `
+                            <div class="search-no-results">
+                                No products found
+                            </div>
+                        `;
+
+                        dropdown.style.display = "";
+                        return;
+                    }
+
+
+                    response.data.forEach((product) => {
+
+                        const productElement = document.createElement("a");
+
+                        productElement.href = product.url;
+                        productElement.className = isSecondarySearch
+                            ? "secondary-search-product"
+                            : "search-product";
+
+                        productElement.innerHTML = `
+    <div class="${isSecondarySearch
+                                ? "secondary-search-product__image"
+                                : "product-image"
+                            }">
+        <img
+            src="${product.image}"
+            alt="${escapeSearchHTML(product.name)}"
+            loading="lazy">
+    </div>
+
+    <div class="${isSecondarySearch
+                                ? "secondary-search-product__info"
+                                : "product-info"
+                            }">
+
+        ${product.brand
+                                ? `
+                    <span class="${isSecondarySearch
+                                    ? "secondary-search-product__category"
+                                    : "product-category"
+                                }">
+                        ${escapeSearchHTML(product.brand)}
+                    </span>
+                `
+                                : ""
+                            }
+
+        <strong>
+            ${escapeSearchHTML(product.name)}
+        </strong>
+
+        <span class="${isSecondarySearch
+                                ? "secondary-search-product__price"
+                                : "product-price"
+                            }">
+            ${escapeSearchHTML(product.price)}
+        </span>
+
+    </div>
+
+    <span class="${isSecondarySearch
+                                ? "secondary-search-product__arrow"
+                                : "search-product-arrow"
+                            }" aria-hidden="true">
+
+        <svg viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor">
+
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h14M13 6l6 6-6 6">
+            </path>
+
+        </svg>
+
+    </span>
+`;
+
+                        dropdown.appendChild(productElement);
+
+                    });
+
+
+                    // See all matching products
+                    const seeAll = document.createElement("a");
+
+                    seeAll.href =
+                        `${hamidPhones.homeUrl}?s=${encodeURIComponent(searchValue)}&post_type=product`;
+
+                    seeAll.className = isSecondarySearch
+                        ? "secondary-search__results"
+                        : "see-results";
+
+                    seeAll.innerHTML = `
+                        See all results
+
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M5 12h14M13 6l6 6-6 6"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+                            </path>
+                        </svg>
+                    `;
+
+                    dropdown.appendChild(seeAll);
+
+                    dropdown.style.display = "";
+
+                })
+
+                .catch(() => {
+                    dropdown.style.display = "none";
+                });
+
+        }, 300);
+
+    });
+
+});
+
+
+function escapeSearchHTML(value) {
+
+    const div = document.createElement("div");
+
+    div.textContent = value ?? "";
+
+    return div.innerHTML;
+
+}
+
+//#endregion

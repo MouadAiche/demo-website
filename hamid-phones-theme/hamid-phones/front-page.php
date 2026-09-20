@@ -27,7 +27,7 @@
 
             <div class="hero__actions">
 
-                <a href="#products" class="hero__button hero__button--primary">
+                <a href="<?php echo esc_url(home_url('/#products')); ?>" class="hero__button hero__button--primary">
                     See Products
 
                     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -36,7 +36,7 @@
                     </svg>
                 </a>
 
-                <a href="#brands" class="hero__button hero__button--secondary">
+                <a href="<?php echo esc_url(home_url('/#brands')); ?>" class="hero__button hero__button--secondary">
                     See Brands
 
                     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -560,7 +560,7 @@
 
 
                     <!-- BUTTON -->
-                    <a href="#products" class="about-button">
+                    <a href="<?php echo esc_url(home_url('/#products')); ?>" class="about-button">
 
                         Explore Products
 
@@ -597,6 +597,9 @@
         </div>
     </section>
 
+    <?php
+    $store_phone = get_option('hamid_store_phone');
+    ?>
     <section class="contact-section" id="contact">
         <div class="contact-container">
 
@@ -639,7 +642,7 @@
                 <div class="contact-info">
 
                     <!-- PHONE -->
-                    <a href="tel:+212600000000" class="contact-card">
+                    <a href="tel:<?php echo esc_attr($store_phone); ?>" class="contact-card">
 
                         <div class="contact-card-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
