@@ -751,128 +751,6 @@ html[data-theme="dark"] .sun-icon {
     display: block;
 }
 
-
-/* =========================================================
-   LANGUAGE
-========================================================= */
-
-.language-wrapper {
-    position: relative;
-}
-
-.language-button {
-    min-width: 62px;
-
-    padding: 0 10px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 5px;
-
-    font-size: 11px;
-    font-weight: 800;
-
-    letter-spacing: 0.04em;
-}
-
-.language-button svg {
-    width: 14px;
-    height: 14px;
-
-    transition:
-        transform var(--transition);
-}
-
-.language-wrapper.language-open .language-button svg {
-    transform: rotate(180deg);
-}
-
-.language-dropdown {
-    position: absolute;
-
-    top: calc(100% + 10px);
-    right: 0;
-
-    width: 170px;
-
-    padding: 7px;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transform: translateY(-5px);
-
-    background: var(--surface);
-
-    border: 1px solid var(--border);
-
-    border-radius: var(--radius);
-
-    box-shadow: var(--overlay-shadow);
-
-    transition:
-        opacity var(--transition),
-        visibility var(--transition),
-        transform var(--transition);
-
-    z-index: 100;
-}
-
-.language-wrapper.language-open .language-dropdown {
-    opacity: 1;
-    visibility: visible;
-
-    transform: translateY(0);
-}
-
-.language-dropdown button {
-    width: 100%;
-    height: 39px;
-
-    padding: 0 10px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 11px;
-
-    border: 0;
-
-    color: var(--text);
-
-    background: transparent;
-
-    border-radius: var(--radius);
-
-    font-size: 12px;
-    font-weight: 600;
-
-    text-align: left;
-
-    cursor: pointer;
-
-    transition:
-        background var(--transition);
-}
-
-.language-dropdown button:hover {
-    background: var(--surface-hover);
-}
-
-.language-dropdown button span {
-    width: 27px;
-
-    color: var(--blue-700);
-
-    font-size: 10px;
-    font-weight: 850;
-
-    letter-spacing: 0.05em;
-}
-
-
 /* =========================================================
    HAMBURGER
 ========================================================= */
@@ -1396,121 +1274,6 @@ html[data-theme="dark"] .secondary-header__moon-icon {
 html[data-theme="dark"] .secondary-header__sun-icon {
     display: block;
 }
-
-
-/* =========================================================
-   LANGUAGE
-========================================================= */
-
-.secondary-language {
-    position: relative;
-}
-
-.secondary-language__button {
-    min-width: 62px;
-
-    padding: 0 10px;
-
-    gap: 5px;
-
-    font-size: 11px;
-    font-weight: 800;
-}
-
-.secondary-language__button svg {
-    width: 14px;
-    height: 14px;
-
-    transition:
-        transform var(--secondary-transition);
-}
-
-.secondary-language.secondary-language--open .secondary-language__button svg {
-    transform: rotate(180deg);
-}
-
-.secondary-language__dropdown {
-    position: absolute;
-
-    top: calc(100% + 10px);
-    right: 0;
-
-    width: 170px;
-
-    padding: 7px;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transform: translateY(-5px);
-
-    background: var(--secondary-surface);
-
-    border:
-        1px solid var(--secondary-border);
-
-    border-radius:
-        var(--secondary-radius);
-
-    box-shadow:
-        0 24px 70px rgba(7, 50, 110, 0.17);
-
-    transition:
-        opacity var(--secondary-transition),
-        visibility var(--secondary-transition),
-        transform var(--secondary-transition);
-
-    z-index: 100;
-}
-
-.secondary-language.secondary-language--open .secondary-language__dropdown {
-    opacity: 1;
-    visibility: visible;
-
-    transform: translateY(0);
-}
-
-.secondary-language__dropdown button {
-    width: 100%;
-    height: 39px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 11px;
-
-    padding: 0 10px;
-
-    color: var(--secondary-text);
-
-    background: transparent;
-
-    border: 0;
-
-    border-radius:
-        var(--secondary-radius);
-
-    font-size: 12px;
-    font-weight: 600;
-
-    text-align: left;
-
-    cursor: pointer;
-}
-
-.secondary-language__dropdown button:hover {
-    background: var(--secondary-soft);
-}
-
-.secondary-language__dropdown button span {
-    width: 27px;
-
-    color: var(--secondary-blue);
-
-    font-size: 10px;
-    font-weight: 850;
-}
-
 
 /* =========================================================
    LOGO
@@ -7631,3 +7394,50 @@ html[data-theme="dark"] .single-product-spec:hover {
 }
 
 /* #endregion */
+
+/* =========================================================
+   DEVELOPER CREDIT
+========================================================= */
+
+.developer-credit {
+    width: 100%;
+    min-height: 42px;
+
+    padding: 10px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--text-muted);
+    background: var(--surface-soft);
+
+    border-top: 1px solid var(--border);
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.developer-credit a {
+    margin-left: 4px;
+
+    color: var(--blue-500);
+
+    font-weight: 750;
+    text-decoration: none;
+
+    transition:
+        color var(--transition),
+        opacity var(--transition);
+}
+
+.developer-credit a:hover {
+    color: var(--blue-600);
+}

@@ -207,8 +207,18 @@
                     'post_status'    => 'publish',
                     'posts_per_page' => 8,
                     'post__in'       => $featured_product_ids,
-                    'orderby'        => 'date',
-                    'order'          => 'DESC',
+
+                    'meta_query' => array(
+                        'stock_status' => array(
+                            'key'     => '_stock_status',
+                            'compare' => 'EXISTS',
+                        ),
+                    ),
+
+                    'orderby' => array(
+                        'stock_status' => 'ASC',
+                        'date'         => 'DESC',
+                    ),
                 ));
 
                 if ($featured_products->have_posts()) {
@@ -598,7 +608,14 @@
     </section>
 
     <?php
-    $store_phone = get_option('hamid_store_phone');
+    $store_phone    = get_option('hamid_store_phone');
+    $store_whatsapp = get_option('hamid_store_whatsapp');
+    $store_email    = get_option('hamid_store_email');
+    $store_location = get_option('hamid_store_location');
+    $store_maps_embed = get_option('hamid_store_maps_embed');
+    $store_maps_link = get_option('hamid_store_maps_link');
+
+    $whatsapp_number = preg_replace('/\D+/', '', $store_whatsapp);
     ?>
     <section class="contact-section" id="contact">
         <div class="contact-container">
@@ -620,13 +637,18 @@
                 <div class="contact-map-wrapper">
 
                     <div class="contact-map">
-                        <iframe src="https://www.google.com/maps?q=Casablanca%20Morocco&output=embed" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade" title="Store location">
+                        <iframe
+                            src="<?php echo esc_url($store_maps_embed); ?>"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Store location">
                         </iframe>
                     </div>
 
-                    <a href="https://www.google.com/maps/search/?api=1&query=Casablanca+Morocco" target="_blank"
-                        rel="noopener noreferrer" class="contact-map-button">
+                    <a href="<?php echo esc_url($store_maps_link); ?>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-map-button">
                         Open In Google Maps
 
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -663,14 +685,16 @@
 
                         <div class="contact-card-content">
                             <span>Phone</span>
-                            <strong>+212 600 000 000</strong>
+                            <strong><?php echo esc_html($store_phone); ?></strong>
                         </div>
 
                     </a>
 
 
                     <!-- WHATSAPP -->
-                    <a href="https://wa.me/212600000000" target="_blank" rel="noopener noreferrer"
+                    <a href="<?php echo esc_url('https://wa.me/' . $whatsapp_number); ?>"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         class="contact-card">
 
                         <div class="contact-card-icon">
@@ -695,7 +719,7 @@
 
 
                     <!-- EMAIL -->
-                    <a href="mailto:contact@yourstore.com" class="contact-card">
+                    <a href="mailto:<?php echo esc_attr($store_email); ?>" class="contact-card">
 
                         <div class="contact-card-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -711,7 +735,7 @@
 
                         <div class="contact-card-content">
                             <span>Email</span>
-                            <strong>contact@yourstore.com</strong>
+                            <strong><?php echo esc_html($store_email); ?></strong>
                         </div>
 
                     </a>
@@ -731,7 +755,7 @@
 
                         <div class="contact-card-content">
                             <span>Location</span>
-                            <strong>Casablanca, Morocco</strong>
+                            <strong><?php echo esc_html($store_location); ?></strong>
                         </div>
 
                     </div>

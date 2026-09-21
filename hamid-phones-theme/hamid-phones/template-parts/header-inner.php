@@ -12,20 +12,7 @@
                 </svg>
             </button>
 
-            <button class="secondary-header__theme-toggle" type="button" aria-label="Toggle dark mode">
-                <svg class="secondary-header__moon-icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M20.5 15.4A8.5 8.5 0 0 1 8.6 3.5 9 9 0 1 0 20.5 15.4Z" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-                </svg>
-
-                <svg class="secondary-header__sun-icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
-
-                    <path
-                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-            </button>
+            
 
         </div>
 
@@ -95,46 +82,20 @@
             </button>
 
 
-            <!-- LANGUAGE SWITCHER -->
-            <div class="secondary-language">
+            <button class="secondary-header__theme-toggle" type="button" aria-label="Toggle dark mode">
+                <svg class="secondary-header__moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.5 15.4A8.5 8.5 0 0 1 8.6 3.5 9 9 0 1 0 20.5 15.4Z" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                </svg>
 
-                <button class="secondary-language__button" type="button" aria-expanded="false">
-                    <span class="secondary-language__current">
-                        EN
-                    </span>
+                <svg class="secondary-header__sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
 
-                    <svg viewBox="0 0 24 24">
-                        <path d="m7 9 5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </button>
-
-
-                <div class="secondary-language__dropdown">
-
-                    <button type="button" data-lang="EN">
-                        <span>EN</span>
-                        English
-                    </button>
-
-                    <button type="button" data-lang="FR">
-                        <span>FR</span>
-                        Français
-                    </button>
-
-                    <button type="button" data-lang="AR">
-                        <span>AR</span>
-                        العربية
-                    </button>
-
-                    <button type="button" data-lang="ES">
-                        <span>ES</span>
-                        Español
-                    </button>
-
-                </div>
-
-            </div>
+                    <path
+                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
 
         </div>
 

@@ -112,44 +112,6 @@
 
             </button>
 
-            <!-- Language Switcher -->
-            <div class="language-wrapper">
-
-                <button class="language-button" type="button" aria-expanded="false">
-                    <span class="current-language">EN</span>
-
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="m7 9 5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </button>
-
-                <div class="language-dropdown">
-
-                    <button type="button" data-lang="EN">
-                        <span>EN</span>
-                        English
-                    </button>
-
-                    <button type="button" data-lang="FR">
-                        <span>FR</span>
-                        Français
-                    </button>
-
-                    <button type="button" data-lang="AR">
-                        <span>AR</span>
-                        العربية
-                    </button>
-
-                    <button type="button" data-lang="ES">
-                        <span>ES</span>
-                        Español
-                    </button>
-
-                </div>
-
-            </div>
-
             <!-- Mobile Menu Button -->
             <button class="hamburger-button" type="button" aria-label="Open navigation" aria-expanded="false">
                 <span></span>

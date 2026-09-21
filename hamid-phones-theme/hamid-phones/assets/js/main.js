@@ -101,13 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
        ELEMENTS
     ===================================================== */
 
-    const languageWrapper = document.querySelector(".language-wrapper");
-    const languageButton = document.querySelector(".language-button");
-    const currentLanguage = document.querySelector(".current-language");
-    const languageOptions = document.querySelectorAll(
-        ".language-dropdown button"
-    );
-
     const hamburgerButton = document.querySelector(".hamburger-button");
     const mobileNavPanel = document.querySelector(".mobile-nav-panel");
 
@@ -120,110 +113,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const searchWrappers = document.querySelectorAll(".search-wrapper");
 
-
     /* =====================================================
-       LANGUAGE DROPDOWN
+        MOBILE NAVIGATION
     ===================================================== */
 
-    languageButton.addEventListener("click", (event) => {
-        event.stopPropagation();
+    if (hamburgerButton && mobileNavPanel) {
 
-        const isOpen =
-            languageWrapper.classList.contains("language-open");
-
-        closeAllPanels();
-
-        if (!isOpen) {
-            languageWrapper.classList.add("language-open");
-            languageButton.setAttribute(
-                "aria-expanded",
-                "true"
-            );
-        }
-    });
-
-
-    languageOptions.forEach((option) => {
-
-        option.addEventListener("click", () => {
-
-            const selectedLanguage =
-                option.dataset.lang;
-
-            currentLanguage.textContent =
-                selectedLanguage;
-
-            languageWrapper.classList.remove(
-                "language-open"
-            );
-
-            languageButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            localStorage.setItem(
-                "selectedLanguage",
-                selectedLanguage
-            );
-        });
-
-    });
-
-
-    const savedLanguage =
-        localStorage.getItem("selectedLanguage");
-
-    if (savedLanguage) {
-        currentLanguage.textContent =
-            savedLanguage;
-    }
-
-
-    /* =====================================================
-       MOBILE NAVIGATION
-    ===================================================== */
-
-    hamburgerButton.addEventListener("click", (event) => {
-        event.stopPropagation();
-
-        const isOpen =
-            mobileNavPanel.classList.contains(
-                "panel-open"
-            );
-
-        closeAllPanels();
-
-        if (!isOpen) {
-
-            mobileNavPanel.classList.add(
-                "panel-open"
-            );
-
-            hamburgerButton.classList.add(
-                "menu-active"
-            );
-
-            hamburgerButton.setAttribute(
-                "aria-expanded",
-                "true"
-            );
-        }
-    });
-
-
-    /* =====================================================
-       MOBILE SEARCH PANEL
-    ===================================================== */
-
-    mobileSearchButton.addEventListener(
-        "click",
-        (event) => {
-
+        hamburgerButton.addEventListener("click", (event) => {
             event.stopPropagation();
 
             const isOpen =
-                mobileSearchPanel.classList.contains(
+                mobileNavPanel.classList.contains(
                     "panel-open"
                 );
 
@@ -231,26 +131,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!isOpen) {
 
-                mobileSearchPanel.classList.add(
+                mobileNavPanel.classList.add(
                     "panel-open"
                 );
 
-                mobileSearchButton.setAttribute(
+                hamburgerButton.classList.add(
+                    "menu-active"
+                );
+
+                hamburgerButton.setAttribute(
                     "aria-expanded",
                     "true"
                 );
+            }
+        });
 
-                const input =
-                    mobileSearchPanel.querySelector(
-                        ".search-input"
+    }
+
+
+    /* =====================================================
+   MOBILE SEARCH PANEL
+===================================================== */
+
+    if (mobileSearchButton && mobileSearchPanel) {
+
+        mobileSearchButton.addEventListener(
+            "click",
+            (event) => {
+
+                event.stopPropagation();
+
+                const isOpen =
+                    mobileSearchPanel.classList.contains(
+                        "panel-open"
                     );
 
-                setTimeout(() => {
-                    input.focus();
-                }, 120);
+                closeAllPanels();
+
+                if (!isOpen) {
+
+                    mobileSearchPanel.classList.add(
+                        "panel-open"
+                    );
+
+                    mobileSearchButton.setAttribute(
+                        "aria-expanded",
+                        "true"
+                    );
+
+                    const input =
+                        mobileSearchPanel.querySelector(
+                            ".search-input"
+                        );
+
+                    if (input) {
+                        setTimeout(() => {
+                            input.focus();
+                        }, 120);
+                    }
+                }
             }
-        }
-    );
+        );
+
+    }
 
 
     /* =====================================================
@@ -316,16 +259,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function closeAllPanels() {
 
-        languageWrapper.classList.remove(
-            "language-open"
-        );
-
-        languageButton.setAttribute(
-            "aria-expanded",
-            "false"
-        );
-
-
         mobileNavPanel.classList.remove(
             "panel-open"
         );
@@ -370,23 +303,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 closeAllPanels();
                 return;
             }
-
-
-            if (
-                !event.target.closest(
-                    ".language-wrapper"
-                )
-            ) {
-                languageWrapper.classList.remove(
-                    "language-open"
-                );
-
-                languageButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-            }
-
 
             if (
                 !event.target.closest(
@@ -501,26 +417,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ".secondary-header__back"
         );
 
-    const language =
-        secondaryHeader.querySelector(
-            ".secondary-language"
-        );
-
-    const languageButton =
-        secondaryHeader.querySelector(
-            ".secondary-language__button"
-        );
-
-    const currentLanguage =
-        secondaryHeader.querySelector(
-            ".secondary-language__current"
-        );
-
-    const languageOptions =
-        secondaryHeader.querySelectorAll(
-            ".secondary-language__dropdown button"
-        );
-
     const mobileSearchButton =
         secondaryHeader.querySelector(
             ".secondary-header__mobile-search-button"
@@ -547,85 +443,6 @@ document.addEventListener("DOMContentLoaded", () => {
             window.history.back();
         }
     );
-
-
-    /* =====================================================
-       LANGUAGE
-    ===================================================== */
-
-    const savedLanguage =
-        localStorage.getItem(
-            "selectedLanguage"
-        );
-
-    if (savedLanguage) {
-        currentLanguage.textContent =
-            savedLanguage;
-    }
-
-
-    languageButton.addEventListener(
-        "click",
-        (event) => {
-
-            event.stopPropagation();
-
-            const open =
-                language.classList.contains(
-                    "secondary-language--open"
-                );
-
-            closeSecondaryPanels();
-
-            if (!open) {
-
-                language.classList.add(
-                    "secondary-language--open"
-                );
-
-                languageButton.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
-            }
-
-        }
-    );
-
-
-    languageOptions.forEach(
-        (option) => {
-
-            option.addEventListener(
-                "click",
-                () => {
-
-                    const selected =
-                        option.dataset.lang;
-
-                    currentLanguage.textContent =
-                        selected;
-
-                    localStorage.setItem(
-                        "selectedLanguage",
-                        selected
-                    );
-
-                    language.classList.remove(
-                        "secondary-language--open"
-                    );
-
-                    languageButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
-            );
-
-        }
-    );
-
 
     /* =====================================================
        MOBILE SEARCH
@@ -747,17 +564,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
 
     function closeSecondaryPanels() {
-
-        language.classList.remove(
-            "secondary-language--open"
-        );
-
-        languageButton.setAttribute(
-            "aria-expanded",
-            "false"
-        );
-
-
         mobileSearchPanel.classList.remove(
             "secondary-mobile-search-panel--open"
         );
@@ -779,23 +585,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener(
         "click",
         (event) => {
-
-            if (
-                !event.target.closest(
-                    ".secondary-language"
-                )
-            ) {
-
-                language.classList.remove(
-                    "secondary-language--open"
-                );
-
-                languageButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-            }
-
 
             if (
                 !event.target.closest(

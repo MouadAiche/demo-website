@@ -461,6 +461,7 @@ function hamid_phones_store_information_settings()
         'hamid_store_whatsapp',
         'hamid_store_email',
         'hamid_store_location',
+        'hamid_store_maps_link',
         'hamid_store_facebook',
         'hamid_store_instagram',
         'hamid_store_tiktok',
@@ -566,6 +567,41 @@ function hamid_phones_store_information_page()
                     </td>
                 </tr>
 
+                <tr>
+                    <th scope="row">
+                        Google Maps Embed Link
+                    </th>
+
+                    <td>
+                        <input
+                            type="url"
+                            name="hamid_store_maps_embed"
+                            value="<?php echo esc_attr(get_option('hamid_store_maps_embed')); ?>"
+                            class="regular-text">
+
+                        <p class="description">
+                            Paste the Google Maps embed URL for the exact shop location.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">
+                        Google Maps Link
+                    </th>
+
+                    <td>
+                        <input
+                            type="url"
+                            name="hamid_store_maps_link"
+                            value="<?php echo esc_attr(get_option('hamid_store_maps_link')); ?>"
+                            class="regular-text">
+
+                        <p class="description">
+                            Paste the normal Google Maps share link for the exact shop location.
+                        </p>
+                    </td>
+                </tr>
 
                 <tr>
                     <th scope="row">
@@ -710,9 +746,19 @@ function hamid_live_product_search()
         'post_type'          => 'product',
         'post_status'        => 'publish',
         'posts_per_page'     => 4,
-        'orderby'            => 'date',
-        'order'              => 'DESC',
         'hamid_title_search' => $search_term,
+
+        'meta_query' => array(
+            'stock_status' => array(
+                'key'     => '_stock_status',
+                'compare' => 'EXISTS',
+            ),
+        ),
+
+        'orderby' => array(
+            'stock_status' => 'ASC',
+            'date'         => 'DESC',
+        ),
     ));
 
 
@@ -901,4 +947,53 @@ function hamid_disable_single_product_search_redirect($redirect_url)
 add_filter(
     'woocommerce_redirect_single_search_result',
     'hamid_disable_single_product_search_redirect'
+);
+
+/* =========================================================
+   SHOW IN-STOCK PRODUCTS FIRST
+========================================================= */
+
+function hamid_in_stock_products_first($clauses, $query)
+{
+    global $wpdb;
+
+    if (
+        is_admin() ||
+        !$query->is_main_query()
+    ) {
+        return $clauses;
+    }
+
+    if (
+        !is_shop() &&
+        !is_product_taxonomy() &&
+        !$query->is_search()
+    ) {
+        return $clauses;
+    }
+
+    $clauses['join'] .= "
+        LEFT JOIN {$wpdb->postmeta} AS hamid_stock_status
+        ON (
+            {$wpdb->posts}.ID = hamid_stock_status.post_id
+            AND hamid_stock_status.meta_key = '_stock_status'
+        )
+    ";
+
+    $clauses['orderby'] = "
+        CASE
+            WHEN hamid_stock_status.meta_value = 'instock' THEN 0
+            ELSE 1
+        END ASC,
+        {$clauses['orderby']}
+    ";
+
+    return $clauses;
+}
+
+add_filter(
+    'posts_clauses',
+    'hamid_in_stock_products_first',
+    20,
+    2
 );

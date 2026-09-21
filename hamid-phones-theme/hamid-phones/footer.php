@@ -350,6 +350,15 @@
 
 </footer>
 
+<div class="developer-credit">
+    <span>
+        Created by
+        <a href="https://www.instagram.com/mouad_aiche/" target="_blank" rel="noopener noreferrer">
+            Mouad
+        </a>
+    </span>
+</div>
+
 <?php wp_footer(); ?>
 
 </body>
