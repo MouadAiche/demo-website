@@ -259,29 +259,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function closeAllPanels() {
 
-        mobileNavPanel.classList.remove(
-            "panel-open"
-        );
+        if (mobileNavPanel) {
+            mobileNavPanel.classList.remove(
+                "panel-open"
+            );
+        }
 
-        hamburgerButton.classList.remove(
-            "menu-active"
-        );
+        if (hamburgerButton) {
 
-        hamburgerButton.setAttribute(
-            "aria-expanded",
-            "false"
-        );
+            hamburgerButton.classList.remove(
+                "menu-active"
+            );
 
+            hamburgerButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        }
 
-        mobileSearchPanel.classList.remove(
-            "panel-open"
-        );
+        if (mobileSearchPanel) {
+            mobileSearchPanel.classList.remove(
+                "panel-open"
+            );
+        }
 
-        mobileSearchButton.setAttribute(
-            "aria-expanded",
-            "false"
-        );
-
+        if (mobileSearchButton) {
+            mobileSearchButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        }
 
         closeSearchDropdowns();
     }
@@ -371,34 +378,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (window.innerWidth > 900) {
 
-                mobileNavPanel.classList.remove(
-                    "panel-open"
-                );
+                if (mobileNavPanel) {
+                    mobileNavPanel.classList.remove(
+                        "panel-open"
+                    );
+                }
 
-                mobileSearchPanel.classList.remove(
-                    "panel-open"
-                );
+                if (mobileSearchPanel) {
+                    mobileSearchPanel.classList.remove(
+                        "panel-open"
+                    );
+                }
 
-                hamburgerButton.classList.remove(
-                    "menu-active"
-                );
+                if (hamburgerButton) {
 
-                hamburgerButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+                    hamburgerButton.classList.remove(
+                        "menu-active"
+                    );
 
-                mobileSearchButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+                    hamburgerButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+                }
+
+                if (mobileSearchButton) {
+                    mobileSearchButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+                }
             }
 
         }
     );
-
 });
-
 // #endregion
 
 
@@ -801,8 +815,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!variation) return;
 
-        singleProductPrice.innerHTML =
-            variation.price_html;
+        const price = Number(variation.display_price);
+
+        singleProductPrice.textContent =
+            Math.round(price).toLocaleString("de-DE") + " DH";
 
     }
 
@@ -812,6 +828,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const singleProductStock =
         singleProduct.querySelector("#singleProductStock");
+
+    const singleProductContact =
+        singleProduct.querySelector("#singleProductContactButton");
+
+    const singleProductVariationOutOfStock =
+        singleProduct.querySelector("#singleProductVariationOutOfStock");
 
 
     function updateVariationStock() {
@@ -838,6 +860,32 @@ document.addEventListener("DOMContentLoaded", () => {
             singleProductStock.classList.add(
                 "single-product-badge--out"
             );
+
+        }
+
+    }
+
+    function updateVariationContact() {
+
+        const variation = findSelectedVariation();
+
+        if (!variation || !singleProductContact) return;
+
+        if (variation.is_in_stock) {
+
+            singleProductContact.style.display = "";
+
+            if (singleProductVariationOutOfStock) {
+                singleProductVariationOutOfStock.style.display = "none";
+            }
+
+        } else {
+
+            singleProductContact.style.display = "none";
+
+            if (singleProductVariationOutOfStock) {
+                singleProductVariationOutOfStock.style.display = "block";
+            }
 
         }
 
@@ -998,6 +1046,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             updateVariationPrice();
             updateVariationStock();
+            updateVariationContact();
             updateVariationImage();
             updateWhatsAppMessage();
 
@@ -1044,6 +1093,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             updateVariationPrice();
             updateVariationStock();
+            updateVariationContact();
             updateVariationImage();
             updateWhatsAppMessage();
 

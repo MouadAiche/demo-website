@@ -333,22 +333,22 @@
                                                 if ($min_price !== $max_price) {
 
                                                     echo esc_html(
-                                                        wc_format_localized_price($min_price)
+                                                        hamid_format_price($min_price)
                                                             . ' - '
-                                                            . wc_format_localized_price($max_price)
+                                                            . hamid_format_price($max_price)
                                                             . ' DH'
                                                     );
                                                 } else {
 
                                                     echo esc_html(
-                                                        wc_format_localized_price($min_price)
+                                                        hamid_format_price($min_price)
                                                             . ' DH'
                                                     );
                                                 }
                                             } else {
 
                                                 echo esc_html(
-                                                    wc_format_localized_price(
+                                                    hamid_format_price(
                                                         $featured_product->get_price()
                                                     )
                                                         . ' DH'

@@ -816,20 +816,20 @@ function hamid_live_product_search()
             if ($min_price !== $max_price) {
 
                 $price =
-                    wc_format_localized_price($min_price)
+                    hamid_format_price($min_price)
                     . ' - '
-                    . wc_format_localized_price($max_price)
+                    . hamid_format_price($max_price)
                     . ' DH';
             } else {
 
                 $price =
-                    wc_format_localized_price($min_price)
+                    hamid_format_price($min_price)
                     . ' DH';
             }
         } else {
 
             $price =
-                wc_format_localized_price(
+                hamid_format_price(
                     $product->get_price()
                 )
                 . ' DH';
@@ -997,3 +997,14 @@ add_filter(
     20,
     2
 );
+
+
+function hamid_format_price($price)
+{
+    return number_format(
+        (float) $price,
+        0,
+        ',',
+        '.'
+    );
+}

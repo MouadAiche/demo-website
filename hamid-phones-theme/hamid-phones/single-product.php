@@ -218,11 +218,45 @@
 
                     <strong class="single-product-price__value" id="singleProductPrice">
                         <?php
+
                         $wc_product = wc_get_product(get_the_ID());
 
                         if ($wc_product) {
-                            echo wp_kses_post($wc_product->get_price_html());
+
+                            if ($wc_product->is_type('variable')) {
+
+                                $min_price =
+                                    $wc_product->get_variation_price('min', true);
+
+                                $max_price =
+                                    $wc_product->get_variation_price('max', true);
+
+                                if ($min_price !== $max_price) {
+
+                                    echo esc_html(
+                                        hamid_format_price($min_price)
+                                            . ' - '
+                                            . hamid_format_price($max_price)
+                                            . ' DH'
+                                    );
+                                } else {
+
+                                    echo esc_html(
+                                        hamid_format_price($min_price)
+                                            . ' DH'
+                                    );
+                                }
+                            } else {
+
+                                echo esc_html(
+                                    hamid_format_price(
+                                        $wc_product->get_price()
+                                    )
+                                        . ' DH'
+                                );
+                            }
                         }
+
                         ?>
                     </strong>
 
@@ -522,26 +556,51 @@
                     $whatsapp_message =
                         'Hello, I am interested in ' . $product_name;
 
+                    $is_in_stock = $wc_product && $wc_product->is_in_stock();
+
                     ?>
 
-                    <a
-                        href="https://wa.me/212680449271?text=<?php echo rawurlencode($whatsapp_message); ?>"
-                        class="single-product-contact-button"
-                        id="singleProductContactButton"
-                        target="_blank"
-                        rel="noopener noreferrer">
+                    <?php if ($is_in_stock) { ?>
 
-                        Contact Us About This Product
+                        <a
+                            href="https://wa.me/212680449271?text=<?php echo rawurlencode($whatsapp_message); ?>"
+                            class="single-product-contact-button"
+                            id="singleProductContactButton"
+                            target="_blank"
+                            rel="noopener noreferrer">
 
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path
-                                d="M5 12h14M13 6l6 6-6 6"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
+                            Contact Us About This Product
 
-                    </a>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path
+                                    d="M5 12h14M13 6l6 6-6 6"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                        </a>
+
+                        <span
+                            class="single-product-contact-out-of-stock"
+                            id="singleProductVariationOutOfStock"
+                            style="display: none;">
+
+                            Out of Stock
+
+                        </span>
+
+                    <?php } else { ?>
+
+                        <span
+                            class="single-product-contact-out-of-stock"
+                            id="singleProductContactButton">
+
+                            Out of Stock
+
+                        </span>
+
+                    <?php } ?>
 
                 </div>
 
@@ -760,33 +819,40 @@
 
                                     <strong>
                                         <?php
+
                                         if ($related_product->is_type('variable')) {
 
-                                            $min_price = $related_product->get_variation_price('min', true);
-                                            $max_price = $related_product->get_variation_price('max', true);
+                                            $min_price =
+                                                $related_product->get_variation_price('min', true);
+
+                                            $max_price =
+                                                $related_product->get_variation_price('max', true);
 
                                             if ($min_price !== $max_price) {
 
                                                 echo esc_html(
-                                                    wc_format_localized_price($min_price)
+                                                    hamid_format_price($min_price)
                                                         . ' - '
-                                                        . wc_format_localized_price($max_price)
+                                                        . hamid_format_price($max_price)
                                                         . ' DH'
                                                 );
                                             } else {
 
                                                 echo esc_html(
-                                                    wc_format_localized_price($min_price) . ' DH'
+                                                    hamid_format_price($min_price)
+                                                        . ' DH'
                                                 );
                                             }
                                         } else {
 
                                             echo esc_html(
-                                                wc_format_localized_price(
+                                                hamid_format_price(
                                                     $related_product->get_price()
-                                                ) . ' DH'
+                                                )
+                                                    . ' DH'
                                             );
                                         }
+
                                         ?>
                                     </strong>
 

@@ -6738,6 +6738,16 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
     transform: translateX(4px);
 }
 
+.single-product-contact-out-of-stock {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #dc2626;
+    font-weight: 700;
+}
 
 /* =========================================================
    MORE DETAILS
