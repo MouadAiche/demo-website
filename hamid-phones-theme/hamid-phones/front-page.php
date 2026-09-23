@@ -237,7 +237,7 @@
 
                         $product_image = get_the_post_thumbnail_url(
                             get_the_ID(),
-                            'woocommerce_thumbnail'
+                            'large'
                         );
 
                         $brands = wp_get_post_terms(

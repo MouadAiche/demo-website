@@ -1008,3 +1008,194 @@ function hamid_format_price($price)
         '.'
     );
 }
+
+/* =========================================================
+   VARIATION PRICES BY STORAGE
+========================================================= */
+
+
+/* =========================================================
+   SHOW STORAGE PRICE FIELDS
+========================================================= */
+
+function hamid_storage_price_fields()
+{
+    global $post;
+
+    if (!$post) {
+        return;
+    }
+
+    $product = wc_get_product($post->ID);
+
+    if (!$product || !$product->is_type('variable')) {
+        return;
+    }
+
+    $storage_terms = wc_get_product_terms(
+        $product->get_id(),
+        'pa_storage',
+        array(
+            'fields' => 'all',
+        )
+    );
+
+    if (empty($storage_terms)) {
+        return;
+    }
+
+?>
+
+    <div class="options_group">
+
+        <p class="form-field">
+            <strong>Prix par stockage</strong>
+        </p>
+
+        <?php foreach ($storage_terms as $term) : ?>
+
+            <?php
+
+            woocommerce_wp_text_input(array(
+
+                'id' =>
+                'hamid_storage_price_' . $term->slug,
+
+                'value' => get_post_meta(
+                    $product->get_id(),
+                    '_hamid_storage_price_' . $term->slug,
+                    true
+                ),
+
+                'label' => $term->name,
+
+                'type' => 'number',
+
+                'custom_attributes' => array(
+                    'step' => '1',
+                    'min'  => '0',
+                ),
+
+                'description' => 'Prix en DH',
+
+                'desc_tip' => true,
+            ));
+
+            ?>
+
+        <?php endforeach; ?>
+
+    </div>
+
+<?php
+}
+
+add_action(
+    'woocommerce_product_options_general_product_data',
+    'hamid_storage_price_fields'
+);
+
+
+/* =========================================================
+   SAVE STORAGE PRICES
+   AND APPLY THEM TO MATCHING VARIATIONS
+========================================================= */
+
+function hamid_save_storage_prices($product)
+{
+    if (!$product || !$product->is_type('variable')) {
+        return;
+    }
+
+    $product_id = $product->get_id();
+
+    $storage_terms = wc_get_product_terms(
+        $product_id,
+        'pa_storage',
+        array(
+            'fields' => 'all',
+        )
+    );
+
+    if (empty($storage_terms)) {
+        return;
+    }
+
+
+    /* Get all variations */
+
+    $variation_ids = $product->get_children();
+
+
+    foreach ($storage_terms as $term) {
+
+        $field_name =
+            'hamid_storage_price_' . $term->slug;
+
+
+        if (!isset($_POST[$field_name])) {
+            continue;
+        }
+
+
+        /* Get submitted price */
+
+        $price = wc_format_decimal(
+            wp_unslash($_POST[$field_name])
+        );
+
+
+        /* Save storage price field */
+
+        update_post_meta(
+            $product_id,
+            '_' . $field_name,
+            $price
+        );
+
+
+        /* Update matching variations */
+
+        foreach ($variation_ids as $variation_id) {
+
+            $variation =
+                wc_get_product($variation_id);
+
+            if (!$variation) {
+                continue;
+            }
+
+
+            $variation_attributes =
+                $variation->get_attributes();
+
+            $variation_storage =
+                isset($variation_attributes['pa_storage'])
+                ? $variation_attributes['pa_storage']
+                : '';
+
+
+            if ($variation_storage !== $term->slug) {
+                continue;
+            }
+
+
+            $variation->set_regular_price($price);
+
+            $variation->set_price($price);
+
+            $variation->save();
+        }
+    }
+
+
+    /* Clear WooCommerce product cache */
+
+    wc_delete_product_transients($product_id);
+}
+
+add_action(
+    'woocommerce_admin_process_product_object',
+    'hamid_save_storage_prices',
+    20
+);
