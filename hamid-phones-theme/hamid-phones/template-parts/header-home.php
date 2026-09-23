@@ -4,31 +4,31 @@
         <!-- Logo -->
         <a href="<?php echo esc_url(home_url('/')); ?>"
             class="header-logo"
-            aria-label="Home">
+            aria-label="Accueil">
 
             <img
                 src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.png'); ?>"
-                alt="Phone Store Logo">
+                alt="Logo Hamid Phones">
 
         </a>
 
         <!-- Desktop Navigation -->
-        <nav class="desktop-nav" aria-label="Main navigation">
+        <nav class="desktop-nav" aria-label="Navigation principale">
 
             <a href="<?php echo esc_url(home_url('/#home')); ?>">
-                Home
+                Accueil
             </a>
 
             <a href="<?php echo esc_url(home_url('/#brands')); ?>">
-                Brands
+                Marques
             </a>
 
             <a href="<?php echo esc_url(home_url('/#products')); ?>">
-                Products
+                Produits
             </a>
 
             <a href="<?php echo esc_url(home_url('/#about')); ?>">
-                About
+                À propos
             </a>
 
             <a href="<?php echo esc_url(home_url('/#contact')); ?>">
@@ -50,14 +50,14 @@
                     type="search"
                     name="s"
                     class="search-input"
-                    placeholder="Search products..."
+                    placeholder="Rechercher des produits..."
                     autocomplete="off"
-                    aria-label="Search products">
+                    aria-label="Rechercher">
 
                 <input type="hidden" name="post_type" value="product">
 
                 <button type="submit" class="search-submit">
-                    Search
+                    Rechercher
                 </button>
 
             </form>
@@ -66,7 +66,7 @@
 
                 <a href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>"
                     class="see-results">
-                    See all products
+                    Voir tous les produits
 
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
@@ -82,7 +82,7 @@
         <div class="header-actions">
 
             <!-- Mobile Search Button -->
-            <button class="icon-button mobile-search-button" type="button" aria-label="Open search"
+            <button class="icon-button mobile-search-button" type="button" aria-label="Ouvrir la recherche"
                 aria-expanded="false">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" />
@@ -93,7 +93,7 @@
             </button>
 
             <!-- Dark Mode -->
-            <button class="icon-button theme-toggle" type="button" aria-label="Toggle dark mode">
+            <button class="icon-button theme-toggle" type="button" aria-label="Changer le thème">
 
                 <!-- Moon -->
                 <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -113,7 +113,7 @@
             </button>
 
             <!-- Mobile Menu Button -->
-            <button class="hamburger-button" type="button" aria-label="Open navigation" aria-expanded="false">
+            <button class="hamburger-button" type="button" aria-label="Ouvrir la navigation" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -139,14 +139,14 @@
                     type="search"
                     name="s"
                     class="search-input"
-                    placeholder="Search products..."
+                    placeholder="Rechercher des produits..."
                     autocomplete="off"
-                    aria-label="Search products">
+                    aria-label="Rechercher">
 
                 <input type="hidden" name="post_type" value="product">
 
                 <button type="submit" class="search-submit">
-                    Search
+                    Rechercher
                 </button>
 
             </form>
@@ -157,7 +157,7 @@
 
                 <a href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>"
                     class="see-results">
-                    See all products
+                    Voir tous les produits
 
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
@@ -175,25 +175,25 @@
     <!-- Mobile Navigation -->
     <div class="mobile-panel mobile-nav-panel">
 
-        <nav class="mobile-nav" aria-label="Mobile navigation">
+        <nav class="mobile-nav" aria-label="Navigation mobile">
 
             <a href="<?php echo esc_url(home_url('/#home')); ?>">
-                <span>Home</span>
+                <span>Accueil</span>
                 <span>01</span>
             </a>
 
             <a href="<?php echo esc_url(home_url('/#brands')); ?>">
-                <span>Brands</span>
+                <span>Marques</span>
                 <span>02</span>
             </a>
 
             <a href="<?php echo esc_url(home_url('/#products')); ?>">
-                <span>Products</span>
+                <span>Produits</span>
                 <span>03</span>
             </a>
 
             <a href="<?php echo esc_url(home_url('/#about')); ?>">
-                <span>About</span>
+                <span>À propos</span>
                 <span>04</span>
             </a>
 

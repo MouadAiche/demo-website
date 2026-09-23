@@ -713,6 +713,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //  #endregion
 
+// =========================================================
+// CONTACT COPY BUTTONS
+// =========================================================
+
+document.querySelectorAll(".contact-copy-button").forEach((button) => {
+
+    button.addEventListener("click", async () => {
+
+        const value = button.dataset.copy;
+
+        if (!value) return;
+
+        try {
+
+            if (navigator.clipboard && window.isSecureContext) {
+
+                await navigator.clipboard.writeText(value);
+
+            } else {
+
+                const textarea = document.createElement("textarea");
+
+                textarea.value = value;
+                textarea.style.position = "fixed";
+                textarea.style.opacity = "0";
+
+                document.body.appendChild(textarea);
+
+                textarea.focus();
+                textarea.select();
+
+                document.execCommand("copy");
+
+                textarea.remove();
+            }
+
+            button.classList.add("is-copied");
+
+            setTimeout(() => {
+                button.classList.remove("is-copied");
+            }, 1000);
+
+        } catch (error) {
+
+            console.error("Copy failed:", error);
+
+        }
+
+    });
+
+});
+
 // #region SINGLE PRODUCT
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -934,12 +986,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (matchingThumbnail) {
 
             matchingThumbnail.classList.add("active");
-
-            matchingThumbnail.scrollIntoView({
-                behavior: "smooth",
-                block: "nearest",
-                inline: "center"
-            });
 
         }
 

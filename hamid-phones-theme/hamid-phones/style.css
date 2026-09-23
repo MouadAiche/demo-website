@@ -1932,7 +1932,7 @@ main {
     z-index: -3;
 
     background-image:
-        url("assets/images/bg-image.png");
+        url("assets/images/image-hero.webp");
 
 
     background-size: cover;
@@ -2821,6 +2821,10 @@ html[data-theme="dark"] .brand-card:hover .brand-card-arrow {
 
 @media (max-width: 600px) {
 
+    .brands-section {
+        padding: 10px 0 20px;
+    }
+
     .brands-container {
         width: calc(100% - 24px);
     }
@@ -2829,12 +2833,17 @@ html[data-theme="dark"] .brand-card:hover .brand-card-arrow {
         margin-bottom: 30px;
     }
 
+    .brands-eyebrow {
+        margin-bottom: 5px;
+    }
+
     .brands-header h2 {
         font-size: 29px;
     }
 
     .brands-header p {
         font-size: 11px;
+        margin-top: 5px;
     }
 
 
@@ -2990,7 +2999,7 @@ html[data-theme="dark"] .brand-card:hover .brand-card-arrow {
 .featured-products {
     width: 100%;
 
-    padding: 10px 0 20px;
+    padding: 35px 0;
 
     font-family:
         Inter,
@@ -3569,6 +3578,10 @@ html[data-theme="dark"] .product-card__image {
 
 @media (max-width: 600px) {
 
+    .featured-products {
+        padding: 10px 0 20px;
+    }
+
     .featured-products__container {
         width: calc(100% - 24px);
     }
@@ -3577,12 +3590,17 @@ html[data-theme="dark"] .product-card__image {
         margin-bottom: 30px;
     }
 
+    .featured-products__eyebrow {
+        margin-bottom: 5px;
+    }
+
     .featured-products__header h2 {
         font-size: 29px;
     }
 
     .featured-products__header p {
         font-size: 11px;
+        margin-top: 5px;
     }
 
 
@@ -4455,6 +4473,10 @@ html[data-theme="dark"] .about-feature:hover {
 
 @media (max-width: 600px) {
 
+    .about-section {
+        padding: 10px 0 20px;
+    }
+
     .about-container {
         width: calc(100% - 24px);
     }
@@ -4829,6 +4851,72 @@ a.contact-card:hover {
     word-break: break-word;
 }
 
+/* =========================================================
+   CONTACT CARD ACTION
+========================================================= */
+
+.contact-card-action {
+    margin-left: auto;
+    flex: 0 0 auto;
+
+    min-height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 16px;
+
+    color: #ffffff;
+    background: var(--contact-gradient);
+
+    border: 0;
+    border-radius: var(--contact-radius);
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 750;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition:
+        transform var(--contact-transition),
+        filter var(--contact-transition),
+        box-shadow var(--contact-transition);
+}
+
+.contact-card-action:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+
+    box-shadow:
+        0 8px 20px rgba(26, 168, 245, 0.25);
+}
+
+.contact-copy-button {
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+    padding: 0;
+}
+
+.contact-copy-button svg {
+    width: 18px;
+    height: 18px;
+}
+
+.contact-check-icon {
+    display: none;
+}
+
+.contact-copy-button.is-copied .contact-copy-icon {
+    display: none;
+}
+
+.contact-copy-button.is-copied .contact-check-icon {
+    display: block;
+}
 
 /* =========================================================
    MAP
@@ -4993,14 +5081,22 @@ html[data-theme="dark"] .contact-map-wrapper {
    MOBILE
 ========================================================= */
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
+
+    .contact-section {
+        padding: 10px 0 20px;
+    }
 
     .contact-container {
         width: calc(100% - 28px);
     }
 
     .contact-header {
-        margin-bottom: 38px;
+        margin-bottom: 30px;
+    }
+
+    .contact-eyebrow {
+        margin-bottom: 5px;
     }
 
     .contact-header h2 {
@@ -5009,6 +5105,7 @@ html[data-theme="dark"] .contact-map-wrapper {
 
     .contact-header p {
         font-size: 13px;
+        margin-top: 5px;
     }
 
 
@@ -5048,6 +5145,15 @@ html[data-theme="dark"] .contact-map-wrapper {
         font-size: 14px;
     }
 
+    .contact-card-content {
+        flex: 1;
+    }
+
+    .contact-card-action {
+        min-height: 38px;
+        padding: 0 12px;
+        font-size: 10px;
+    }
 
     .contact-map-wrapper,
     .contact-map,
@@ -5729,6 +5835,51 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
         gap: 8px;
     }
+}
+
+/* =========================================================
+   FOOTER COPY BUTTON
+========================================================= */
+
+.footer-copy-button {
+    margin-left: auto;
+    flex: 0 0 auto;
+
+    width: 36px;
+    height: 36px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--text-muted);
+    background: transparent;
+
+    border: 1px solid var(--border);
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    transition:
+        color var(--transition),
+        border-color var(--transition),
+        background var(--transition);
+}
+
+.footer-copy-button:hover {
+    color: var(--blue-500);
+    border-color: var(--blue-500);
+}
+
+.footer-copy-button svg {
+    width: 16px;
+    height: 16px;
+}
+
+.footer-contact-text {
+    display: flex;
+    flex-direction: column;
 }
 
 /* #endregion */

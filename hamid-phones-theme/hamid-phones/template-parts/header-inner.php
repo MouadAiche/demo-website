@@ -5,14 +5,14 @@
         <!-- LEFT -->
         <div class="secondary-header__left">
 
-            <button class="secondary-header__back" type="button" aria-label="Go back">
+            <button class="secondary-header__back" type="button" aria-label="Retour">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path d="M19 12H5M11 18l-6-6 6-6" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </svg>
             </button>
 
-            
+
 
         </div>
 
@@ -21,11 +21,11 @@
         <a
             href="<?php echo esc_url(home_url('/')); ?>"
             class="secondary-header__logo"
-            aria-label="Home">
+            aria-label="Accueil">
 
             <img
                 src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo.png'); ?>"
-                alt="Phone Store Logo">
+                alt="Logo Hamid Phones">
 
         </a>
 
@@ -46,9 +46,9 @@
                         type="search"
                         name="s"
                         class="secondary-search__input"
-                        placeholder="Search products..."
+                        placeholder="Rechercher des produits..."
                         autocomplete="off"
-                        aria-label="Search products">
+                        aria-label="Rechercher">
 
                     <input
                         type="hidden"
@@ -58,7 +58,7 @@
                     <button
                         type="submit"
                         class="secondary-search__submit">
-                        Search
+                        Rechercher
                     </button>
 
                 </form>
@@ -72,7 +72,7 @@
 
 
             <!-- MOBILE SEARCH BUTTON -->
-            <button class="secondary-header__mobile-search-button" type="button" aria-label="Open search"
+            <button class="secondary-header__mobile-search-button" type="button" aria-label="Ouvrir la recherche"
                 aria-expanded="false">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <circle cx="11" cy="11" r="7" stroke-width="2" />
@@ -82,7 +82,7 @@
             </button>
 
 
-            <button class="secondary-header__theme-toggle" type="button" aria-label="Toggle dark mode">
+            <button class="secondary-header__theme-toggle" type="button" aria-label="Changer le thème">
                 <svg class="secondary-header__moon-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M20.5 15.4A8.5 8.5 0 0 1 8.6 3.5 9 9 0 1 0 20.5 15.4Z" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
@@ -117,9 +117,9 @@
                     type="search"
                     name="s"
                     class="secondary-search__input"
-                    placeholder="Search products..."
+                    placeholder="Rechercher des produits..."
                     autocomplete="off"
-                    aria-label="Search products">
+                    aria-label="Rechercher">
 
                 <input
                     type="hidden"
@@ -129,7 +129,7 @@
                 <button
                     type="submit"
                     class="secondary-search__submit">
-                    Search
+                    Rechercher
                 </button>
 
             </form>

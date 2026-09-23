@@ -20,7 +20,7 @@ if (is_tax('product_brand')) {
             <div class="featured-products__header">
 
                 <span class="featured-products__eyebrow">
-                    Browse Our Store
+                    Parcourir notre boutique
                 </span>
 
                 <h2>
@@ -32,23 +32,23 @@ if (is_tax('product_brand')) {
                             ? sanitize_text_field(wp_unslash($_GET['s']))
                             : '';
 
-                        echo esc_html('"' . $search_keyword . '" Products');
+                        echo esc_html('Produits "' . $search_keyword . '"');
                     } elseif (is_tax('product_brand')) {
 
                         $brand = get_queried_object();
 
-                        echo esc_html($brand->name . ' Products');
+                        echo esc_html('Produits ' . $brand->name);
                     } else {
 
-                        echo 'All Products';
+                        echo 'Tous les produits';
                     }
 
                     ?>
                 </h2>
 
                 <p>
-                    Explore our available smartphones and devices
-                    from different brands and categories.
+                    Découvrez nos smartphones et appareils disponibles
+                    de différentes marques et catégories.
                 </p>
 
             </div>
@@ -97,7 +97,7 @@ if (is_tax('product_brand')) {
                             <a href="<?php echo esc_url($product_url); ?>" class="product-card__image">
 
                                 <span class="product-card__badge <?php echo $listing_product->is_in_stock() ? '' : 'product-card__badge--out'; ?>">
-                                    <?php echo $listing_product->is_in_stock() ? 'Available' : 'Out of Stock'; ?>
+                                    <?php echo $listing_product->is_in_stock() ? 'Disponible' : 'Rupture de stock'; ?>
                                 </span>
 
                                 <?php if ($product_image) { ?>
@@ -138,7 +138,7 @@ if (is_tax('product_brand')) {
 
                                     <div class="product-card__price">
 
-                                        <span>Price</span>
+                                        <span>Prix</span>
 
                                         <strong>
                                             <?php
@@ -186,7 +186,7 @@ if (is_tax('product_brand')) {
                                         href="<?php echo esc_url($product_url); ?>"
                                         class="product-card__button"
                                         aria-label="<?php echo esc_attr(
-                                                        'View ' . $listing_product->get_name()
+                                                        'Voir ' . $listing_product->get_name()
                                                     ); ?>">
 
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -257,7 +257,7 @@ if (is_tax('product_brand')) {
 
                     <nav
                         class="products-pagination"
-                        aria-label="Products pagination">
+                        aria-label="Pagination des produits">
 
                         <?php
 

@@ -1,5 +1,6 @@
 <footer class="site-footer">
     <?php
+
     $store_phone     = get_option('hamid_store_phone');
     $store_email     = get_option('hamid_store_email');
     $store_location  = get_option('hamid_store_location');
@@ -8,6 +9,13 @@
     $store_instagram = get_option('hamid_store_instagram');
     $store_whatsapp  = get_option('hamid_store_whatsapp');
     $store_tiktok    = get_option('hamid_store_tiktok');
+
+    $display_phone = preg_replace(
+        '/^212(\d{3})(\d{3})(\d{3})$/',
+        '+212 $1 $2 $3',
+        preg_replace('/\D+/', '', $store_phone)
+    );
+
     ?>
 
     <div class="footer-main">
@@ -17,12 +25,12 @@
             <div class="footer-brand">
 
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="footer-logo">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Phone Store Logo">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Logo Hamid Phones">
                 </a>
 
                 <p>
-                    Discover the latest smartphones, accessories and trusted
-                    brands with a simple and premium shopping experience.
+                    Découvrez les derniers smartphones, accessoires et marques de confiance
+                    avec une expérience d'achat simple et premium.
                 </p>
 
                 <div class="footer-socials">
@@ -142,13 +150,13 @@
             <!-- Quick Links -->
             <div class="footer-column">
 
-                <h3>Quick Links</h3>
+                <h3>Liens rapides</h3>
 
                 <nav>
-                    <a href="<?php echo esc_url(home_url('/#home')); ?>">Home</a>
-                    <a href="<?php echo esc_url(home_url('/#brands')); ?>">Brands</a>
-                    <a href="<?php echo esc_url(home_url('/#products')); ?>">Products</a>
-                    <a href="<?php echo esc_url(home_url('/#about')); ?>">About</a>
+                    <a href="<?php echo esc_url(home_url('/#home')); ?>">Accueil</a>
+                    <a href="<?php echo esc_url(home_url('/#brands')); ?>">Marques</a>
+                    <a href="<?php echo esc_url(home_url('/#products')); ?>">Produits</a>
+                    <a href="<?php echo esc_url(home_url('/#about')); ?>">À propos</a>
                     <a href="<?php echo esc_url(home_url('/#contact')); ?>">Contact</a>
                 </nav>
 
@@ -158,7 +166,7 @@
             <!-- Brands -->
             <div class="footer-column">
 
-                <h3>Brands</h3>
+                <h3>Marques</h3>
 
                 <nav>
 
@@ -204,8 +212,7 @@
 
                 <?php if ($store_phone) { ?>
 
-                    <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $store_phone)); ?>"
-                        class="contact-item">
+                    <div class="contact-item">
 
                         <span class="contact-icon">
                             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -218,20 +225,36 @@
                             </svg>
                         </span>
 
-                        <span>
-                            <small>Phone</small>
-                            <?php echo esc_html($store_phone); ?>
+                        <span class="footer-contact-text">
+                            <small>Téléphone</small>
+                            <span><?php echo esc_html($display_phone); ?></span>
                         </span>
 
-                    </a>
+                        <button
+                            type="button"
+                            class="footer-copy-button contact-copy-button"
+                            data-copy="<?php echo esc_attr($display_phone); ?>"
+                            aria-label="Copier le numéro de téléphone">
+
+                            <svg class="contact-copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="9" y="9" width="10" height="10" rx="2" stroke-width="2" />
+                                <path d="M15 9V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" stroke-width="2" />
+                            </svg>
+
+                            <svg class="contact-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12l4 4L19 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+                        </button>
+
+                    </div>
 
                 <?php } ?>
 
 
                 <?php if ($store_email) { ?>
 
-                    <a href="mailto:<?php echo esc_attr($store_email); ?>"
-                        class="contact-item">
+                    <div class="contact-item">
 
                         <span class="contact-icon">
                             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -254,12 +277,29 @@
                             </svg>
                         </span>
 
-                        <span>
-                            <small>Email</small>
-                            <?php echo esc_html($store_email); ?>
+                        <span class="footer-contact-text">
+                            <small>E-mail</small>
+                            <span><?php echo esc_html($store_email); ?></span>
                         </span>
 
-                    </a>
+                        <button
+                            type="button"
+                            class="footer-copy-button contact-copy-button"
+                            data-copy="<?php echo esc_attr($store_email); ?>"
+                            aria-label="Copier l'adresse e-mail">
+
+                            <svg class="contact-copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="9" y="9" width="10" height="10" rx="2" stroke-width="2" />
+                                <path d="M15 9V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" stroke-width="2" />
+                            </svg>
+
+                            <svg class="contact-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12l4 4L19 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+                        </button>
+
+                    </div>
 
                 <?php } ?>
 
@@ -287,7 +327,7 @@
                         </span>
 
                         <span>
-                            <small>Location</small>
+                            <small>Localisation</small>
                             <?php echo esc_html($store_location); ?>
                         </span>
 
@@ -308,7 +348,7 @@
 
             <p>
                 © <?php echo esc_html(date('Y')); ?> <?php echo esc_html(get_bloginfo('name')); ?>.
-                All rights reserved.
+                Tous droits réservés.
             </p>
 
             <div class="footer-bottom-links">
@@ -320,7 +360,7 @@
                 ?>
 
                     <a href="<?php echo esc_url(get_permalink($privacy_page->ID)); ?>">
-                        Privacy Policy
+                        Politique de confidentialité
                     </a>
 
                 <?php
@@ -335,7 +375,7 @@
                 ?>
 
                     <a href="<?php echo esc_url(get_permalink($terms_page->ID)); ?>">
-                        Terms & Conditions
+                        Conditions générales
                     </a>
 
                 <?php
@@ -352,7 +392,7 @@
 
 <div class="developer-credit">
     <span>
-        Created by
+        Créé par
         <a href="https://www.instagram.com/mouad_aiche/" target="_blank" rel="noopener noreferrer">
             Mouad
         </a>

@@ -52,7 +52,7 @@
                                 class="single-product-badge <?php echo $is_in_stock ? '' : 'single-product-badge--out'; ?>"
                                 id="singleProductStock">
 
-                                <?php echo $is_in_stock ? 'In Stock' : 'Out of Stock'; ?>
+                                <?php echo $is_in_stock ? 'En stock' : 'Rupture de stock'; ?>
 
                             </span>
 
@@ -60,9 +60,10 @@
                         }
                         ?>
 
+
                         <!-- Previous Image -->
                         <button class="single-product-main-arrow single-product-main-arrow--prev" type="button"
-                            aria-label="Previous image" id="singleProductPrev">
+                            aria-label="Image précédente" id="singleProductPrev">
 
                             &#10094;
 
@@ -74,7 +75,7 @@
 
                         <!-- Next Image -->
                         <button class="single-product-main-arrow single-product-main-arrow--next" type="button"
-                            aria-label="Next image" id="singleProductNext">
+                            aria-label="Image suivante" id="singleProductNext">
 
                             &#10095;
 
@@ -91,7 +92,7 @@
 
                         <!-- Scroll Left -->
                         <button class="single-product-thumbnail-arrow single-product-thumbnail-arrow--prev"
-                            type="button" aria-label="Scroll thumbnails left" id="thumbnailPrev">
+                            type="button" aria-label="Faire défiler les miniatures vers la gauche" id="thumbnailPrev">
 
                             &#10094;
 
@@ -135,7 +136,7 @@
 
                                         <img
                                             src="<?php echo esc_url($thumbnail_image); ?>"
-                                            alt="<?php echo esc_attr(get_the_title() . ' view ' . ($index + 1)); ?>">
+                                            alt="<?php echo esc_attr(get_the_title() . ' vue ' . ($index + 1)); ?>">
 
                                     </button>
 
@@ -150,7 +151,7 @@
                         <!-- Scroll Right -->
 
                         <button class="single-product-thumbnail-arrow single-product-thumbnail-arrow--next"
-                            type="button" aria-label="Scroll thumbnails right" id="thumbnailNext">
+                            type="button" aria-label="Faire défiler les miniatures vers la droite" id="thumbnailNext">
 
                             &#10095;
 
@@ -213,7 +214,7 @@
                 <div class="single-product-price">
 
                     <span class="single-product-price__label">
-                        Price
+                        Prix
                     </span>
 
                     <strong class="single-product-price__value" id="singleProductPrice">
@@ -287,11 +288,11 @@
                         <div class="single-product-option__header">
 
                             <span class="single-product-option__title">
-                                Color
+                                Couleur
                             </span>
 
                             <span class="single-product-option__selected" id="selectedColor">
-                                Select
+                                Sélectionner
                             </span>
 
                         </div>
@@ -301,7 +302,7 @@
 
                             <button
                                 class="single-product-variant-scroll__arrow single-product-variant-scroll__arrow--previous"
-                                type="button" aria-label="Previous colors">
+                                type="button" aria-label="Couleurs précédentes">
 
                                 <svg viewBox="0 0 24 24">
                                     <path d="m15 18-6-6 6-6"
@@ -317,7 +318,7 @@
 
                             <div class="single-product-colors single-product-variant-scroll__track"
                                 role="radiogroup"
-                                aria-label="Choose color">
+                                aria-label="Choisir une couleur">
 
                                 <?php
                                 foreach ($color_terms as $index => $color_term) {
@@ -353,7 +354,7 @@
 
                             <button
                                 class="single-product-variant-scroll__arrow single-product-variant-scroll__arrow--next"
-                                type="button" aria-label="Next colors">
+                                type="button" aria-label="Couleurs suivantes">
 
                                 <svg viewBox="0 0 24 24">
                                     <path d="m9 18 6-6-6-6"
@@ -400,11 +401,11 @@
                         <div class="single-product-option__header">
 
                             <span class="single-product-option__title">
-                                Storage
+                                Stockage
                             </span>
 
                             <span class="single-product-option__selected" id="selectedStorage">
-                                Select
+                                Sélectionner
                             </span>
 
                         </div>
@@ -415,7 +416,7 @@
                             <button
                                 class="single-product-variant-scroll__arrow single-product-variant-scroll__arrow--previous"
                                 type="button"
-                                aria-label="Previous storage options">
+                                aria-label="Options de stockage précédentes">
 
                                 <svg viewBox="0 0 24 24">
                                     <path d="m15 18-6-6 6-6"
@@ -450,7 +451,7 @@
                             <button
                                 class="single-product-variant-scroll__arrow single-product-variant-scroll__arrow--next"
                                 type="button"
-                                aria-label="Next storage options">
+                                aria-label="Options de stockage suivantes">
 
                                 <svg viewBox="0 0 24 24">
                                     <path d="m9 18 6-6-6-6"
@@ -481,7 +482,7 @@
                     <div class="single-product-specifications__header">
 
                         <span>
-                            Main Specifications
+                            Caractéristiques principales
                         </span>
 
                     </div>
@@ -554,7 +555,7 @@
                     $product_name = get_the_title();
 
                     $whatsapp_message =
-                        'Hello, I am interested in ' . $product_name;
+                        'Bonjour, je suis intéressé par ' . $product_name;
 
                     $is_in_stock = $wc_product && $wc_product->is_in_stock();
 
@@ -569,7 +570,7 @@
                             target="_blank"
                             rel="noopener noreferrer">
 
-                            Contact Us About This Product
+                            Nous contacter à propos de ce produit
 
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path
@@ -586,7 +587,7 @@
                             id="singleProductVariationOutOfStock"
                             style="display: none;">
 
-                            Out of Stock
+                            Rupture de stock
 
                         </span>
 
@@ -596,7 +597,7 @@
                             class="single-product-contact-out-of-stock"
                             id="singleProductContactButton">
 
-                            Out of Stock
+                            Rupture de stock
 
                         </span>
 
@@ -620,15 +621,15 @@
             <div class="single-product-more__heading">
 
                 <span>
-                    Product Details
+                    Détails du produit
                 </span>
 
                 <h2>
-                    More About <?php the_title(); ?>
+                    En savoir plus sur <?php the_title(); ?>
                 </h2>
 
                 <p>
-                    Everything you need to know.
+                    Tout ce que vous devez savoir.
                 </p>
 
             </div>
@@ -727,13 +728,13 @@
             <div class="featured-products__header">
 
                 <span class="featured-products__eyebrow">
-                    You May Also Like
+                    Vous aimerez peut-être aussi
                 </span>
 
-                <h2>Related Products</h2>
+                <h2>Produits similaires</h2>
 
                 <p>
-                    Discover other products you may be interested in.
+                    Découvrez d'autres produits susceptibles de vous intéresser.
                 </p>
 
             </div>
@@ -774,7 +775,7 @@
                         <a href="<?php echo esc_url($product_url); ?>" class="product-card__image">
 
                             <span class="product-card__badge">
-                                Related
+                                Similaire
                             </span>
 
                             <?php if ($product_image) { ?>
@@ -814,7 +815,7 @@
                                 <div class="product-card__price">
 
                                     <span>
-                                        Price
+                                        Prix
                                     </span>
 
                                     <strong>
@@ -862,7 +863,7 @@
                                 <a
                                     href="<?php echo esc_url($product_url); ?>"
                                     class="product-card__button"
-                                    aria-label="<?php echo esc_attr('View ' . $related_product->get_name()); ?>">
+                                    aria-label="<?php echo esc_attr('Voir ' . $related_product->get_name()); ?>">
 
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                         <path
@@ -890,7 +891,7 @@
                 <a href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>"
                     class="featured-products__button">
 
-                    See All Products
+                    Voir tous les produits
 
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

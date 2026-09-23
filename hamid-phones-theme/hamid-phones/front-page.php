@@ -11,24 +11,24 @@
 
         <div class="hero__content">
 
-            <img class="hero__logo" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Phone Store Logo">
+            <img class="hero__logo" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Logo Hamid Phones">
 
             <h1>
-                Smart Phones For A Brighter Tomorrow
+                Des smartphones pour un avenir plus connecté
             </h1>
 
             <p>
-                Latest devices
+                Derniers modèles
                 <span>•</span>
-                Trusted brands
+                Marques de confiance
                 <span>•</span>
-                Better experiences
+                Meilleure expérience
             </p>
 
             <div class="hero__actions">
 
                 <a href="<?php echo esc_url(home_url('/#products')); ?>" class="hero__button hero__button--primary">
-                    See Products
+                    Voir les produits
 
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
@@ -37,7 +37,7 @@
                 </a>
 
                 <a href="<?php echo esc_url(home_url('/#brands')); ?>" class="hero__button hero__button--secondary">
-                    See Brands
+                    Voir les marques
 
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
@@ -61,16 +61,16 @@
             <div class="brands-header">
 
                 <span class="brands-eyebrow">
-                    Top Brands
+                    Grandes marques
                 </span>
 
                 <h2>
-                    Shop By Brand
+                    Acheter par marque
                 </h2>
 
                 <p>
-                    Discover products from some of the most trusted and popular
-                    technology brands.
+                    Découvrez les produits de certaines des marques technologiques
+                    les plus fiables et les plus populaires.
                 </p>
 
             </div>
@@ -138,7 +138,7 @@
                                 </strong>
 
                                 <span>
-                                    Explore Products
+                                    Découvrir les produits
                                 </span>
 
                             </div>
@@ -181,14 +181,14 @@
             <div class="featured-products__header">
 
                 <span class="featured-products__eyebrow">
-                    Our Selection
+                    Notre sélection
                 </span>
 
-                <h2>Featured Products</h2>
+                <h2>Produits en vedette</h2>
 
                 <p>
-                    Discover some of our selected smartphones and devices
-                    from leading brands.
+                    Découvrez une sélection de nos smartphones et appareils
+                    des plus grandes marques.
                 </p>
 
             </div>
@@ -262,8 +262,8 @@
 
                                     <?php
                                     echo $featured_product->is_in_stock()
-                                        ? 'Featured'
-                                        : 'Out of Stock';
+                                        ? 'Disponible'
+                                        : 'Rupture de stock';
                                     ?>
 
                                 </span>
@@ -310,7 +310,7 @@
 
                                     <div class="product-card__price">
 
-                                        <span>Price</span>
+                                        <span>Prix</span>
 
                                         <strong>
 
@@ -366,7 +366,7 @@
                                         href="<?php echo esc_url($product_url); ?>"
                                         class="product-card__button"
                                         aria-label="<?php echo esc_attr(
-                                                        'View ' . $featured_product->get_name()
+                                                        'Voir ' . $featured_product->get_name()
                                                     ); ?>">
 
                                         <svg viewBox="0 0 24 24"
@@ -405,7 +405,7 @@
 
                 <a href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>"
                     class="featured-products__button">
-                    See All Products
+                    Voir tous les produits
 
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -430,24 +430,24 @@
 
                 <!-- TEXT -->
                 <div class="about-text">
-                    <span class="about-eyebrow">About Us</span>
+                    <span class="about-eyebrow">À propos de nous</span>
 
                     <h2>
-                        Technology You Can
-                        <span>Trust</span>
+                        Une technologie en laquelle vous pouvez
+                        <span>avoir confiance</span>
                     </h2>
 
                     <p class="about-description">
-                        We specialize in modern smartphones, accessories, and trusted
-                        mobile brands. Our goal is to make it easier for every customer
-                        to find the right device with clear information, competitive
-                        prices, and reliable service.
+                        Nous sommes spécialisés dans les smartphones modernes, les accessoires
+                        et les marques mobiles de confiance. Notre objectif est de permettre à
+                        chaque client de trouver plus facilement l'appareil qui lui convient,
+                        avec des informations claires, des prix compétitifs et un service fiable.
                     </p>
 
                     <p class="about-description">
-                        From the latest releases to practical everyday devices, we focus
-                        on quality products and a simple buying experience you can feel
-                        confident about.
+                        Des dernières nouveautés aux appareils pratiques du quotidien, nous
+                        privilégions des produits de qualité et une expérience d'achat simple
+                        qui vous inspire confiance.
                     </p>
                 </div>
 
@@ -457,14 +457,14 @@
 
                     <div class="about-image-wrapper">
 
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bg-image.png" alt="Inside our mobile phone store"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/image.webp" alt="Intérieur de notre magasin de téléphones"
                             class="about-image">
 
                         <div class="about-image-overlay"></div>
 
                         <div class="about-badge">
                             <span class="about-badge-number">100%</span>
-                            <span class="about-badge-text">Trusted Service</span>
+                            <span class="about-badge-text">Service de confiance</span>
                         </div>
 
                     </div>
@@ -488,10 +488,10 @@
                             </div>
 
                             <div class="about-feature-content">
-                                <strong>Trusted Products</strong>
+                                <strong>Produits de confiance</strong>
 
                                 <span>
-                                    Carefully selected devices from reliable brands.
+                                    Des appareils soigneusement sélectionnés parmi des marques fiables.
                                 </span>
                             </div>
 
@@ -504,7 +504,7 @@
                             <div class="about-feature-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 2 3 7v5c0 5.5 3.8 9.8 9 10
-                                    5.2-.2 9-4.5 9-10V7l-9-5z" />
+                                5.2-.2 9-4.5 9-10V7l-9-5z" />
 
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
                                         d="m9 12 2 2 4-4" />
@@ -512,10 +512,10 @@
                             </div>
 
                             <div class="about-feature-content">
-                                <strong>Reliable Service</strong>
+                                <strong>Service fiable</strong>
 
                                 <span>
-                                    Clear support before and after your purchase.
+                                    Un accompagnement clair avant et après votre achat.
                                 </span>
                             </div>
 
@@ -533,10 +533,10 @@
                             </div>
 
                             <div class="about-feature-content">
-                                <strong>Latest Technology</strong>
+                                <strong>Dernières technologies</strong>
 
                                 <span>
-                                    Modern smartphones, accessories, and new releases.
+                                    Smartphones modernes, accessoires et dernières nouveautés.
                                 </span>
                             </div>
 
@@ -549,7 +549,7 @@
                             <div class="about-feature-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 21a9 9 0 1 0 0-18
-                                    9 9 0 0 0 0 18z" />
+                                9 9 0 0 0 0 18z" />
 
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
                                         d="M8 12h8M12 8v8" />
@@ -557,10 +557,10 @@
                             </div>
 
                             <div class="about-feature-content">
-                                <strong>Simple Experience</strong>
+                                <strong>Expérience simple</strong>
 
                                 <span>
-                                    Easy product discovery with straightforward details.
+                                    Trouvez facilement vos produits grâce à des informations claires.
                                 </span>
                             </div>
 
@@ -572,7 +572,7 @@
                     <!-- BUTTON -->
                     <a href="<?php echo esc_url(home_url('/#products')); ?>" class="about-button">
 
-                        Explore Products
+                        Découvrir les produits
 
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -591,13 +591,13 @@
 
                 <div class="about-image-wrapper">
 
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bg-image.png" alt="Inside our mobile phone store" class="about-image">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/image.webp" alt="Intérieur de notre magasin de téléphones" class="about-image">
 
                     <div class="about-image-overlay"></div>
 
                     <div class="about-badge">
                         <span class="about-badge-number">100%</span>
-                        <span class="about-badge-text">Trusted Service</span>
+                        <span class="about-badge-text">Service de confiance</span>
                     </div>
 
                 </div>
@@ -608,154 +608,278 @@
     </section>
 
     <?php
-    $store_phone    = get_option('hamid_store_phone');
-    $store_whatsapp = get_option('hamid_store_whatsapp');
-    $store_email    = get_option('hamid_store_email');
-    $store_location = get_option('hamid_store_location');
+
+    $store_phone      = get_option('hamid_store_phone');
+    $store_whatsapp   = get_option('hamid_store_whatsapp');
+    $store_email      = get_option('hamid_store_email');
+    $store_location   = get_option('hamid_store_location');
     $store_maps_embed = get_option('hamid_store_maps_embed');
-    $store_maps_link = get_option('hamid_store_maps_link');
+    $store_maps_link  = get_option('hamid_store_maps_link');
 
     $whatsapp_number = preg_replace('/\D+/', '', $store_whatsapp);
+
     ?>
+
     <section class="contact-section" id="contact">
+
         <div class="contact-container">
 
             <div class="contact-header">
-                <span class="contact-eyebrow">Get In Touch</span>
 
-                <h2>Contact Us</h2>
+                <span class="contact-eyebrow">Contactez-nous</span>
+
+                <h2>Nous contacter</h2>
 
                 <p>
-                    Have a question about a product, availability, or pricing?
-                    Reach out to us and we’ll be happy to help.
+                    Vous avez une question sur un produit, sa disponibilité ou son prix ?
+                    Contactez-nous, nous serons heureux de vous aider.
                 </p>
+
             </div>
 
             <div class="contact-grid">
 
                 <!-- MAP -->
+
                 <div class="contact-map-wrapper">
 
                     <div class="contact-map">
+
                         <iframe
                             src="<?php echo esc_url($store_maps_embed); ?>"
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"
-                            title="Store location">
+                            title="Localisation du magasin">
+
                         </iframe>
+
                     </div>
 
                     <a href="<?php echo esc_url($store_maps_link); ?>"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="contact-map-button">
-                        Open In Google Maps
+
+                        Ouvrir dans Google Maps
 
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M5 12h14M13 6l6 6-6 6" />
+
                         </svg>
+
                     </a>
 
                 </div>
 
 
                 <!-- CONTACT INFO -->
+
                 <div class="contact-info">
 
                     <!-- PHONE -->
-                    <a href="tel:<?php echo esc_attr($store_phone); ?>" class="contact-card">
 
-                        <div class="contact-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M22 16.92v3a2 2 0 0 1-2.18 2
-                                19.79 19.79 0 0 1-8.63-3.07
-                                19.5 19.5 0 0 1-6-6
-                                19.79 19.79 0 0 1-3.07-8.67
-                                A2 2 0 0 1 4.11 2h3
-                                a2 2 0 0 1 2 1.72
-                                12.84 12.84 0 0 0 .7 2.81
-                                2 2 0 0 1-.45 2.11
-                                L8.09 9.91a16 16 0 0 0 6 6
-                                l1.27-1.27a2 2 0 0 1 2.11-.45
-                                12.84 12.84 0 0 0 2.81.7
-                                A2 2 0 0 1 22 16.92z" />
-                            </svg>
-                        </div>
-
-                        <div class="contact-card-content">
-                            <span>Phone</span>
-                            <strong><?php echo esc_html($store_phone); ?></strong>
-                        </div>
-
-                    </a>
-
-
-                    <!-- WHATSAPP -->
-                    <a href="<?php echo esc_url('https://wa.me/' . $whatsapp_number); ?>"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="contact-card">
-
-                        <div class="contact-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 11.5a8.38 8.38 0 0 1-.9 3.8
-                                8.5 8.5 0 0 1-7.6 4.7
-                                8.38 8.38 0 0 1-3.8-.9
-                                L3 21l1.9-5.7
-                                a8.38 8.38 0 0 1-.9-3.8
-                                8.5 8.5 0 0 1 4.7-7.6
-                                8.38 8.38 0 0 1 3.8-.9h.5
-                                a8.48 8.48 0 0 1 8 8z" />
-                            </svg>
-                        </div>
-
-                        <div class="contact-card-content">
-                            <span>WhatsApp</span>
-                            <strong>Chat With Us</strong>
-                        </div>
-
-                    </a>
-
-
-                    <!-- EMAIL -->
-                    <a href="mailto:<?php echo esc_attr($store_email); ?>" class="contact-card">
-
-                        <div class="contact-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 4h16c1.1 0 2 .9 2 2v12
-                                c0 1.1-.9 2-2 2H4
-                                c-1.1 0-2-.9-2-2V6
-                                c0-1.1.9-2 2-2z" />
-
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
-                                    d="m22 6-10 7L2 6" />
-                            </svg>
-                        </div>
-
-                        <div class="contact-card-content">
-                            <span>Email</span>
-                            <strong><?php echo esc_html($store_email); ?></strong>
-                        </div>
-
-                    </a>
-
-
-                    <!-- LOCATION -->
                     <div class="contact-card">
 
                         <div class="contact-card-icon">
+
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M22 16.92v3a2 2 0 0 1-2.18 2
+            19.79 19.79 0 0 1-8.63-3.07
+            19.5 19.5 0 0 1-6-6
+            19.79 19.79 0 0 1-3.07-8.67
+            A2 2 0 0 1 4.11 2h3
+            a2 2 0 0 1 2 1.72
+            12.84 12.84 0 0 0 .7 2.81
+            2 2 0 0 1-.45 2.11
+            L8.09 9.91a16 16 0 0 0 6 6
+            l1.27-1.27a2 2 0 0 1 2.11-.45
+            12.84 12.84 0 0 0 2.81.7
+            A2 2 0 0 1 22 16.92z" />
+
+                            </svg>
+
+                        </div>
+
+                        <div class="contact-card-content">
+
+                            <span>Téléphone</span>
+
+                            <strong>
+
+                                <?php
+
+                                $display_phone = preg_replace(
+                                    '/^212(\d{3})(\d{3})(\d{3})$/',
+                                    '+212 $1 $2 $3',
+                                    preg_replace('/\D+/', '', $store_phone)
+                                );
+
+                                echo esc_html($display_phone);
+
+                                ?>
+
+                            </strong>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="contact-card-action contact-copy-button"
+                            data-copy="<?php echo esc_attr($display_phone); ?>"
+                            aria-label="Copier le numéro de téléphone">
+
+                            <svg class="contact-copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+
+                                <rect x="9" y="9" width="11" height="11" rx="2" stroke-width="2" />
+
+                                <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+
+                            </svg>
+
+                            <svg class="contact-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+
+                                <path d="M5 12l4 4L19 6"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- WHATSAPP -->
+
+                    <div class="contact-card">
+
+                        <div class="contact-card-icon">
+
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 11.5a8.38 8.38 0 0 1-.9 3.8
+            8.5 8.5 0 0 1-7.6 4.7
+            8.38 8.38 0 0 1-3.8-.9
+            L3 21l1.9-5.7
+            a8.38 8.38 0 0 1-.9-3.8
+            8.5 8.5 0 0 1 4.7-7.6
+            8.38 8.38 0 0 1 3.8-.9h.5
+            a8.48 8.48 0 0 1 8 8z" />
+
+                            </svg>
+
+                        </div>
+
+                        <div class="contact-card-content">
+
+                            <span>WhatsApp</span>
+
+                            <strong>Discutez avec nous</strong>
+
+                        </div>
+
+                        <a
+                            href="<?php echo esc_url('https://wa.me/' . $whatsapp_number); ?>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="contact-card-action">
+
+                            Nous contacter
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="contact-card">
+
+                        <div class="contact-card-icon">
+
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 4h16c1.1 0 2 .9 2 2v12
+            c0 1.1-.9 2-2 2H4
+            c-1.1 0-2-.9-2-2V6
+            c0-1.1.9-2 2-2z" />
+
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                                    d="m22 6-10 7L2 6" />
+
+                            </svg>
+
+                        </div>
+
+                        <div class="contact-card-content">
+
+                            <span>E-mail</span>
+
+                            <strong><?php echo esc_html($store_email); ?></strong>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="contact-card-action contact-copy-button"
+                            data-copy="<?php echo esc_attr($store_email); ?>"
+                            aria-label="Copier l'adresse e-mail">
+
+                            <svg class="contact-copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+
+                                <rect x="9" y="9" width="11" height="11" rx="2" stroke-width="2" />
+
+                                <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+
+                            </svg>
+
+                            <svg class="contact-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+
+                                <path d="M5 12l4 4L19 6"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="contact-card">
+
+                        <div class="contact-card-icon">
+
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 10c0 7-9 12-9 12S3 17 3 10
                                 a9 9 0 1 1 18 0z" />
 
                                 <circle cx="12" cy="10" r="3" stroke-width="1.8" />
+
                             </svg>
+
                         </div>
 
                         <div class="contact-card-content">
-                            <span>Location</span>
+
+                            <span>Localisation</span>
+
                             <strong><?php echo esc_html($store_location); ?></strong>
+
                         </div>
 
                     </div>
@@ -763,7 +887,9 @@
                 </div>
 
             </div>
+
         </div>
+
     </section>
 
 </main>
