@@ -52,7 +52,7 @@
                                 class="single-product-badge <?php echo $is_in_stock ? '' : 'single-product-badge--out'; ?>"
                                 id="singleProductStock">
 
-                                <?php echo $is_in_stock ? 'En stock' : 'Rupture de stock'; ?>
+                                <?php echo $is_in_stock ? 'Disponible' : 'Rupture de stock'; ?>
 
                             </span>
 
@@ -122,7 +122,7 @@
                                 foreach ($image_ids as $index => $image_id) {
 
                                     $full_image = wp_get_attachment_image_url($image_id, 'full');
-                                    $thumbnail_image = wp_get_attachment_image_url($image_id, 'woocommerce_thumbnail');
+                                    $thumbnail_image = wp_get_attachment_image_url($image_id, 'medium');
 
                                     if (!$full_image || !$thumbnail_image) {
                                         continue;
@@ -754,7 +754,7 @@
 
                     $product_image = get_the_post_thumbnail_url(
                         $related_product_id,
-                        'woocommerce_thumbnail'
+                        'large'
                     );
 
                     $brands = wp_get_post_terms(
@@ -780,10 +780,18 @@
 
                             <?php if ($product_image) { ?>
 
-                                <img
-                                    src="<?php echo esc_url($product_image); ?>"
-                                    alt="<?php echo esc_attr($related_product->get_name()); ?>"
-                                    loading="lazy">
+                                <?php
+                                echo wp_get_attachment_image(
+                                    get_post_thumbnail_id($related_product_id),
+                                    'large',
+                                    false,
+                                    array(
+                                        'alt'     => $related_product->get_name(),
+                                        'loading' => 'lazy',
+                                        'sizes'   => '(max-width: 600px) 50vw, (max-width: 1200px) 33vw, 25vw',
+                                    )
+                                );
+                                ?>
 
                             <?php } ?>
 
@@ -907,6 +915,76 @@
     </section>
 
     <!-- #endregion -->
+
+    <!-- CUSTOM PRODUCT ALERT -->
+    <div class="product-alert" id="productAlert" aria-hidden="true">
+
+        <div
+            class="product-alert__box"
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="productAlertTitle">
+
+            <button
+                class="product-alert__close"
+                id="productAlertClose"
+                type="button"
+                aria-label="Fermer">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                        d="M6 6L18 18M18 6L6 18"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round" />
+                </svg>
+
+            </button>
+
+
+            <div class="product-alert__main">
+
+                <div class="product-alert__icon">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M7 8V6a5 5 0 0 1 10 0v2M5 8h14l-1 12H6L5 8Z"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+
+                </div>
+
+
+                <div class="product-alert__content">
+
+                    <strong id="productAlertTitle">
+                        Sélection requise
+                    </strong>
+
+                    <p id="productAlertMessage"></p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="product-alert__confirm"
+                id="productAlertConfirm"
+                type="button">
+
+                OK
+
+            </button>
+
+        </div>
+
+    </div>
 
 </main>
 

@@ -46,11 +46,6 @@ if (is_tax('product_brand')) {
                     ?>
                 </h2>
 
-                <p>
-                    Découvrez nos smartphones et appareils disponibles
-                    de différentes marques et catégories.
-                </p>
-
             </div>
 
 
@@ -102,10 +97,18 @@ if (is_tax('product_brand')) {
 
                                 <?php if ($product_image) { ?>
 
-                                    <img
-                                        src="<?php echo esc_url($product_image); ?>"
-                                        alt="<?php echo esc_attr($listing_product->get_name()); ?>"
-                                        loading="lazy">
+                                    <?php
+                                    echo wp_get_attachment_image(
+                                        get_post_thumbnail_id(),
+                                        'large',
+                                        false,
+                                        array(
+                                            'alt'     => $listing_product->get_name(),
+                                            'loading' => 'lazy',
+                                            'sizes'   => '(max-width: 600px) 50vw, (max-width: 1200px) 33vw, 25vw',
+                                        )
+                                    );
+                                    ?>
 
                                 <?php } ?>
 

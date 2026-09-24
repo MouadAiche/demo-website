@@ -1199,3 +1199,151 @@ add_action(
     'hamid_save_storage_prices',
     20
 );
+
+
+/* =========================================================
+   PRODUCT IMAGE — LARGE IMAGE PROTECTION
+========================================================= */
+
+/**
+ * Scale oversized uploaded images to a maximum
+ * dimension of 2000px.
+ *
+ * WordPress preserves the original aspect ratio.
+ *
+ * Examples:
+ * 4000x4000 -> 2000x2000
+ * 3000x3000 -> 2000x2000
+ * 1600x1600 -> unchanged
+ */
+function hamid_big_image_size_threshold($threshold)
+{
+    return 2000;
+}
+
+add_filter(
+    'big_image_size_threshold',
+    'hamid_big_image_size_threshold'
+);
+
+/* =========================================================
+   PRODUCT IMAGE — COMPRESSION QUALITY
+========================================================= */
+
+/**
+ * Use a good balance between image quality
+ * and file size for generated images.
+ */
+function hamid_image_quality($quality, $mime_type)
+{
+    if ($mime_type === 'image/jpeg') {
+        return 82;
+    }
+
+    if ($mime_type === 'image/webp') {
+        return 82;
+    }
+
+    return $quality;
+}
+
+add_filter(
+    'wp_editor_set_quality',
+    'hamid_image_quality',
+    10,
+    2
+);
+
+/* =========================================================
+   PRODUCT IMAGE — REMOVE UNUSED IMAGE SIZES
+========================================================= */
+
+/**
+ * Keep only the image sizes used by the theme:
+ *
+ * medium       -> 300px
+ * medium_large -> 768px
+ * large        -> 1024px
+ *
+ * The main scaled image remains up to 2000px.
+ */
+function hamid_limit_generated_image_sizes($sizes)
+{
+    $allowed_sizes = array(
+        'medium',
+        'medium_large',
+        'large',
+    );
+
+    foreach ($sizes as $size_name => $size_data) {
+
+        if (!in_array($size_name, $allowed_sizes, true)) {
+            unset($sizes[$size_name]);
+        }
+    }
+
+    return $sizes;
+}
+
+add_filter(
+    'intermediate_image_sizes_advanced',
+    'hamid_limit_generated_image_sizes'
+);
+
+
+/* =========================================================
+   PRODUCT IMAGE — REMOVE OVERSIZED ORIGINAL
+========================================================= */
+
+/**
+ * After WordPress successfully creates the scaled image,
+ * remove the oversized original to save hosting storage.
+ */
+function hamid_remove_oversized_original(
+    $metadata,
+    $attachment_id,
+    $context
+) {
+    // Only run during the initial image creation.
+    if ($context !== 'create') {
+        return $metadata;
+    }
+
+    // WordPress only adds this when a scaled replacement
+    // has successfully been created.
+    if (empty($metadata['original_image'])) {
+        return $metadata;
+    }
+
+    $attached_file = get_attached_file($attachment_id);
+
+    if (!$attached_file) {
+        return $metadata;
+    }
+
+    $original_file = path_join(
+        dirname($attached_file),
+        $metadata['original_image']
+    );
+
+    // Never delete the active scaled attachment itself.
+    if (
+        $original_file !== $attached_file &&
+        file_exists($original_file)
+    ) {
+        wp_delete_file($original_file);
+
+        // The original no longer exists, so don't leave
+        // WordPress metadata pointing to it.
+        unset($metadata['original_image']);
+    }
+
+    return $metadata;
+}
+
+add_filter(
+    'wp_generate_attachment_metadata',
+    'hamid_remove_oversized_original',
+    20,
+    3
+);

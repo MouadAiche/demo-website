@@ -29,7 +29,7 @@
                 </a>
 
                 <p>
-                    Découvrez les derniers smartphones, accessoires et marques de confiance
+                    Découvrez les derniers smartphones, et marques de confiance
                     avec une expérience d'achat simple et premium.
                 </p>
 
@@ -150,7 +150,7 @@
             <!-- Quick Links -->
             <div class="footer-column">
 
-                <h3>Liens rapides</h3>
+                <h3>Navigation</h3>
 
                 <nav>
                     <a href="<?php echo esc_url(home_url('/#home')); ?>">Accueil</a>

@@ -18,7 +18,7 @@
             </h1>
 
             <p>
-                Derniers modèles
+                3 mois de garantie
                 <span>•</span>
                 Marques de confiance
                 <span>•</span>
@@ -61,17 +61,12 @@
             <div class="brands-header">
 
                 <span class="brands-eyebrow">
-                    Grandes marques
+                    Disponible marques
                 </span>
 
                 <h2>
                     Acheter par marque
                 </h2>
-
-                <p>
-                    Découvrez les produits de certaines des marques technologiques
-                    les plus fiables et les plus populaires.
-                </p>
 
             </div>
 
@@ -186,11 +181,6 @@
 
                 <h2>Produits en vedette</h2>
 
-                <p>
-                    Découvrez une sélection de nos smartphones et appareils
-                    des plus grandes marques.
-                </p>
-
             </div>
 
 
@@ -270,10 +260,18 @@
 
                                 <?php if ($product_image) { ?>
 
-                                    <img
-                                        src="<?php echo esc_url($product_image); ?>"
-                                        alt="<?php echo esc_attr($featured_product->get_name()); ?>"
-                                        loading="lazy">
+                                    <?php
+                                    echo wp_get_attachment_image(
+                                        get_post_thumbnail_id(),
+                                        'large',
+                                        false,
+                                        array(
+                                            'alt'     => get_the_title(),
+                                            'loading' => 'lazy',
+                                            'sizes'   => '(max-width: 600px) 50vw, (max-width: 1200px) 33vw, 25vw',
+                                        )
+                                    );
+                                    ?>
 
                                 <?php } ?>
 
@@ -626,14 +624,9 @@
 
             <div class="contact-header">
 
-                <span class="contact-eyebrow">Contactez-nous</span>
+                <span class="contact-eyebrow">Nous sommes là pour vous aider</span>
 
-                <h2>Nous contacter</h2>
-
-                <p>
-                    Vous avez une question sur un produit, sa disponibilité ou son prix ?
-                    Contactez-nous, nous serons heureux de vous aider.
-                </p>
+                <h2>Contactez-nous</h2>
 
             </div>
 

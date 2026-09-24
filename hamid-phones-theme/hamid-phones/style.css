@@ -2822,7 +2822,7 @@ html[data-theme="dark"] .brand-card:hover .brand-card-arrow {
 @media (max-width: 600px) {
 
     .brands-section {
-        padding: 10px 0 20px;
+        padding: 20px 0;
     }
 
     .brands-container {
@@ -3579,7 +3579,7 @@ html[data-theme="dark"] .product-card__image {
 @media (max-width: 600px) {
 
     .featured-products {
-        padding: 10px 0 20px;
+        padding: 20px 0;
     }
 
     .featured-products__container {
@@ -6730,6 +6730,281 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
     font-weight: 800;
 }
 
+/* =========================================================
+   PRODUCT ALERT
+========================================================= */
+
+.product-alert {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+.product-alert.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   ALERT BOX
+========================================================= */
+
+.product-alert__box {
+    position: relative;
+
+    width: 100%;
+    max-width: 520px;
+
+    padding: 32px 30px 26px;
+
+    background: #ffffff;
+    color: #111827;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.25);
+
+    transform: translateY(12px) scale(0.97);
+
+    transition: transform 0.2s ease;
+}
+
+.product-alert.is-visible .product-alert__box {
+    transform: translateY(0) scale(1);
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.product-alert__main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding-right: 25px;
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.product-alert__icon {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 72px;
+    height: 72px;
+
+    background: #eaf4ff;
+    color: #087cf0;
+
+    border-radius: 50%;
+}
+
+.product-alert__icon svg {
+    width: 34px;
+    height: 34px;
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.product-alert__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.product-alert__content strong {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #111827;
+
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.product-alert__content p {
+    margin: 0;
+
+    color: #4b5563;
+
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.product-alert__close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: #f3f4f6;
+    color: #64748b;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.product-alert__close svg {
+    width: 19px;
+    height: 19px;
+}
+
+.product-alert__close:hover {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+
+/* =========================================================
+   OK BUTTON
+========================================================= */
+
+.product-alert__confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 48px;
+
+    margin-top: 26px;
+    padding: 12px 20px;
+
+    border: 0;
+    border-radius: 7px;
+
+    background: linear-gradient(135deg,
+            #087cf0,
+            #0067d8);
+
+    color: #ffffff;
+
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.product-alert__confirm:hover {
+    opacity: 0.92;
+}
+
+.product-alert__confirm:active {
+    transform: scale(0.99);
+}
+
+.product-alert__content p .product-alert__highlight {
+    display: inline;
+    margin: 0;
+
+    color: #087cf0;
+
+    font-size: inherit;
+    font-weight: 700;
+    line-height: inherit;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .product-alert {
+        padding: 16px;
+    }
+
+    .product-alert__box {
+        max-width: 400px;
+        padding: 28px 20px 20px;
+    }
+
+    .product-alert__main {
+        gap: 14px;
+        padding-right: 20px;
+    }
+
+    .product-alert__icon {
+        width: 54px;
+        height: 54px;
+    }
+
+    .product-alert__icon svg {
+        width: 27px;
+        height: 27px;
+    }
+
+    .product-alert__content strong {
+        font-size: 19px;
+    }
+
+    .product-alert__content p {
+        font-size: 14px;
+    }
+
+    .product-alert__confirm {
+        margin-top: 22px;
+    }
+
+}
 
 /* =========================================================
    MAIN SPECIFICATIONS GRID

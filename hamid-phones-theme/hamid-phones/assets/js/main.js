@@ -899,7 +899,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (variation.is_in_stock) {
 
-            singleProductStock.textContent = "In Stock";
+            singleProductStock.textContent = "Disponible";
 
             singleProductStock.classList.remove(
                 "single-product-badge--out"
@@ -907,7 +907,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } else {
 
-            singleProductStock.textContent = "Out of Stock";
+            singleProductStock.textContent = "Rupture de stock";
 
             singleProductStock.classList.add(
                 "single-product-badge--out"
@@ -1024,23 +1024,160 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector(".single-product-title")
                 ?.textContent.trim();
 
+        let message = `Bonjour, je suis intéressé par ${productName}`;
 
-        let message =
-            `Hello, I am interested in ${productName}`;
-
-
-        if (storage) {
-            message += `\nStorage: ${storage}`;
-        }
-
-
-        if (color) {
-            message += `\nColor: ${color}`;
-        }
-
+        if (storage) message += `\nStockage : ${storage}`;
+        if (color) message += `\nCouleur : ${color}`;
 
         singleProductContactButton.href =
             `https://wa.me/212680449271?text=${encodeURIComponent(message)}`;
+
+    }
+
+    /* =====================================================
+   VALIDATE VARIATIONS BEFORE WHATSAPP
+===================================================== */
+
+    const productAlert =
+        document.getElementById("productAlert");
+
+    const productAlertMessage =
+        document.getElementById("productAlertMessage");
+
+    const productAlertClose =
+        document.getElementById("productAlertClose");
+
+
+    function showProductAlert(message) {
+
+        if (!productAlert || !productAlertMessage) return;
+
+        productAlertMessage.innerHTML = message;
+
+        productAlert.classList.add("is-visible");
+
+        productAlert.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+    }
+
+    function closeProductAlert() {
+
+        if (!productAlert) return;
+
+        productAlert.classList.remove("is-visible");
+
+        productAlert.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+    }
+
+
+    const productAlertConfirm =
+        document.getElementById("productAlertConfirm");
+
+
+    if (productAlertClose) {
+
+        productAlertClose.addEventListener(
+            "click",
+            closeProductAlert
+        );
+
+    }
+
+
+    if (productAlertConfirm) {
+
+        productAlertConfirm.addEventListener(
+            "click",
+            closeProductAlert
+        );
+
+    }
+
+    if (singleProductContactButton) {
+
+        singleProductContactButton.addEventListener(
+            "click",
+            (event) => {
+
+                const hasColors =
+                    singleProduct.querySelector(
+                        ".single-product-color"
+                    );
+
+                const hasStorage =
+                    singleProduct.querySelector(
+                        ".single-product-storage__button"
+                    );
+
+                const selectedColor =
+                    singleProduct.querySelector(
+                        ".single-product-color.is-selected"
+                    );
+
+                const selectedStorage =
+                    singleProduct.querySelector(
+                        ".single-product-storage__button.is-selected"
+                    );
+
+
+                /* Both are required and both are missing */
+                if (
+                    hasColors &&
+                    hasStorage &&
+                    !selectedColor &&
+                    !selectedStorage
+                ) {
+
+                    event.preventDefault();
+
+                    showProductAlert(
+                        'Veuillez sélectionner une <strong class="product-alert__highlight">couleur</strong> et une <strong class="product-alert__highlight">capacité de stockage</strong>.'
+                    );
+
+                    return;
+                }
+
+
+                /* Color is missing */
+                if (
+                    hasColors &&
+                    !selectedColor
+                ) {
+
+                    event.preventDefault();
+
+                    showProductAlert(
+                        'Veuillez sélectionner une <strong class="product-alert__highlight">couleur</strong>.'
+                    );
+
+                    return;
+                }
+
+
+                /* Storage is missing */
+                if (
+                    hasStorage &&
+                    !selectedStorage
+                ) {
+
+                    event.preventDefault();
+
+                    showProductAlert(
+                        'Veuillez sélectionner une <strong class="product-alert__highlight">capacité de stockage</strong>.'
+                    );
+
+                    return;
+                }
+
+            }
+        );
 
     }
 
@@ -1516,7 +1653,7 @@ searchWrappers.forEach((wrapper) => {
 
                         dropdown.innerHTML = `
                             <div class="search-no-results">
-                                No products found
+                                Aucun produit trouvé
                             </div>
                         `;
 
@@ -1612,7 +1749,7 @@ searchWrappers.forEach((wrapper) => {
                         : "see-results";
 
                     seeAll.innerHTML = `
-                        See all results
+                        Voir tous les résultats
 
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path
