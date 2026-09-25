@@ -6584,7 +6584,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
 .single-product-colors {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
 
     flex-wrap: nowrap;
 
@@ -6652,7 +6652,7 @@ html[data-theme="dark"] a.contact-item:hover .contact-icon {
 
 .single-product-storage {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
 
     flex-wrap: nowrap;
 
